@@ -17,6 +17,7 @@ _global_script_class_icons={
 
 config/name="Massive Single Player"
 run/main_scene="res://Scenes/SplashScreen.tscn"
+boot_splash/image="res://icon.png"
 config/icon="res://icon.png"
 
 [rendering]

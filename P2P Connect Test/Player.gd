@@ -32,7 +32,7 @@ func move(dir):
 		 move_tween(dir)
 
 func move_tween(dir):
-	tween.interpolate_property(self, "position", position, position + dir * tile_size, 1.0/speed, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	tween.interpolate_property(self, "position", position, position + inputs[dir] * tile_size, 1.0/speed, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	tween.start()
 	
 	

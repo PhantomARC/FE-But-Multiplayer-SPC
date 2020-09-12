@@ -12,7 +12,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if $Player.get_step_count() == 2: #and is_on_red_team()
+	if $Player.get_step_count() == 20: #and is_on_red_team()
 		go_to_red_team_end_screen()
 	#if $Player.get_step_count() == 10: #and is_on_blue_team()
 		#go_to_blue_team_end_screen()

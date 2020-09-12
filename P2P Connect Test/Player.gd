@@ -6,6 +6,8 @@ onready var tween = $Tween
 
 export var speed = 3
 
+var step_count = 0
+
 var tile_size = 64
 
 var inputs = {"ui_right": Vector2.RIGHT,
@@ -13,18 +15,20 @@ var inputs = {"ui_right": Vector2.RIGHT,
 			"ui_up": Vector2.UP,
 			"ui_down": Vector2.DOWN}
 
-func _ready():
+func _ready(): #positions player at center of tile
 	position = position.snapped(Vector2.ONE * tile_size) #Snap rounds the position to the nearest tile increment, and adding a half-tile amount makes sure the player is centered on the tile.
 	position += Vector2.ONE * tile_size/2
 
-func _unhandled_input(event):
+func _unhandled_input(event): #movement
 	if tween.is_active():
 		return
 	for dir in inputs.keys():
 		if event.is_action_pressed(dir):
 			move(dir)
+			step_count+=1
+			#print(step_count)
 
-func move(dir):
+func move(dir): #detect collision
 	ray.cast_to = inputs[dir] * tile_size
 	ray.force_raycast_update()
 	if !ray.is_colliding():
@@ -34,8 +38,13 @@ func move(dir):
 func move_tween(dir):
 	tween.interpolate_property(self, "position", position, position + inputs[dir] * tile_size, 1.0/speed, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	tween.start()
-	
-	
+
+func get_step_count():
+	return step_count
+
+
+
+
 
 
 

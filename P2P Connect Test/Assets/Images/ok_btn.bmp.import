@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Splash.png-8436b15d4f4733888d90369a0664b25a.stex"
+path="res://.import/ok_btn.bmp-be4ca4d673405282fb4ee9ef34748840.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Splash.png"
-dest_files=[ "res://.import/Splash.png-8436b15d4f4733888d90369a0664b25a.stex" ]
+source_file="res://Assets/Images/ok_btn.bmp"
+dest_files=[ "res://.import/ok_btn.bmp-be4ca4d673405282fb4ee9ef34748840.stex" ]
 
 [params]
 

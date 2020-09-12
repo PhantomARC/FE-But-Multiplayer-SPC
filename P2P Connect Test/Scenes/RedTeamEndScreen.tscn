@@ -1,8 +1,26 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/ResulltsOkButton.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Images/ok_btn.bmp" type="Texture" id=2]
 
 [node name="RedTeamEndScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 1.25989
+margin_right = 1.25989
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Button" type="Button" parent="."]
+margin_left = 309.024
+margin_top = 204.029
+margin_right = 728.024
+margin_bottom = 388.029
+icon = ExtResource( 2 )
+expand_icon = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="button_down" from="Button" to="Button" method="_on_Button_button_down"]

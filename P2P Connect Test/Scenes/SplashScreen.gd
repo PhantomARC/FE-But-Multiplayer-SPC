@@ -1,7 +1,7 @@
 extends Node2D
 
 func go_title_screen():
-	get_tree().change_scene("res://Scenes/TitleScreen.tscn")
+	get_tree().change_scene("res://Scenes/MainScene.tscn")
 
 func _input(event):
 	if(event is InputEventKey):

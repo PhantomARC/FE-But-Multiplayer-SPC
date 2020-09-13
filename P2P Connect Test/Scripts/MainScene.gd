@@ -1,14 +1,21 @@
 extends Node2D
 
+
+
 func go_to_red_team_end_screen():
 	get_tree().change_scene("res://Scenes/RedTeamEndScreen.tscn")
 
 func go_to_blue_team_end_screen():
 	get_tree().change_scene("res://Scenes/BlueTeamEndScreen.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if $global.mapSelect == 1:
+		add_child_below_node(MainScene, MapVolcano.tscn, false)
+	if $global.mapSelect == 2:
+		add_child_below_node(MainScene, MapPlains.tscn, false)
 
+	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

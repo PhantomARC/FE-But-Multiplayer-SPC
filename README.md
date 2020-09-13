@@ -34,3 +34,4 @@ Completed Tasks
 	> Create Player Character
 	> Modified Boot Splash
 	> Updated Textures to a Better Resolution
+	> Set Camera View Limits

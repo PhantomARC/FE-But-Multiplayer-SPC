@@ -4,7 +4,7 @@ onready var ray = $RayCast2D
 
 onready var tween = $Tween
 
-export var speed = 3
+export var speed = 10
 
 var step_count = 0
 

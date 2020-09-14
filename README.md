@@ -8,16 +8,42 @@
  - 
 
 Tasklist
-	> Generate Map Select Scene
-	> Generate Maps Based Off of Selection
 	> Generate Player Pseudostates (RT / BT)
-	> Create Network Interface
+	> Improve Network Interface
+		> Add map selection into Network Interface
 	> Create Multiple In-game Options
 	> Player Automapping
 	> Make Icon
-	> Add Skip Splash
 	> Create Player Classes
 	> Add Boot Splash Icon/Remove Boot Splash
+	> Adjust Camera View Limits
+	> Reattach Camera to applicable player
+		> Add Camera Mousing
+		> Give Camera relocation properties
+	> Create Player Model
+	> Create Model Animations
+	> Remake Maps/Create Map Generation Methods
+	> Create Battle scene
+	> Modulate tiles for player movement
+	> Generate Player FE Movement style
+	> Generate Multiple PLayers
+		> Network Multiple Players
+	> Establish Turn Based Actions
+	> Establish Timer to end Turn
+	> Display On-screen Clock for turn limit
+	> Create Map Animations
+	> Add Interactive Map Objects/Terrain
+	> Generate Scoring System
+	> Update Player Results through feedback
+	> Create Map Editor
+	> Create Save File for maps
+	> Feed maps through network
+	> Create file storage for maps
+	> Create Save Game Persistent Objects
+	> Create Sound Effects
+	> Create Background Music
+	> Create Fog of War Effect
+
 
 Completed Tasks
 	> Generate Splash
@@ -35,3 +61,13 @@ Completed Tasks
 	> Modified Boot Splash
 	> Updated Textures to a Better Resolution
 	> Set Camera View Limits
+	> Create Fluid Camera Zoom Effect
+	> Create Basic Network Scene
+		> Add TCP and Port inputs to Connect
+	> Add Skip Splash
+	> Identify Tiles and adjust them
+	> Generate Map Select Scene
+	> Generate Maps Based Off of Selection
+	> Define Player on Tile and Coordinate System
+	> Get Gerard
+		>Return Gerard

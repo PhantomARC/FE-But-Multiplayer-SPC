@@ -6,23 +6,70 @@
 script = ExtResource( 1 )
 
 [node name="buttonHost" type="Button" parent="."]
-margin_left = 301.0
-margin_top = 151.0
-margin_right = 708.0
-margin_bottom = 285.0
+margin_left = 303.997
+margin_top = 239.4
+margin_right = 710.997
+margin_bottom = 373.4
 text = "HOST"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="buttonJoin" type="Button" parent="."]
-margin_left = 302.327
-margin_top = 356.636
-margin_right = 707.327
-margin_bottom = 476.636
+margin_left = 303.825
+margin_top = 401.585
+margin_right = 708.825
+margin_bottom = 521.585
 text = "JOIN"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tcp_insert" type="LineEdit" parent="."]
+margin_left = 287.675
+margin_top = 73.4171
+margin_right = 753.675
+margin_bottom = 133.417
+placeholder_text = "Type TCP Address Here..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="port_insert" type="LineEdit" parent="."]
+margin_left = 290.0
+margin_top = 157.0
+margin_right = 753.0
+margin_bottom = 215.0
+placeholder_text = "Type Port Number Here..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="port_label" type="Label" parent="."]
+margin_left = 102.718
+margin_top = 157.397
+margin_right = 289.718
+margin_bottom = 214.397
+text = "Port"
+align = 1
+valign = 1
+percent_visible = -0.25
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tcp_label" type="Label" parent="."]
+margin_left = 149.384
+margin_top = 78.4003
+margin_right = 249.384
+margin_bottom = 128.4
+text = "TCP"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="pressed" from="buttonHost" to="." method="_on_Host_Button_pressed"]
 [connection signal="pressed" from="buttonJoin" to="." method="_on_Join_Button_pressed"]
+[connection signal="text_changed" from="tcp_insert" to="." method="_on_tcp_insert_text_changed"]
+[connection signal="text_changed" from="port_insert" to="." method="_on_port_insert_text_changed"]

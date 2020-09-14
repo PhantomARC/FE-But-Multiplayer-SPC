@@ -1,5 +1,7 @@
 extends Node2D
 
+var port_ID = null
+var tcp_ID = null
 
 onready var global = get_node("/root/Global")
 
@@ -19,7 +21,7 @@ func player_connected(id):
 func _on_Host_Button_pressed():
 	print("Hosting network")
 	var host = NetworkedMultiplayerENet.new()
-	var res = host.create_server(26497,2)
+	var res = host.create_server(port_ID,2)
 	if res != OK:
 		print("Error creating server")
 		return
@@ -32,8 +34,16 @@ func _on_Host_Button_pressed():
 func _on_Join_Button_pressed():
 	print("Joining network")
 	var host = NetworkedMultiplayerENet.new()
-	host.create_client("25.3.252.29",26497)
+	host.create_client(tcp_ID,port_ID)
 	get_tree().set_network_peer(host)
 	
 	$buttonHost.hide()
 	$buttonJoin.disabled = true
+
+
+func _on_port_insert_text_changed(port_num):
+	port_ID = port_num
+
+
+func _on_tcp_insert_text_changed(tcp_num):
+	tcp_ID = tcp_num

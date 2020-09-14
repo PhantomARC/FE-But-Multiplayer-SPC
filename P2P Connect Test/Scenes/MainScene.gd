@@ -67,3 +67,7 @@ func _input(event):
 		print(player_position_tile_map)
 		print(current_tile_type_int)
 
+
+func get_gerard():
+		return "gerard"
+		

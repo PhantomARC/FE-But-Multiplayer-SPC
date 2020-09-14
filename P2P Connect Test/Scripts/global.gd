@@ -1,17 +1,13 @@
 extends Node
 
-var map_select = 1
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
-func set_map_select(map_select_number):
+var other_id = -1 #default other player IDs' to -1
+var map_select = 1 #default to Map 1 on load
+
+
+func set_map_select(map_select_number): #when called, change map
 	map_select = map_select_number
-# Called when the node enters the scene tree for the first time.
+
+
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	pass

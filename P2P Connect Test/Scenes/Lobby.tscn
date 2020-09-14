@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/Lobby.gd" type="Script" id=1]
+
+[node name="Control" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Host Button" type="Button" parent="."]
+margin_left = 301.0
+margin_top = 151.0
+margin_right = 708.0
+margin_bottom = 285.0
+text = "HOST"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Join Button" type="Button" parent="."]
+margin_left = 302.327
+margin_top = 356.636
+margin_right = 707.327
+margin_bottom = 476.636
+text = "JOIN"

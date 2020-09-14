@@ -2,8 +2,6 @@
 
 [ext_resource path="res://Assets/Images/Splash.png" type="Texture" id=1]
 
-
-
 [node name="Splash" type="Sprite"]
 position = Vector2( 501.328, 277.818 )
 scale = Vector2( 0.396979, 0.37004 )

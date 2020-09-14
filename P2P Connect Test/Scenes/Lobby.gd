@@ -23,7 +23,7 @@ func _on_Host_Button_pressed():
 	if res != OK:
 		print("Error creating server")
 		return
-
+		
 	$buttonJoin.hide()
 	$buttonHost.disabled = true
 	get_tree().set_network_peer(host)

@@ -6,6 +6,8 @@ var player_instance = player_load.instance()
 var player_position_pixel = null #Vector2
 var player_position_tile_map = null #Vector2
 
+var current_tile_type_int = null
+
 onready var global_load = get_node("/root/Global")
 
 
@@ -42,6 +44,7 @@ func _process(delta):
 		#go_to_blue_team_end_screen()
 	player_position_pixel = $Player.get_position()  #May need to put setter in another func
 	player_position_tile_map = get_player_position_tile_map() #May need to put setter in another func
+	current_tile_type_int = get_current_tile_type()
 
 
 func get_player_position_tile_map(): #Must be updated when adding new maps
@@ -51,7 +54,16 @@ func get_player_position_tile_map(): #Must be updated when adding new maps
 		return $MapPlains.world_to_map(player_position_pixel)
 
 
+func get_current_tile_type(): #Must be updated when adding new maps
+	if global_load.map_select == 1:
+		return $MapVolcano.get_cellv(player_position_tile_map)
+	if global_load.map_select == 2:
+		return $MapPlains.get_cellv(player_position_tile_map)
+
+
 func _input(event):
 	if(event is InputEventKey):
 		print(player_position_pixel)
 		print(player_position_tile_map)
+		print(current_tile_type_int)
+

@@ -42,7 +42,7 @@ func _on_Join_Button_pressed():
 
 
 func _on_port_insert_text_changed(port_num):
-	port_ID = port_num
+	port_ID = int(port_num)
 
 
 func _on_tcp_insert_text_changed(tcp_num):

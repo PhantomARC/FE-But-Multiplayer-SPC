@@ -4,7 +4,6 @@
 [ext_resource path="res://Assets/Images/icon.png" type="Texture" id=2]
 [ext_resource path="res://Camera2D.tscn" type="PackedScene" id=3]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1.19252, 1.26253 )
 
@@ -28,3 +27,8 @@ exclude_parent = false
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="Camera2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 5.47986, 1.9855 )
+limit_left = -100000
+limit_top = -100000
+limit_right = 100000
+limit_bottom = 100000

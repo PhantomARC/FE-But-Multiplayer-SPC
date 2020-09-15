@@ -8,7 +8,7 @@
  - 
 
 Tasklist
-	> Generate Player Pseudostates (RT / BT)
+	> Elaborate on Player Pseudostates
 	> Improve Network Interface
 		> Add map selection into Network Interface
 	> Create Multiple In-game Options
@@ -40,8 +40,8 @@ Tasklist
 	> Feed maps through network
 	> Create file storage for maps
 	> Create Save Game Persistent Objects
-	> Create Sound Effects
-	> Create Background Music
+	> Create Sound Effects (1/X)
+	> Create Background Music (1/X)
 	> Create Fog of War Effect
 
 
@@ -71,3 +71,4 @@ Completed Tasks
 	> Define Player on Tile and Coordinate System
 	> Get Gerard
 		>Return Gerard
+	> Generate Player Pseudostates (RT / BT)

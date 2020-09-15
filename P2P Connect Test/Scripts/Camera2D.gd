@@ -5,6 +5,7 @@ var zoom_calc = 1
 var current_zoom = get_zoom()
 const ZOOM_SPEED = 5
 
+onready var global_load = get_node("/root/Global")
 
 func _ready():
 	pass

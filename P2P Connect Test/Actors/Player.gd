@@ -4,7 +4,11 @@ onready var ray = $RayCast2D
 
 onready var tween = $Tween
 
+onready var global_load = get_node("/root/Global")
+
 export var speed = 10
+
+onready var team = global_load.igt_turn
 
 var step_count = 0
 
@@ -23,7 +27,7 @@ func _unhandled_input(event): #movement
 	if tween.is_active():
 		return
 	for dir in inputs.keys():
-		if event.is_action_pressed(dir):
+		if event.is_action_released(dir) and global_load.igt_turn == team:
 			move(dir)
 			step_count+=1
 			#print(step_count)

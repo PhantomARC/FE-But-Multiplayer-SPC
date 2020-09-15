@@ -10,7 +10,6 @@ var current_tile_type_int = null
 
 onready var global_load = get_node("/root/Global")
 
-
 func go_to_red_team_end_screen():
 	get_tree().change_scene("res://Scenes/RedTeamEndScreen.tscn")
 
@@ -27,9 +26,15 @@ func _ready():
 	elif global_load.map_select == 2:
 		select_map = load("res://Maps/MapPlains.tscn")
 		
-	add_child(select_map.instance())
-
 	
+	add_child(select_map.instance())
+	
+	global_load.igt_turn = true
+	player_instance = player_load.instance()
+	add_child(player_instance)
+	
+	global_load.igt_turn = false
+	player_instance = player_load.instance()
 	add_child(player_instance)
 	#print($Player.get_position()
 	#print($"Plains Tilemap".get_cellv($"Plains Tilemap".world_to_map(Vector2(32,32))))

@@ -23,3 +23,23 @@ func _on_Map2_button_up():
 func _on_Confirm_button_up():
 	get_tree().change_scene("res://Scenes/MainScene.tscn")
 	
+
+
+func _on_Back_button_up():
+	get_tree().change_scene("res://Scenes/TitleScreen.tscn")
+
+
+func _on_Map1_mouse_entered():
+	$ButtonStream.play()
+
+
+func _on_Map2_mouse_entered():
+	$ButtonStream.play()
+
+
+func _on_Confirm_mouse_entered():
+	$ButtonStream.play()
+
+
+func _on_Back_mouse_entered():
+	$ButtonStream.play()

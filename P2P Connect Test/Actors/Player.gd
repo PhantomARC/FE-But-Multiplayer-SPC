@@ -46,7 +46,11 @@ func move_tween(dir):
 func get_step_count():
 	return step_count
 
-
+func _process(delta):
+	if global_load.igt_turn == team:
+		$Camera2D.current = true
+	else:
+		$Camera2D.current = false
 
 
 

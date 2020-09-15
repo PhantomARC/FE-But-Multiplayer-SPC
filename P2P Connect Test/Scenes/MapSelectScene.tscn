@@ -1,9 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Temp/Screenshot 2020-09-12 141400.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Temp/Screenshot 2020-09-12 181555.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/MapSelectScene.gd" type="Script" id=3]
-
+[ext_resource path="res://Assets/Sounds/Map Selection Theme.wav" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Sounds/Hover.wav" type="AudioStream" id=5]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 3 )
@@ -40,6 +41,28 @@ expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Back" type="Button" parent="."]
+margin_left = 39.3347
+margin_top = 531.595
+margin_right = 134.335
+margin_bottom = 567.595
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
+
+[node name="ButtonStream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
 [connection signal="button_up" from="Map1" to="." method="_on_Map1_button_up"]
+[connection signal="mouse_entered" from="Map1" to="." method="_on_Map1_mouse_entered"]
 [connection signal="button_up" from="Map2" to="." method="_on_Map2_button_up"]
+[connection signal="mouse_entered" from="Map2" to="." method="_on_Map2_mouse_entered"]
 [connection signal="button_up" from="Confirm" to="." method="_on_Confirm_button_up"]
+[connection signal="mouse_entered" from="Confirm" to="." method="_on_Confirm_mouse_entered"]
+[connection signal="button_up" from="Back" to="." method="_on_Back_button_up"]
+[connection signal="mouse_entered" from="Back" to="." method="_on_Back_mouse_entered"]

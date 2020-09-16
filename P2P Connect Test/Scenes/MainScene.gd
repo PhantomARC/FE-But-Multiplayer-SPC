@@ -3,10 +3,10 @@ extends Node2D
 var select_map = null
 var player_load = load("res://Actors/Player.tscn")
 var player_instance = player_load.instance()
-var player_position_pixel = null #Vector2
-var player_position_tile_map = null #Vector2
 
-var current_tile_type_int = null
+var player_position_pixel = null #Vector2, use onready in future
+var player_position_tile_map = null #Vector2, use onready 
+var current_tile_type_int = null #onready
 
 onready var global_load = get_node("/root/Global")
 
@@ -34,11 +34,8 @@ func _ready():
 	add_child(player_instance)
 	
 	global_load.igt_turn = false
-	player_instance = player_load.instance()
-	add_child(player_instance)
-	#print($Player.get_position()
-	#print($"Plains Tilemap".get_cellv($"Plains Tilemap".world_to_map(Vector2(32,32))))
-	#print($"Plains Tilemap".get_cellv(Vector2(32,32)))
+	#player_instance = player_load.instance()
+	#add_child(player_instance)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

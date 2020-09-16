@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scenes/Lobby.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sounds/Lobby Theme.wav" type="AudioStream" id=2]
 
 [node name="Control" type="Node2D"]
 script = ExtResource( 1 )
@@ -53,7 +54,6 @@ margin_bottom = 214.397
 text = "Port"
 align = 1
 valign = 1
-percent_visible = -0.25
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -69,6 +69,10 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+autoplay = true
 [connection signal="pressed" from="buttonHost" to="." method="_on_Host_Button_pressed"]
 [connection signal="pressed" from="buttonJoin" to="." method="_on_Join_Button_pressed"]
 [connection signal="text_changed" from="tcp_insert" to="." method="_on_tcp_insert_text_changed"]

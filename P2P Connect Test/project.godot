@@ -21,6 +21,7 @@ boot_splash/image="res://Assets/Images/icon.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false
 config/icon="res://Assets/Images/icon.png"
+config/windows_native_icon="res://Assets/Logo.ico"
 
 [autoload]
 

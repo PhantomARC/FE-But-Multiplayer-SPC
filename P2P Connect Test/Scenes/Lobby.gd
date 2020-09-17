@@ -47,3 +47,7 @@ func _on_port_insert_text_changed(port_num):
 
 func _on_tcp_insert_text_changed(tcp_num):
 	tcp_ID = tcp_num
+
+
+func _on_BackButton_pressed():
+	get_tree().change_scene("res://Scenes/TitleScreen.tscn")

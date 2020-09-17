@@ -73,7 +73,18 @@ __meta__ = {
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 autoplay = true
+
+[node name="BackButton" type="Button" parent="."]
+margin_left = 38.699
+margin_top = 530.459
+margin_right = 172.699
+margin_bottom = 577.459
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="buttonHost" to="." method="_on_Host_Button_pressed"]
 [connection signal="pressed" from="buttonJoin" to="." method="_on_Join_Button_pressed"]
 [connection signal="text_changed" from="tcp_insert" to="." method="_on_tcp_insert_text_changed"]
 [connection signal="text_changed" from="port_insert" to="." method="_on_port_insert_text_changed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]

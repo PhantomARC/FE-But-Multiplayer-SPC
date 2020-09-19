@@ -3,6 +3,8 @@ extends Node2D
 var port_ID = null
 var tcp_ID = null
 
+var host = null
+
 onready var global = get_node("/root/Global")
 
 
@@ -16,11 +18,11 @@ func player_connected(id):
 	var game = preload("res://Scenes/IPConnect.tscn").instance()
 	get_tree().get_root().add_child(game)
 	hide()
-
+	
 
 func _on_Host_Button_pressed():
 	print("Hosting network")
-	var host = NetworkedMultiplayerENet.new()
+	host = NetworkedMultiplayerENet.new()
 	var res = host.create_server(port_ID,2)
 	if res != OK:
 		print("Error creating server")
@@ -31,7 +33,7 @@ func _on_Host_Button_pressed():
 	get_tree().set_network_peer(host)
 
 
-func _on_Join_Button_pressed():
+func _on_Join_Button_pressed(): 
 	print("Joining network")
 	var host = NetworkedMultiplayerENet.new()
 	host.create_client(tcp_ID,port_ID)
@@ -51,3 +53,6 @@ func _on_tcp_insert_text_changed(tcp_num):
 
 func _on_BackButton_pressed():
 	get_tree().change_scene("res://Scenes/TitleScreen.tscn")
+	host.close_connection()
+	print("youve become autistic")
+	

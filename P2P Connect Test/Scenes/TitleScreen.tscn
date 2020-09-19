@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/TitlePlayButton.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Images/play_btn.bmp" type="Texture" id=2]
 [ext_resource path="res://Scripts/Lobby Button.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Sounds/Monochroma - Myriad-E.wav" type="AudioStream" id=4]
 
 [node name="TitleScreen" type="Node2D"]
 
@@ -28,5 +29,10 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -8.083
+autoplay = true
 [connection signal="button_down" from="Button" to="Button" method="_on_Button_button_down"]
 [connection signal="pressed" from="Lobby Button" to="Lobby Button" method="_on_Lobby_Button_pressed"]

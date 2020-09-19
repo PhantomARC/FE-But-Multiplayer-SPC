@@ -52,7 +52,8 @@ func _on_tcp_insert_text_changed(tcp_num):
 
 
 func _on_BackButton_pressed():
+	if host != null:
+		host.close_connection()
+		print("Connection Closed.")
 	get_tree().change_scene("res://Scenes/TitleScreen.tscn")
-	host.close_connection()
-	print("youve become autistic")
 	

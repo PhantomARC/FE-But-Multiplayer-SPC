@@ -13,7 +13,6 @@ Tasklist
 		> Add map selection into Network Interface
 	> Create Multiple In-game Options
 	> Player Automapping
-	> Make Icon
 	> Create Player Classes
 	> Add Boot Splash Icon/Remove Boot Splash
 	> Adjust Camera View Limits
@@ -72,3 +71,4 @@ Completed Tasks
 	> Get Gerard
 		>Return Gerard
 	> Generate Player Pseudostates (RT / BT)
+	> Make Icon

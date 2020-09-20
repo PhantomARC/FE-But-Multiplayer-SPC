@@ -29,6 +29,8 @@ func _ready():
 	
 	add_child(select_map.instance())
 	
+	add_child(load("res://Maps/ShadingOverlay.tscn").instance())
+	
 	global_load.igt_turn = true
 	player_instance = player_load.instance()
 	add_child(player_instance)

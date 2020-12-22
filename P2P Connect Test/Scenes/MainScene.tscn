@@ -17,10 +17,13 @@ normal = ExtResource( 1 )
 pressed = ExtResource( 1 )
 passby_press = true
 action = "ui_select"
+visibility_mode = 1
 
 [node name="TouchScreenButton2" type="TouchScreenButton" parent="CanvasLayer"]
+modulate = Color( 0.909804, 0.0980392, 0.0980392, 1 )
 position = Vector2( 840, 512 )
 normal = ExtResource( 1 )
 pressed = ExtResource( 1 )
 passby_press = true
 action = "ui_left"
+visibility_mode = 1

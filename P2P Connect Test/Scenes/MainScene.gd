@@ -7,8 +7,14 @@ var player_instance = player_load.instance()
 var player_position_pixel = null #Vector2, use onready in future
 var player_position_tile_map = null #Vector2, use onready 
 var current_tile_type_int = null #onready
-
+var penis = null
 onready var global_load = get_node("/root/Global")
+
+
+onready var tilemap = $TileMap
+onready var player = $Player
+onready var step_count_limit = 5
+
 
 func go_to_red_team_end_screen():
 	get_tree().change_scene("res://Scenes/RedTeamEndScreen.tscn")

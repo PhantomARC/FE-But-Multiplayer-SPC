@@ -27,7 +27,7 @@ func _unhandled_input(event): #movement
 	if tween.is_active():
 		return
 	for dir in inputs.keys():
-		if event.is_action_released(dir) and global_load.igt_turn == team:
+		if event.is_action_pressed(dir) and global_load.igt_turn == team:
 			move(dir)
 			step_count+=1
 			#print(step_count)

@@ -14,7 +14,7 @@ func _ready():
 	pass
 
 func _input(event): #trigger when any key is pressed
-	if (Input.is_action_just_released("ui_select")):
+	if (Input.is_action_just_pressed("ui_select")):
 		if igt_turn == true:
 			igt_turn = false
 		elif igt_turn == false:

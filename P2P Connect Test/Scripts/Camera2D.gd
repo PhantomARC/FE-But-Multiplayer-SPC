@@ -16,12 +16,10 @@ func _process(delta):
 		zoom_calc += 0.25
 		zoom_calc = min(zoom_calc, 1.5)
 
-
 	if (Input.is_action_just_released("scroll_up")):
 		zoom_calc -= 0.25
 		zoom_calc = max(zoom_calc, 0.25)
-	
-	
+
 	if (current_zoom != Vector2(zoom_calc, zoom_calc)):
 		current_zoom = lerp(get_zoom(), Vector2(zoom_calc, zoom_calc), ZOOM_SPEED * delta)
 		set_zoom(current_zoom)

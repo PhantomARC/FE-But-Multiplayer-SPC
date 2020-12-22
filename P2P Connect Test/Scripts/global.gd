@@ -13,6 +13,7 @@ func set_map_select(map_select_number): #when called, change map
 func _ready():
 	pass
 
+
 func _input(event): #trigger when any key is pressed
 	if (Input.is_action_just_pressed("ui_select")):
 		if igt_turn == true:

@@ -2,7 +2,6 @@ extends Node2D
 
 var port_ID = null
 var tcp_ID = null
-
 var host = null
 
 onready var global = get_node("/root/Global")
@@ -18,7 +17,7 @@ func player_connected(id):
 	var game = preload("res://Scenes/IPConnect.tscn").instance()
 	get_tree().get_root().add_child(game)
 	hide()
-	
+
 
 func _on_Host_Button_pressed():
 	print("Hosting network")
@@ -56,4 +55,4 @@ func _on_BackButton_pressed():
 		host.close_connection()
 		print("Connection Closed.")
 	get_tree().change_scene("res://Scenes/TitleScreen.tscn")
-	
+

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Circo.png-d45b195cc7f4fa23a14c0b2166a011b7.stex"
+path="res://.import/L Button.png-0802f291d19cc0e0e49f90c71c3108f0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Circo.png"
-dest_files=[ "res://.import/Circo.png-d45b195cc7f4fa23a14c0b2166a011b7.stex" ]
+source_file="res://Assets/Images/L Button.png"
+dest_files=[ "res://.import/L Button.png-0802f291d19cc0e0e49f90c71c3108f0.stex" ]
 
 [params]
 

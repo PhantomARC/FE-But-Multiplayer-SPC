@@ -53,5 +53,5 @@ func _process(delta):
 	if global_load.igt_turn == team:
 		$Camera2D.current = true
 	else:
-		$Camera2D.current = false
+		$Camera2D.current = true
 

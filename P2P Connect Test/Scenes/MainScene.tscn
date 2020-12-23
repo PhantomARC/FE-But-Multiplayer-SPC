@@ -32,10 +32,10 @@ points = PoolVector2Array( -12, -32, 12, -32, 12, -11, 0, 1, -12, -11 )
 points = PoolVector2Array( -12, 30, 12, 30, 12, 9, 0, -3, -12, 9 )
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
-points = PoolVector2Array( 3, 0, -9, 12, -30, 12, -30, -12, -9, -12 )
+points = PoolVector2Array( 2, 0, -10, 12, -30, 12, -30, -12, -10, -12 )
 
 [sub_resource type="ConvexPolygonShape2D" id=6]
-points = PoolVector2Array( -1, 0, 11, 12, 32, 12, 32, -12, 11, -12 )
+points = PoolVector2Array( 0, 0, 12, 12, 32, 12, 32, -12, 12, -12 )
 
 [sub_resource type="ConvexPolygonShape2D" id=7]
 points = PoolVector2Array( -11, -16, 16, -16, 23, -11, 23, -5, 16, 0, 7, 1, -3, 8, -11, 8, -19, 0, -19, -8 )
@@ -86,7 +86,7 @@ visibility_mode = 1
 script = ExtResource( 19 )
 
 [node name="DOWN Key" type="TouchScreenButton" parent="CanvasLayer"]
-position = Vector2( 40, 374 )
+position = Vector2( 40, 373.9 )
 scale = Vector2( 3, 3 )
 normal = ExtResource( 5 )
 pressed = ExtResource( 6 )
@@ -98,7 +98,7 @@ visibility_mode = 1
 script = ExtResource( 19 )
 
 [node name="LEFT Key" type="TouchScreenButton" parent="CanvasLayer"]
-position = Vector2( 33.6773, 368 )
+position = Vector2( 34.2, 368 )
 scale = Vector2( 3, 3 )
 normal = ExtResource( 7 )
 pressed = ExtResource( 8 )

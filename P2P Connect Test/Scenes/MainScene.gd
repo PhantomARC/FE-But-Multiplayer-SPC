@@ -31,8 +31,7 @@ func _ready():
 		
 	elif global_load.map_select == 2:
 		select_map = load("res://Maps/MapPlains.tscn")
-		
-		
+
 	
 	add_child(select_map.instance())
 	add_child(load("res://Maps/ShadingOverlay.tscn").instance())
@@ -229,4 +228,4 @@ func _input(event):
 
 func get_gerard():
 		return "gerard"
-		
+

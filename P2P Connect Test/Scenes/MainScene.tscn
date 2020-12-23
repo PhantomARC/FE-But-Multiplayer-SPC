@@ -17,7 +17,7 @@
 [ext_resource path="res://Assets/Images/L Button Down.png" type="Texture" id=15]
 [ext_resource path="res://Assets/Images/R Button Down.png" type="Texture" id=16]
 [ext_resource path="res://Assets/Images/R Button.png" type="Texture" id=17]
-[ext_resource path="res://Scenes/keytrans.gd" type="Script" id=19]
+[ext_resource path="res://Scenes/KeyTrans.gd" type="Script" id=19]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 20.0

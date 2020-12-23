@@ -10,7 +10,8 @@
 script = ExtResource( 2 )
 
 [node name="Splash" parent="." instance=ExtResource( 1 )]
-position = Vector2( -75.0856, 34.6535 )
+modulate = Color( 1, 1, 1, 0.379523 )
+position = Vector2( 953.009, 26.7486 )
 scale = Vector2( 0.324451, 0.285101 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

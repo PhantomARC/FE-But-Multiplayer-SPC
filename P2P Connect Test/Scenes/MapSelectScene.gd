@@ -41,3 +41,7 @@ func _on_Confirm_mouse_entered():
 
 func _on_Back_mouse_entered():
 	$ButtonStream.play()
+
+
+func _on_Map3_button_up():
+	global_load.map_select = 3

@@ -31,6 +31,8 @@ func _ready():
 		
 	elif global_load.map_select == 2:
 		select_map = load("res://Maps/MapPlains.tscn")
+	elif global_load.map_select == 3:
+		select_map = load("res://Maps/MapCrazyHamburger.tscn")
 
 	
 	add_child(select_map.instance())

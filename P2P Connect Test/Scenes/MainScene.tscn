@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Assets/Images/A Button.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/MainScene.gd" type="Script" id=2]
@@ -20,6 +20,8 @@
 [ext_resource path="res://Scenes/KeyTrans.gd" type="Script" id=18]
 [ext_resource path="res://Assets/Images/H Button Down.png" type="Texture" id=19]
 [ext_resource path="res://Assets/Images/H Button.png" type="Texture" id=20]
+[ext_resource path="res://Scenes/AudioStreamPlayer.gd" type="Script" id=21]
+[ext_resource path="res://Assets/Sounds/Windlands.wav" type="AudioStream" id=22]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 20.0
@@ -157,3 +159,8 @@ shape = SubResource( 9 )
 shape_visible = false
 visibility_mode = 1
 script = ExtResource( 18 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 22 )
+autoplay = true
+script = ExtResource( 21 )

@@ -4,7 +4,7 @@ extends Node
 var other_id = -1 #default other player IDs' to -1
 var map_select = 1 #default to Map 1 on load
 var igt_turn = true #true = blue, false = red
-var volume = -10
+var volume = -20
 var transparency = 0.8
 
 func set_map_select(map_select_number): #when called, change map

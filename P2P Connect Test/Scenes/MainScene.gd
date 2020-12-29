@@ -28,12 +28,17 @@ func go_to_blue_team_end_screen():
 func _ready():
 	if global_load.map_select == 1:
 		select_map = load("res://Maps/MapVolcano.tscn")
-		
+		$AudioStreamPlayer.stream = load("res://Assets/Sounds/Firefight Tension.wav")
 	elif global_load.map_select == 2:
 		select_map = load("res://Maps/MapPlains.tscn")
+		$AudioStreamPlayer.stream = load("res://Assets/Sounds/Windlands.wav")
 	elif global_load.map_select == 3:
 		select_map = load("res://Maps/MapCrazyHamburger.tscn")
+		$AudioStreamPlayer.stream = load("res://Assets/Sounds/Windlands.wav")
 
+	
+	$AudioStreamPlayer.playing = true
+	
 	
 	add_child(select_map.instance())
 	add_child(load("res://Maps/ShadingOverlay.tscn").instance())

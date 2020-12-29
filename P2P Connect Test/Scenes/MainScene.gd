@@ -11,9 +11,10 @@ onready var global_load = get_node("/root/Global")
 
 
 #Pathfinding
-onready var tilemap = $TileMap
-onready var player = $Player
-onready var step_count_limit = 5
+#onready var tilemap = $TileMap
+#onready var player = $Player
+onready var step_count_limit = 3
+var player_select_movement_state = false
 #Pathfinding end
 
 func go_to_red_team_end_screen():
@@ -62,13 +63,25 @@ func _process(delta):
 	
 	
 	#Pathfinding
-	if Input.is_action_just_pressed("click"):
+	if Input.is_action_just_pressed("click"): 
 		mouse_pos = global_position_to_tilemap_pos(get_global_mouse_position())
-		player_pos = global_position_to_tilemap_pos(player_instance.global_position)
-		path = []
-		path = yield(get_path_bfs(player_pos, mouse_pos, step_counter), "completed")
+		if (player_select_movement_state == true) and (player_can_move_to_cell(mouse_pos)): #When Player is selecting tile to move
+			$Player.set_position($ShadingOverlay.map_to_world(Vector2(mouse_pos.x, mouse_pos.y)) + Vector2(32, 32)) #Set player pos
+			player_select_movement_state = false
+			for cell_info in visited_data_for_display: #Deletes all 
+				$ShadingOverlay.set_cellv(Vector2(cell_info.pos.x, cell_info.pos.y), -1)
+				
+		else: #When player is first viewing the flood
+			
+			player_pos = global_position_to_tilemap_pos(player_instance.global_position)
+			#mouse_pos = global_position_to_tilemap_pos(get_global_mouse_position())
+			path = []
+			path = yield(get_path_bfs(player_pos, mouse_pos, step_counter), "completed")
+			player_select_movement_state = true
+			update()
 		#path = get_path_bfs(player_pos, mouse_pos)
-		update()
+		
+		#update()
 	if Input.is_action_just_pressed("exit"):
 		get_tree().quit()
 	#PathfindingEnd
@@ -86,8 +99,9 @@ const PATH_DISPLAY_RATE = 0.1
 const MAX_ITERS = 10000
 var queue = []
 var visited = {}
-var visited_data_for_display = []
-func _draw(): 	
+var visited_data_for_display = [] 
+var tiles_player_can_walk_to = []
+func _draw(): 	#Draws circles, rectangles, lines, and sets ShadingOverlay cell types
 	
 	for cell_info in visited_data_for_display:
 		var cell_pos = $ShadingOverlay.map_to_world(Vector2(cell_info.pos.x, cell_info.pos.y)) + Vector2(32, 32)
@@ -115,9 +129,17 @@ func _draw():
 #	t_path.invert()
 	for cell in path_display:
 		var cell_pos = $ShadingOverlay.map_to_world(Vector2(cell.x, cell.y)) + Vector2(32, 32)
-		draw_rect(Rect2(cell_pos - Vector2(32, 32), Vector2(64,64)), Color.blue)
+		#draw_rect(Rect2(cell_pos - Vector2(32, 32), Vector2(64,64)), Color.blue)
 		draw_line(cell_pos, last_cell_pos, Color.blue, 2)
 		last_cell_pos = cell_pos
+
+
+func player_can_move_to_cell(cell_pos): #Returns true if the targeted cell is inside the flood pathfinding, or if the player can walk to the targetted cell
+	for visited_cell in visited_data_for_display :
+		if (cell_pos.x == visited_cell.pos.x) and (cell_pos.y == visited_cell.pos.y) and (visited_cell.step_counter <=step_count_limit):
+			return true
+
+	return false
 
 
 func global_position_to_tilemap_pos(pos):
@@ -125,13 +147,10 @@ func global_position_to_tilemap_pos(pos):
 	return {"x": int(round(t_pos.x)), "y": int(round(t_pos.y))}
 
 
-func can_move_to_spot(cell_pos):
-	
-	var step_count = abs(cell_pos.x - player_pos.x) + abs(cell_pos.y - player_pos.y)
-	
-	
+#More accurately, can_move_to_cell_type
+func can_move_to_spot(cell_pos): #returns true if the tile is walkable, must update with new tiles, does not account for step_count
 	print("get cell:", $ShadingOverlay.get_cell(cell_pos.x, cell_pos.y))
-	#returns true if the tile is walkable, must update with new tiles
+	
 	return ($ShadingOverlay.get_cell(cell_pos.x, cell_pos.y) == -1 or  
 			$ShadingOverlay.get_cell(cell_pos.x, cell_pos.y) == 0  )
 
@@ -170,6 +189,9 @@ func get_path_bfs(start_pos, goal_pos, step_counter):
 		cur_pos = visited[str(cur_pos)]
 	path_display.append(start_pos)
 	backtraced_path.invert()
+	
+	tiles_player_can_walk_to = backtraced_path #blue path tiles are added into tiles_player_can_walk_to
+	
 	return backtraced_path
 
 

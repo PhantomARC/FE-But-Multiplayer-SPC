@@ -15,6 +15,7 @@ func _ready():
 	pass
 
 
+
 func _input(event): #trigger when any key is pressed
 	if (Input.is_action_pressed("ui_accept")):
 		if igt_turn == true:

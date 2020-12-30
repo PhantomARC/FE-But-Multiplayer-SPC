@@ -4,8 +4,8 @@ extends Node2D
 onready var global_load = get_node("/root/Global")
 
 # Called when the node enters the scene tree for the first time.
-#func _ready():
-
+func _ready():
+	add_child(load("res://Scenes/Background.tscn").instance())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -28,20 +28,24 @@ func _on_Back_button_up():
 
 
 func _on_Map1_mouse_entered():
-	$ButtonStream.play()
+	$CanvasLayer/ButtonStream.play()
 
 
 func _on_Map2_mouse_entered():
-	$ButtonStream.play()
+	$CanvasLayer/ButtonStream.play()
 
 
 func _on_Confirm_mouse_entered():
-	$ButtonStream.play()
+	$CanvasLayer/ButtonStream.play()
 
 
 func _on_Back_mouse_entered():
-	$ButtonStream.play()
+	$CanvasLayer/ButtonStream.play()
 
 
 func _on_Map3_button_up():
 	global_load.map_select = 3
+
+
+func _on_Map3_mouse_entered():
+	$CanvasLayer/ButtonStream.play()

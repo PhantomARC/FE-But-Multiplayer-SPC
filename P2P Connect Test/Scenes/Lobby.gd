@@ -8,6 +8,7 @@ onready var global = get_node("/root/Global")
 
 
 func _ready():
+	add_child(load("res://Scenes/Background.tscn").instance())
 	get_tree().connect("network_peer_connected", self, "player_connected")
 
 

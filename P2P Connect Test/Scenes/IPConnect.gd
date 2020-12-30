@@ -13,7 +13,7 @@ func send_message():
 	var msg = chat_input.text
 	chat_input.text = ""
 	var id = get_tree().get_network_unique_id()
-	rpc("receive_message", id, msg)
+	rpc("receive_message", global_load.playername, msg)
 
 sync func receive_message(id, msg):
-	chat_display.text += str(global_load.playername) + ": " + msg + "\n"
+	chat_display.text += str(id) + ": " + msg + "\n"

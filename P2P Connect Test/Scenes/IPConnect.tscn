@@ -30,3 +30,5 @@ margin_left = 15.0
 margin_top = 11.4802
 margin_right = 295.0
 margin_bottom = 500.48
+readonly = true
+wrap_enabled = true

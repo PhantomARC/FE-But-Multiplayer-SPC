@@ -90,7 +90,8 @@ func _process(delta):
 var step_counter = 0
 var path = []
 var mouse_pos = Vector2()
-var path_display = []
+var path_display = [] #Blue line path
+var path_display_inverted = []
 var reached_end = false
 var player_pos = Vector2()
 
@@ -189,6 +190,11 @@ func get_path_bfs(start_pos, goal_pos, step_counter):
 		cur_pos = visited[str(cur_pos)]
 	path_display.append(start_pos)
 	backtraced_path.invert()
+	
+	#Reverses blue line order
+	path_display_inverted = path_display.duplicate()
+	path_display_inverted.invert()
+	 
 	
 	tiles_player_can_walk_to = backtraced_path #blue path tiles are added into tiles_player_can_walk_to
 	

@@ -30,5 +30,9 @@ margin_left = 15.0
 margin_top = 11.4802
 margin_right = 295.0
 margin_bottom = 500.48
+grow_vertical = 0
 readonly = true
 wrap_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -26,13 +26,18 @@ __meta__ = {
 }
 
 [node name="ChatDisplay" type="TextEdit" parent="RoomUI"]
-margin_left = 15.0
-margin_top = 11.4802
-margin_right = 295.0
-margin_bottom = 500.48
+margin_left = 14.0562
+margin_top = 11.0083
+margin_right = 294.056
+margin_bottom = 500.008
 grow_vertical = 0
 readonly = true
 wrap_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ScrollContainer" type="ScrollContainer" parent="RoomUI/ChatDisplay"]
+margin_right = 280.0
+margin_bottom = 488.0
+follow_focus = true

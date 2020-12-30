@@ -1,3 +1,32 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource path="res://Scenes/IPConnect.gd" type="Script" id=1]
+
+[node name="ChatRoom" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RoomUI" type="Panel" parent="."]
+margin_left = 704.04
+margin_top = 17.4405
+margin_right = 1011.04
+margin_bottom = 586.44
+
+[node name="ChatInput" type="LineEdit" parent="RoomUI"]
+margin_left = 11.7798
+margin_top = 512.74
+margin_right = 297.78
+margin_bottom = 558.74
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChatDisplay" type="TextEdit" parent="RoomUI"]
+margin_left = 15.0
+margin_top = 11.4802
+margin_right = 295.0
+margin_bottom = 500.48

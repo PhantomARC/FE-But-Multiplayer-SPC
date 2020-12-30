@@ -15,6 +15,9 @@ margin_left = 704.04
 margin_top = 17.4405
 margin_right = 1011.04
 margin_bottom = 586.44
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ChatInput" type="LineEdit" parent="RoomUI"]
 margin_left = 11.7798
@@ -25,19 +28,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ChatDisplay" type="TextEdit" parent="RoomUI"]
-margin_left = 14.0562
-margin_top = 11.0083
-margin_right = 294.056
-margin_bottom = 500.008
-grow_vertical = 0
-readonly = true
-wrap_enabled = true
+[node name="ChatDisplay" type="RichTextLabel" parent="RoomUI"]
+margin_left = 15.0
+margin_top = 12.0
+margin_right = 292.0
+margin_bottom = 498.0
+scroll_following = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScrollContainer" type="ScrollContainer" parent="RoomUI/ChatDisplay"]
-margin_right = 280.0
-margin_bottom = 488.0
-follow_focus = true
+[node name="Panel" type="Panel" parent="RoomUI"]
+modulate = Color( 0, 1, 0.952941, 1 )
+margin_left = 13.0
+margin_top = 14.1189
+margin_right = 297.0
+margin_bottom = 504.119

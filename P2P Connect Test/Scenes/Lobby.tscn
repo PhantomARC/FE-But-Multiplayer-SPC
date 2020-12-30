@@ -28,10 +28,10 @@ __meta__ = {
 }
 
 [node name="tcp_insert" type="LineEdit" parent="."]
-margin_left = 287.675
-margin_top = 73.4171
-margin_right = 753.675
-margin_bottom = 133.417
+margin_left = 289.359
+margin_top = 89.7558
+margin_right = 755.359
+margin_bottom = 149.756
 placeholder_text = "Type TCP Address Here..."
 __meta__ = {
 "_edit_use_anchors_": false
@@ -60,10 +60,10 @@ __meta__ = {
 }
 
 [node name="tcp_label" type="Label" parent="."]
-margin_left = 149.384
-margin_top = 78.4003
-margin_right = 249.384
-margin_bottom = 128.4
+margin_left = 150.506
+margin_top = 97.4821
+margin_right = 250.506
+margin_bottom = 147.482
 text = "TCP"
 align = 1
 valign = 1
@@ -85,8 +85,29 @@ text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label" type="Label" parent="."]
+margin_left = 166.124
+margin_top = 48.2659
+margin_right = 232.124
+margin_bottom = 62.2659
+text = "Username"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="username_input" type="LineEdit" parent="."]
+margin_left = 287.941
+margin_top = 23.7747
+margin_right = 752.941
+margin_bottom = 82.7747
+placeholder_text = "Type Username Here..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="buttonHost" to="." method="_on_Host_Button_pressed"]
 [connection signal="pressed" from="buttonJoin" to="." method="_on_Join_Button_pressed"]
 [connection signal="text_changed" from="tcp_insert" to="." method="_on_tcp_insert_text_changed"]
 [connection signal="text_changed" from="port_insert" to="." method="_on_port_insert_text_changed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="text_changed" from="username_input" to="." method="_on_username_input_text_changed"]

@@ -56,3 +56,7 @@ func _on_BackButton_pressed():
 		print("Connection Closed.")
 	get_tree().change_scene("res://Scenes/TitleScreen.tscn")
 
+
+
+func _on_username_input_text_changed(insname):
+	global.playername = insname

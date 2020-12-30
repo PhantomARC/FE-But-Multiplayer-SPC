@@ -6,6 +6,7 @@ var map_select = 1 #default to Map 1 on load
 var igt_turn = true #true = blue, false = red
 var volume = -80
 var transparency = 0.5
+var playername = null
 
 func set_map_select(map_select_number): #when called, change map
 	map_select = map_select_number

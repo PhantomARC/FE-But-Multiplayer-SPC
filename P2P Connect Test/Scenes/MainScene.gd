@@ -191,7 +191,7 @@ func get_path_bfs(start_pos, goal_pos, step_counter):
 	path_display.append(start_pos)
 	backtraced_path.invert()
 	
-	#Reverses blue line order
+	#Creates new array of reversed blue line order, must change all path_display to path_display_inverted in func _draw() 
 	path_display_inverted = path_display.duplicate()
 	path_display_inverted.invert()
 	 

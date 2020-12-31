@@ -1,18 +1,22 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/TitlePlayButton.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Images/play_btn.bmp" type="Texture" id=2]
 [ext_resource path="res://Scripts/Lobby Button.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Sounds/Monochroma - Myriad-E.wav" type="AudioStream" id=4]
 [ext_resource path="res://Scenes/AudioStreamPlayer.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/TitleScreen.gd" type="Script" id=9]
 
 [node name="TitleScreen" type="Node2D"]
+script = ExtResource( 9 )
 
-[node name="Button" type="Button" parent="."]
-margin_left = 272.269
-margin_top = 193.0
-margin_right = 748.269
-margin_bottom = 392.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+margin_left = 271.08
+margin_top = 158.513
+margin_right = 747.08
+margin_bottom = 357.513
 icon = ExtResource( 2 )
 expand_icon = true
 script = ExtResource( 1 )
@@ -20,21 +24,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Lobby Button" type="Button" parent="."]
-margin_left = 355.573
-margin_top = 417.412
-margin_right = 665.573
-margin_bottom = 491.412
+[node name="Lobby Button" type="Button" parent="CanvasLayer"]
+margin_left = 348.438
+margin_top = 392.439
+margin_right = 658.438
+margin_bottom = 466.439
 text = "lobby"
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer"]
 stream = ExtResource( 4 )
 volume_db = -8.083
 autoplay = true
 script = ExtResource( 5 )
-[connection signal="button_down" from="Button" to="Button" method="_on_Button_button_down"]
-[connection signal="pressed" from="Lobby Button" to="Lobby Button" method="_on_Lobby_Button_pressed"]
+[connection signal="button_down" from="CanvasLayer/Button" to="CanvasLayer/Button" method="_on_Button_button_down"]
+[connection signal="pressed" from="CanvasLayer/Lobby Button" to="CanvasLayer/Lobby Button" method="_on_Lobby_Button_pressed"]

@@ -32,10 +32,12 @@ Aesthetics="*res://Scripts/Aesthetics.gd"
 
 window/size/width=960
 window/size/height=540
-window/size/borderless=true
-window/size/fullscreen=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[gui]
+
+theme/custom_font="res://Kenney/Kenney MiniFont.tres"
 
 [input]
 

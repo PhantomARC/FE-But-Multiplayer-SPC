@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/TitlePlayButton.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Images/play_btn.bmp" type="Texture" id=2]
 [ext_resource path="res://Scripts/Lobby Button.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Sounds/Monochroma - Myriad-E.wav" type="AudioStream" id=4]
 [ext_resource path="res://Scenes/AudioStreamPlayer.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Images/Cog.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Images/Cog Down.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/SettingsCog.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/TitleScreen.gd" type="Script" id=9]
 
 [node name="TitleScreen" type="Node2D"]
@@ -40,5 +43,19 @@ stream = ExtResource( 4 )
 volume_db = -8.083
 autoplay = true
 script = ExtResource( 5 )
+
+[node name="SettingsCog" type="TextureButton" parent="CanvasLayer"]
+margin_left = 16.0
+margin_top = 448.0
+margin_right = 96.0
+margin_bottom = 528.0
+rect_pivot_offset = Vector2( 38, 38 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+expand = true
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="button_down" from="CanvasLayer/Button" to="CanvasLayer/Button" method="_on_Button_button_down"]
 [connection signal="pressed" from="CanvasLayer/Lobby Button" to="CanvasLayer/Lobby Button" method="_on_Lobby_Button_pressed"]

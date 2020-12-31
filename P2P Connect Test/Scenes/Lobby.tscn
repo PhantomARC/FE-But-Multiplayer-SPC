@@ -29,17 +29,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="tcp_insert" type="LineEdit" parent="."]
-margin_left = 289.359
-margin_top = 89.7558
-margin_right = 755.359
-margin_bottom = 149.756
-
-placeholder_text = "Type TCP Address Here..."
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="port_insert" type="LineEdit" parent="CanvasLayer"]
 margin_left = 290.0
 margin_top = 157.0
@@ -62,19 +51,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="tcp_label" type="Label" parent="."]
-margin_left = 150.506
-margin_top = 97.4821
-margin_right = 250.506
-margin_bottom = 147.482
-
-text = "TCP"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer"]
 stream = ExtResource( 2 )
 autoplay = true
@@ -90,7 +66,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
+[node name="tcp_insert" type="LineEdit" parent="CanvasLayer"]
+margin_left = 289.359
+margin_top = 89.7558
+margin_right = 755.359
+margin_bottom = 149.756
+placeholder_text = "Type TCP Address Here..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tcp_label" type="Label" parent="CanvasLayer"]
+margin_left = 150.506
+margin_top = 97.4821
+margin_right = 250.506
+margin_bottom = 147.482
+text = "TCP"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer"]
 margin_left = 166.124
 margin_top = 48.2659
 margin_right = 232.124
@@ -100,7 +98,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="username_input" type="LineEdit" parent="."]
+[node name="username_input" type="LineEdit" parent="CanvasLayer"]
 margin_left = 287.941
 margin_top = 23.7747
 margin_right = 752.941
@@ -109,9 +107,10 @@ placeholder_text = "Type Username Here..."
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="buttonHost" to="." method="_on_Host_Button_pressed"]
-[connection signal="pressed" from="buttonJoin" to="." method="_on_Join_Button_pressed"]
-[connection signal="text_changed" from="tcp_insert" to="." method="_on_tcp_insert_text_changed"]
-[connection signal="text_changed" from="port_insert" to="." method="_on_port_insert_text_changed"]
-[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
-[connection signal="text_changed" from="username_input" to="." method="_on_username_input_text_changed"]
+[connection signal="pressed" from="CanvasLayer/buttonHost" to="." method="_on_buttonHost_pressed"]
+[connection signal="pressed" from="CanvasLayer/buttonJoin" to="." method="_on_buttonJoin_pressed"]
+[connection signal="text_changed" from="CanvasLayer/port_insert" to="." method="_on_port_insert_text_changed"]
+[connection signal="pressed" from="CanvasLayer/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="toggled" from="CanvasLayer/BackButton" to="." method="_on_BackButton_toggled"]
+[connection signal="text_changed" from="CanvasLayer/tcp_insert" to="." method="_on_tcp_insert_text_changed"]
+[connection signal="text_changed" from="CanvasLayer/username_input" to="." method="_on_username_input_text_changed"]

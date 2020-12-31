@@ -20,29 +20,6 @@ func player_connected(id):
 	hide()
 
 
-func _on_Host_Button_pressed():
-	print("Hosting network")
-	host = NetworkedMultiplayerENet.new()
-	var res = host.create_server(port_ID,2)
-	if res != OK:
-		print("Error creating server")
-		return
-		
-	$CanvasLayer/buttonJoin.hide()
-	$CanvasLayer/buttonHost.disabled = true
-	get_tree().set_network_peer(host)
-
-
-func _on_Join_Button_pressed(): 
-	print("Joining network")
-	var host = NetworkedMultiplayerENet.new()
-	host.create_client(tcp_ID,port_ID)
-	get_tree().set_network_peer(host)
-	
-	$CanvasLayer/buttonHost.hide()
-	$CanvasLayer/buttonJoin.disabled = true
-
-
 func _on_port_insert_text_changed(port_num):
 	port_ID = int(port_num)
 
@@ -61,3 +38,25 @@ func _on_BackButton_pressed():
 
 func _on_username_input_text_changed(insname):
 	global.playername = insname
+
+
+func _on_buttonHost_pressed():
+	print("Hosting network")
+	host = NetworkedMultiplayerENet.new()
+	var res = host.create_server(port_ID,2)
+	if res != OK:
+		print("Error creating server")
+		return
+		
+	$CanvasLayer/buttonJoin.hide()
+	$CanvasLayer/buttonHost.disabled = true
+	get_tree().set_network_peer(host)
+
+
+func _on_buttonJoin_pressed():
+	print("Joining network")
+	var host = NetworkedMultiplayerENet.new()
+	host.create_client(tcp_ID,port_ID)
+	get_tree().set_network_peer(host)
+	$CanvasLayer/buttonHost.hide()
+	$CanvasLayer/buttonJoin.disabled = true

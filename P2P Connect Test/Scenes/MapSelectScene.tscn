@@ -14,10 +14,10 @@ script = ExtResource( 3 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Map1" type="Button" parent="CanvasLayer"]
-margin_left = 38.009
-margin_top = 43.0136
-margin_right = 137.009
-margin_bottom = 130.014
+margin_left = 27.6264
+margin_top = 26.9677
+margin_right = 126.626
+margin_bottom = 113.968
 icon = ExtResource( 1 )
 expand_icon = true
 __meta__ = {
@@ -25,10 +25,10 @@ __meta__ = {
 }
 
 [node name="Map2" type="Button" parent="CanvasLayer"]
-margin_left = 153.0
-margin_top = 43.0
-margin_right = 244.0
-margin_bottom = 130.0
+margin_left = 154.888
+margin_top = 27.898
+margin_right = 245.888
+margin_bottom = 114.898
 icon = ExtResource( 2 )
 expand_icon = true
 __meta__ = {
@@ -36,20 +36,20 @@ __meta__ = {
 }
 
 [node name="Map3" type="Button" parent="CanvasLayer"]
-margin_left = 257.0
-margin_top = 32.0
-margin_right = 365.0
-margin_bottom = 134.0
+margin_left = 262.663
+margin_top = 23.5051
+margin_right = 370.663
+margin_bottom = 125.505
 icon = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Confirm" type="Button" parent="CanvasLayer"]
-margin_left = 863.679
-margin_top = 515.326
-margin_right = 974.679
-margin_bottom = 561.326
+margin_left = 839.895
+margin_top = 485.001
+margin_right = 950.895
+margin_bottom = 531.001
 text = "Confirm"
 expand_icon = true
 __meta__ = {
@@ -57,10 +57,10 @@ __meta__ = {
 }
 
 [node name="Back" type="Button" parent="CanvasLayer"]
-margin_left = 39.3347
-margin_top = 531.595
-margin_right = 134.335
-margin_bottom = 567.595
+margin_left = 9.74118
+margin_top = 493.104
+margin_right = 105.076
+margin_bottom = 529.104
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false

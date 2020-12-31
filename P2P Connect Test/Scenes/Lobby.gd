@@ -28,8 +28,8 @@ func _on_Host_Button_pressed():
 		print("Error creating server")
 		return
 		
-	$buttonJoin.hide()
-	$buttonHost.disabled = true
+	$CanvasLayer/buttonJoin.hide()
+	$CanvasLayer/buttonHost.disabled = true
 	get_tree().set_network_peer(host)
 
 
@@ -39,8 +39,8 @@ func _on_Join_Button_pressed():
 	host.create_client(tcp_ID,port_ID)
 	get_tree().set_network_peer(host)
 	
-	$buttonHost.hide()
-	$buttonJoin.disabled = true
+	$CanvasLayer/buttonHost.hide()
+	$CanvasLayer/buttonJoin.disabled = true
 
 
 func _on_port_insert_text_changed(port_num):

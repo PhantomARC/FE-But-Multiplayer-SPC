@@ -79,10 +79,10 @@ autoplay = true
 script = ExtResource( 3 )
 
 [node name="BackButton" type="Button" parent="CanvasLayer"]
-margin_left = 38.699
-margin_top = 530.459
-margin_right = 172.699
-margin_bottom = 577.459
+margin_left = 14.7605
+margin_top = 477.542
+margin_right = 148.76
+margin_bottom = 524.542
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false

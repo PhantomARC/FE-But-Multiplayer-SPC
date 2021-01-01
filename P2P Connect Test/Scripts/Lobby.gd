@@ -4,17 +4,16 @@ var port_ID = null
 var tcp_ID = null
 var host = null
 
-onready var global = get_node("/root/Global")
-
 
 func _ready():
 	add_child(load("res://Scenes/Background.tscn").instance())
+	$CanvasLayer/buttonBack.connect("pressed",self,"_on_buttonBack_pressed")
 	get_tree().connect("network_peer_connected", self, "player_connected")
 
 
 func player_connected(id):
 	print("Player connected to server")
-	global.other_id = id
+	Global.other_id = id
 	var game = preload("res://Scenes/IPConnect.tscn").instance()
 	get_tree().get_root().add_child(game)
 	$CanvasLayer/containerScreen.hide()
@@ -31,7 +30,7 @@ func _on_tcp_insert_text_changed(tcp_num):
 
 
 func _on_username_input_text_changed(insname):
-	global.playername = insname
+	Global.playername = insname
 
 
 func _on_buttonHost_pressed():
@@ -56,7 +55,7 @@ func _on_buttonJoin_pressed():
 	$CanvasLayer/containerScreen/vboxContainer/buttonJoin.disabled = true
 
 
-func _on_backButton_pressed():
+func _on_buttonBack_pressed():
 	if host != null:
 		print("Connection Closed.")
 	get_tree().change_scene("res://Scenes/TitleScreen.tscn")

@@ -1,19 +1,17 @@
 extends Node2D
 
-#Hue color derived from CowThing: https://godotengine.org/qa/5393/how-to-create-color-transition-sprite-around-the-color-wheel
-onready var ae_load = get_node("/root/Aesthetics")
-onready var global_load = get_node("/root/Global")
-
+#Hue color derived from CowThing: 
+#https://godotengine.org/qa/5393/how-to-create-color-transition-sprite-around-the-color-wheel
 
 func _ready():
-	setup_screen(global_load.screensize)
-	$animationSquare.frame = ae_load.sq_frame
-	$animationDiamond.frame = ae_load.dm_frame
+	setup_screen(Global.screensize)
+	$animationSquare.frame = Aesthetics.sq_frame
+	$animationDiamond.frame = Aesthetics.dm_frame
 
-func _process(delta):
-	$bgHue.set_modulate(Color.from_hsv(ae_load.hue,1,1,1))
-	ae_load.sq_frame = $animationSquare.frame
-	ae_load.dm_frame = $animationDiamond.frame
+func _process(_delta):
+	$bgHue.set_modulate(Color.from_hsv(Aesthetics.hue,1,1,1))
+	Aesthetics.sq_frame = $animationSquare.frame
+	Aesthetics.dm_frame = $animationDiamond.frame
 
 func setup_screen(screenpos):
 	$animationSquare.position = screenpos/2

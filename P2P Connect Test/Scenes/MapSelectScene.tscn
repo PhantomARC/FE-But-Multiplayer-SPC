@@ -9,8 +9,6 @@
 [ext_resource path="res://Assets/Images/icon.png" type="Texture" id=7]
 [ext_resource path="res://Scripts/audioSFX.gd" type="Script" id=8]
 
-
-
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 3 )
 
@@ -97,14 +95,3 @@ script = ExtResource( 6 )
 [node name="audioSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 script = ExtResource( 8 )
-[connection signal="button_up" from="CanvasLayer/gridContainer/buttonMap1" to="." method="_on_Map1_button_up"]
-[connection signal="mouse_entered" from="CanvasLayer/gridContainer/buttonMap1" to="." method="_on_Map1_mouse_entered"]
-[connection signal="button_up" from="CanvasLayer/gridContainer/buttonMap2" to="." method="_on_Map2_button_up"]
-[connection signal="mouse_entered" from="CanvasLayer/gridContainer/buttonMap2" to="." method="_on_Map2_mouse_entered"]
-[connection signal="button_up" from="CanvasLayer/gridContainer/buttonMap3" to="." method="_on_Map3_button_up"]
-[connection signal="focus_entered" from="CanvasLayer/gridContainer/buttonMap3" to="." method="_on_Map3_focus_entered"]
-[connection signal="mouse_entered" from="CanvasLayer/gridContainer/buttonMap3" to="." method="_on_Map3_mouse_entered"]
-[connection signal="button_up" from="CanvasLayer/buttonConfirm" to="." method="_on_Confirm_button_up"]
-[connection signal="mouse_entered" from="CanvasLayer/buttonConfirm" to="." method="_on_Confirm_mouse_entered"]
-[connection signal="button_up" from="CanvasLayer/buttonBack" to="." method="_on_Back_button_up"]
-[connection signal="mouse_entered" from="CanvasLayer/buttonBack" to="." method="_on_Back_mouse_entered"]

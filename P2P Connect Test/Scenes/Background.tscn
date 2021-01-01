@@ -1,10 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/Background.gd" type="Script" id=1]
-[ext_resource path="res://Squareframes.tres" type="SpriteFrames" id=6]
+[ext_resource path="res://Sprites/Squareframes.tres" type="SpriteFrames" id=6]
 [ext_resource path="res://Assets/Images/WhiteBG.png" type="Texture" id=7]
-
-
 
 [node name="Background" type="Node2D"]
 script = ExtResource( 1 )
@@ -24,7 +22,7 @@ self_modulate = Color( 1, 1, 1, 0.501961 )
 scale = Vector2( 10, 10 )
 frames = ExtResource( 6 )
 animation = "Square"
-frame = 11
+frame = 7
 playing = true
 flip_h = true
 flip_v = true
@@ -33,5 +31,6 @@ flip_v = true
 scale = Vector2( 10, 10 )
 frames = ExtResource( 6 )
 animation = "Diamond"
+frame = 6
 playing = true
 flip_v = true

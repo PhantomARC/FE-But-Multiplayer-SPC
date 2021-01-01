@@ -1,12 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Sprites/Splash.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/SplashScreen.gd" type="Script" id=2]
 [ext_resource path="res://Animations/ScenesDoSplashAnimation.tres" type="Animation" id=3]
 [ext_resource path="res://Assets/Sounds/Intro.wav" type="AudioStream" id=4]
-[ext_resource path="res://Scripts/AudioStreamPlayer.gd" type="Script" id=5]
-
-
 
 [node name="SplashScreen" type="Node2D"]
 script = ExtResource( 2 )
@@ -16,10 +13,7 @@ position = Vector2( -75.0856, 34.6535 )
 scale = Vector2( 0.324451, 0.285101 )
 
 [node name="animationSplash" type="AnimationPlayer" parent="."]
-autoplay = "DoSplashAnimation"
 anims/DoSplashAnimation = ExtResource( 3 )
 
 [node name="audioBGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-script = ExtResource( 5 )
-[connection signal="animation_finished" from="animationSplash" to="." method="_on_AnimationPlayer_animation_finished"]

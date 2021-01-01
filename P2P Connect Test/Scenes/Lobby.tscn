@@ -4,8 +4,6 @@
 [ext_resource path="res://Assets/Sounds/Lobby Theme.wav" type="AudioStream" id=2]
 [ext_resource path="res://Scripts/AudioStreamPlayer.gd" type="Script" id=3]
 
-
-
 [node name="Lobby" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -19,30 +17,30 @@ __meta__ = {
 }
 
 [node name="vboxContainer" type="VBoxContainer" parent="CanvasLayer/containerScreen"]
-margin_left = 239.0
+margin_left = 231.0
 margin_top = 83.0
-margin_right = 721.0
+margin_right = 729.0
 margin_bottom = 457.0
 custom_constants/separation = 16
 
 [node name="hboxUser" type="HBoxContainer" parent="CanvasLayer/containerScreen/vboxContainer"]
-margin_right = 482.0
+margin_right = 498.0
 margin_bottom = 50.0
 custom_constants/separation = 16
 alignment = 2
 
 [node name="labelUser" type="Label" parent="CanvasLayer/containerScreen/vboxContainer/hboxUser"]
-margin_top = 18.0
-margin_right = 66.0
-margin_bottom = 32.0
+margin_top = 15.0
+margin_right = 82.0
+margin_bottom = 35.0
 text = "Username"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="lineUser" type="LineEdit" parent="CanvasLayer/containerScreen/vboxContainer/hboxUser"]
-margin_left = 82.0
-margin_right = 482.0
+margin_left = 98.0
+margin_right = 498.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 400, 50 )
 placeholder_text = "Type Username Here..."
@@ -52,16 +50,16 @@ __meta__ = {
 
 [node name="hboxIPv4" type="HBoxContainer" parent="CanvasLayer/containerScreen/vboxContainer"]
 margin_top = 66.0
-margin_right = 482.0
+margin_right = 498.0
 margin_bottom = 116.0
 custom_constants/separation = 16
 alignment = 2
 
 [node name="labelIPv4" type="Label" parent="CanvasLayer/containerScreen/vboxContainer/hboxIPv4"]
-margin_left = 38.0
-margin_top = 18.0
-margin_right = 66.0
-margin_bottom = 32.0
+margin_left = 46.0
+margin_top = 15.0
+margin_right = 82.0
+margin_bottom = 35.0
 text = "IPv4"
 align = 1
 valign = 1
@@ -70,8 +68,8 @@ __meta__ = {
 }
 
 [node name="lineIPv4" type="LineEdit" parent="CanvasLayer/containerScreen/vboxContainer/hboxIPv4"]
-margin_left = 82.0
-margin_right = 482.0
+margin_left = 98.0
+margin_right = 498.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 400, 50 )
 placeholder_text = "Type TCP Address Here..."
@@ -81,16 +79,16 @@ __meta__ = {
 
 [node name="hboxPort" type="HBoxContainer" parent="CanvasLayer/containerScreen/vboxContainer"]
 margin_top = 132.0
-margin_right = 482.0
+margin_right = 498.0
 margin_bottom = 182.0
 custom_constants/separation = 16
 alignment = 2
 
 [node name="labelPort" type="Label" parent="CanvasLayer/containerScreen/vboxContainer/hboxPort"]
-margin_left = 40.0
-margin_top = 18.0
-margin_right = 66.0
-margin_bottom = 32.0
+margin_left = 44.0
+margin_top = 15.0
+margin_right = 82.0
+margin_bottom = 35.0
 text = "Port"
 align = 1
 valign = 1
@@ -99,8 +97,8 @@ __meta__ = {
 }
 
 [node name="linePort" type="LineEdit" parent="CanvasLayer/containerScreen/vboxContainer/hboxPort"]
-margin_left = 82.0
-margin_right = 482.0
+margin_left = 98.0
+margin_right = 498.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 400, 50 )
 placeholder_text = "Type Port Number Here..."
@@ -110,7 +108,7 @@ __meta__ = {
 
 [node name="buttonHost" type="Button" parent="CanvasLayer/containerScreen/vboxContainer"]
 margin_top = 198.0
-margin_right = 482.0
+margin_right = 498.0
 margin_bottom = 278.0
 rect_min_size = Vector2( 0, 80 )
 text = "HOST"
@@ -120,7 +118,7 @@ __meta__ = {
 
 [node name="buttonJoin" type="Button" parent="CanvasLayer/containerScreen/vboxContainer"]
 margin_top = 294.0
-margin_right = 482.0
+margin_right = 498.0
 margin_bottom = 374.0
 rect_min_size = Vector2( 0, 80 )
 text = "JOIN"
@@ -147,4 +145,3 @@ script = ExtResource( 3 )
 [connection signal="text_changed" from="CanvasLayer/containerScreen/vboxContainer/hboxPort/linePort" to="." method="_on_port_insert_text_changed"]
 [connection signal="pressed" from="CanvasLayer/containerScreen/vboxContainer/buttonHost" to="." method="_on_buttonHost_pressed"]
 [connection signal="pressed" from="CanvasLayer/containerScreen/vboxContainer/buttonJoin" to="." method="_on_buttonJoin_pressed"]
-[connection signal="pressed" from="CanvasLayer/buttonBack" to="." method="_on_backButton_pressed"]

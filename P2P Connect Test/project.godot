@@ -26,7 +26,8 @@ config/windows_native_icon="res://Assets/Logo.ico"
 [autoload]
 
 Global="*res://Scripts/global.gd"
-Aesthetics="*res://Scripts/Aesthetics.gd"
+Aesthetics="*res://Scripts/aesthetics.gd"
+Preferences="*res://Scripts/preferences.gd"
 
 [display]
 

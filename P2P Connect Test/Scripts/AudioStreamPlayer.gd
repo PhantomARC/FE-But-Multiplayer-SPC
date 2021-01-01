@@ -1,18 +1,14 @@
 extends AudioStreamPlayer
 
 
-onready var global_load = get_node("/root/Global")
-
-
 func _ready():
-	playing = false
-	volume_db = global_load.volume
+	volume_db = Global.volume
 	playing = true
 
 
-func _physics_process(delta):
-	volume_db = global_load.volume
+func _physics_process(_delta):
+	volume_db = Global.volume
 	if Input.is_action_just_pressed("vol_up"):
-		global_load.volume = global_load.volume + 3
+		Global.volume = Global.volume + 3
 	if Input.is_action_just_pressed("vol_down"):
-		global_load.volume = global_load.volume - 3
+		Global.volume = Global.volume - 3

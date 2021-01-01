@@ -18,16 +18,23 @@ var playername = null
 var screensize = Vector2(960,540)
 
 
+func _ready():
+	if Preferences.is_file_there():
+		volume = Preferences.load_val()
+		print("File exists.")
+	else:
+		print("File does not exist.")
+
+
+func _process(_delta):
+	Preferences.save_val(volume)
+
+
 func set_map_select(map_select_number): #when called, change map
 	map_select = map_select_number
 
 
-func _ready():
-	pass
-
-
-
-func _input(event): #trigger when any key is pressed
+func _input(_event): #trigger when any key is pressed
 	if (Input.is_action_pressed("ui_accept")):
 		if igt_turn == true:
 			igt_turn = false

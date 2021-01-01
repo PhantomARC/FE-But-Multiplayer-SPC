@@ -28,19 +28,19 @@ func _on_Back_button_up():
 
 
 func _on_Map1_mouse_entered():
-	$CanvasLayer/ButtonStream.play()
+	$audioSFX.play()
 
 
 func _on_Map2_mouse_entered():
-	$CanvasLayer/ButtonStream.play()
+	$audioSFX.play()
 
 
 func _on_Confirm_mouse_entered():
-	$CanvasLayer/ButtonStream.play()
+	$audioSFX.play()
 
 
 func _on_Back_mouse_entered():
-	$CanvasLayer/ButtonStream.play()
+	$audioSFX.play()
 
 
 func _on_Map3_button_up():
@@ -48,4 +48,4 @@ func _on_Map3_button_up():
 
 
 func _on_Map3_mouse_entered():
-	$CanvasLayer/ButtonStream.play()
+	$audioSFX.play()

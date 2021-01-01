@@ -3,4 +3,8 @@
 [ext_resource path="res://Kenney/Kenney Mini.ttf" type="DynamicFontData" id=1]
 
 [resource]
+size = 24
+outline_color = Color( 0.376471, 0.376471, 0.376471, 1 )
+extra_spacing_char = 1
+extra_spacing_space = 1
 font_data = ExtResource( 1 )

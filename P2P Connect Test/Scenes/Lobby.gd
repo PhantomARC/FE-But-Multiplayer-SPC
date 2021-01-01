@@ -17,7 +17,9 @@ func player_connected(id):
 	global.other_id = id
 	var game = preload("res://Scenes/IPConnect.tscn").instance()
 	get_tree().get_root().add_child(game)
-	hide()
+	$CanvasLayer/containerScreen.hide()
+	$CanvasLayer/buttonBack.hide()
+	$Background.hide()
 
 
 func _on_port_insert_text_changed(port_num):
@@ -26,14 +28,6 @@ func _on_port_insert_text_changed(port_num):
 
 func _on_tcp_insert_text_changed(tcp_num):
 	tcp_ID = tcp_num
-
-
-func _on_BackButton_pressed():
-	if host != null:
-		host.close_connection()
-		print("Connection Closed.")
-	get_tree().change_scene("res://Scenes/TitleScreen.tscn")
-
 
 
 func _on_username_input_text_changed(insname):
@@ -48,8 +42,8 @@ func _on_buttonHost_pressed():
 		print("Error creating server")
 		return
 		
-	$CanvasLayer/buttonJoin.hide()
-	$CanvasLayer/buttonHost.disabled = true
+	$CanvasLayer/containerScreen/vboxContainer/buttonJoin.hide()
+	$CanvasLayer/containerScreen/vboxContainer/buttonHost.disabled = true
 	get_tree().set_network_peer(host)
 
 
@@ -58,5 +52,11 @@ func _on_buttonJoin_pressed():
 	var host = NetworkedMultiplayerENet.new()
 	host.create_client(tcp_ID,port_ID)
 	get_tree().set_network_peer(host)
-	$CanvasLayer/buttonHost.hide()
-	$CanvasLayer/buttonJoin.disabled = true
+	$CanvasLayer/containerScreen/vboxContainer/buttonHost.hide()
+	$CanvasLayer/containerScreen/vboxContainer/buttonJoin.disabled = true
+
+
+func _on_backButton_pressed():
+	if host != null:
+		print("Connection Closed.")
+	get_tree().change_scene("res://Scenes/TitleScreen.tscn")

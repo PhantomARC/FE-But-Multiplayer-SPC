@@ -1,8 +1,8 @@
 extends Control
 
 onready var global_load = get_node("/root/Global")
-onready var chat_display = $RoomUI/ChatDisplay
-onready var chat_input = $RoomUI/ChatInput
+onready var chat_display = $containerScreen/textureBackPanel/textureChatPanel/richtextChat
+onready var chat_input = $containerScreen/textureBackPanel/textureInputPanel/lineInput
 
 func _input(event):
 	if event is InputEventKey:

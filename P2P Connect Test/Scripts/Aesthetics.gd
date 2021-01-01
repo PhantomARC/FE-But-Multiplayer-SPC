@@ -1,7 +1,8 @@
 extends Node
 
 
-#Hue color derived from CowThing: https://godotengine.org/qa/5393/how-to-create-color-transition-sprite-around-the-color-wheel
+#Hue color derived from CowThing: 
+#https://godotengine.org/qa/5393/how-to-create-color-transition-sprite-around-the-color-wheel
 var hue_timer = 0
 var speed = 20
 var sq_frame = 0

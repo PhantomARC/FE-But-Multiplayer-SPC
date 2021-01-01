@@ -1,5 +1,8 @@
 extends Node
 
+
+#Credit to NAD LABS for basic save file structure: 
+#https://www.youtube.com/watch?v=ZyyiBhZw12w
 var path = "user://user_pref.dat"
 var file = File.new()
 

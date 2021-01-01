@@ -1,8 +1,10 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scenes/Background.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Background.gd" type="Script" id=1]
 [ext_resource path="res://Squareframes.tres" type="SpriteFrames" id=6]
 [ext_resource path="res://Assets/Images/WhiteBG.png" type="Texture" id=7]
+
+
 
 [node name="Background" type="Node2D"]
 script = ExtResource( 1 )

@@ -3,6 +3,14 @@ extends Node2D
 var select_map = null
 var player_load = load("res://Actors/Player.tscn")
 var player_instance = player_load.instance()
+var player_instance2 = player_load.instance()
+var players_array = []
+var num_players = 2
+
+var camera_load = load("res://Scenes/Camera2D.tscn")
+var camera_instance = camera_load.instance()
+
+
 
 var player_position_pixel = null #Vector2, use onready in future
 var player_position_tile_map = null #Vector2, use onready 
@@ -16,6 +24,7 @@ onready var global_load = get_node("/root/Global")
 onready var step_count_limit = 3
 var player_select_movement_state = false
 #Pathfinding end
+
 
 func go_to_red_team_end_screen():
 	get_tree().change_scene("res://Scenes/RedTeamEndScreen.tscn")
@@ -46,14 +55,34 @@ func _ready():
 	
 	
 	global_load.igt_turn = true
-	player_instance = player_load.instance()
-	add_child(player_instance)
+	#player_instance = player_load.instance()
+	
+	
+	#or n in range(num_players):
+		#var player_instance1 = player_instance
+		#player_instance1.set_id(n)
+		#player_instance1.set_position(Vector2(-3,0))
+		#add_child(player_instance1)
+		#print(player_instance1.get_position())
+	for n in range(num_players):
+		var player_instance = player_load.instance()
+		add_child(player_instance)
+	
+	
+	$Player.add_child(camera_instance)
+	#$Player.remove_child(camera_instance)
+	
+	
+	#add_child(player_instance)
+	#add_child(player_instance)
+	#add_child(player_instance2)
+	#player_instance.set_id(1)
+	#player_instance2.set_id(2)
+	#player_instance2.set_position()
 	
 	global_load.igt_turn = false
 	#player_instance = player_load.instance()
 	#add_child(player_instance)
-	
-	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -65,6 +94,7 @@ func _process(delta):
 	player_position_pixel = $Player.get_position()  #May need to put setter in another func
 	player_position_tile_map = get_player_position_tile_map() #May need to put setter in another func
 	current_tile_type_int = get_current_tile_type()
+	
 	
 	
 	#Pathfinding
@@ -91,7 +121,42 @@ func _process(delta):
 		get_tree().quit()
 	#PathfindingEnd
 
+
+func _input(event):
+	if(event is InputEventKey):
+		print(player_position_pixel)
+		print(player_position_tile_map)
+		print(current_tile_type_int)
+
+
+func get_player_position_tile_map(): #Must be updated when adding new maps
+	if global_load.map_select == 1:
+		return $MapVolcano.world_to_map(player_position_pixel)
+	if global_load.map_select == 2:
+		return $MapPlains.world_to_map(player_position_pixel)
+
+
+func get_current_tile_type(): #Must be updated when adding new maps
+	if global_load.map_select == 1:
+		return $MapVolcano.get_cellv(player_position_tile_map)
+	if global_load.map_select == 2:
+		return $MapPlains.get_cellv(player_position_tile_map)
+
+
+func get_num_players():
+	return num_players
+
+
+func set_num_players(num):
+	num_players = num
+
+
+func get_gerard():
+	return "gerard"
+
+
 #Pathfinding
+
 var step_counter = 0
 var path = []
 var mouse_pos = Vector2()
@@ -234,33 +299,3 @@ func check_cell(cur_pos, last_pos, goal_pos,step_counter1):
 
 
 #Pathfinding End
-
-
-
-
-
-
-func get_player_position_tile_map(): #Must be updated when adding new maps
-	if global_load.map_select == 1:
-		return $MapVolcano.world_to_map(player_position_pixel)
-	if global_load.map_select == 2:
-		return $MapPlains.world_to_map(player_position_pixel)
-
-
-func get_current_tile_type(): #Must be updated when adding new maps
-	if global_load.map_select == 1:
-		return $MapVolcano.get_cellv(player_position_tile_map)
-	if global_load.map_select == 2:
-		return $MapPlains.get_cellv(player_position_tile_map)
-
-
-func _input(event):
-	if(event is InputEventKey):
-		print(player_position_pixel)
-		print(player_position_tile_map)
-		print(current_tile_type_int)
-
-
-func get_gerard():
-		return "gerard"
-

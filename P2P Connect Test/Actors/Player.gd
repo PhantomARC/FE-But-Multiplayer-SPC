@@ -10,6 +10,8 @@ export var speed = 10
 
 onready var team = global_load.igt_turn
 
+var id = null 
+
 var step_count = 0
 var tile_size = 64
 var inputs = {"ui_right": Vector2.RIGHT,
@@ -20,6 +22,8 @@ var inputs = {"ui_right": Vector2.RIGHT,
 func _ready(): #positions player at center of tile
 	position = position.snapped(Vector2.ONE * tile_size) #Snap rounds the position to the nearest tile increment, and adding a half-tile amount makes sure the player is centered on the tile.
 	position += Vector2.ONE * tile_size/2
+	var fakeplayer = Global.other_id
+	Global.other_id = Global.other_id + 1
 
 
 func _unhandled_input(event): #movement
@@ -29,7 +33,6 @@ func _unhandled_input(event): #movement
 		if event.is_action_pressed(dir) and global_load.igt_turn == team:
 			move(dir)
 			step_count+=1
-			#print(step_count)
 
 
 func move(dir): #detect collision
@@ -50,8 +53,28 @@ func get_step_count():
 
 
 func _process(delta):
-	if global_load.igt_turn == team:
-		$Camera2D.current = true
-	else:
-		$Camera2D.current = true
+	pass
+	#if global_load.igt_turn == team:
+		#$Camera2D.current = true
+	#else:
+		#$Camera2D.current = false
+
+
+func get_id():
+	return id
+
+
+func set_id(id):
+	self.id = id
+
+
+func get_position_global():
+	return position
+
+
+func get_team():
+	return team
+
+
+
 

@@ -39,6 +39,7 @@ func _input(event):
 
 
 func send_message():
+	print("func send_message called")
 	var msg = chat_input.text
 	chat_input.text = ""
 	var id = get_tree().get_network_unique_id()
@@ -46,6 +47,7 @@ func send_message():
 
 
 sync func receive_message(id, msg):
+	print("func receive_message called")
 	chat_display.bbcode_text += "[color=" + Global.dict_user_color[id] + "]" + Global.dict_user_relegate[id] + ":[/color] "
 	chat_display.bbcode_text += "[color=#808080]" + msg + "[/color]"
 	chat_display.bbcode_text += "\n"
@@ -68,6 +70,7 @@ func _on_textInput_focus_exited():
 
 
 func _user_connected(id):
+	print("func _user_connected called")
 	print("rpc started")
 	rpc("add_user", id, Global.playername, Global.usercolor)
 	print("rpc attempted")
@@ -77,12 +80,14 @@ func _user_connected(id):
 
 
 func _user_disconnected(id):
+	print("func _user_disconnected called")
 	chat_display.bbcode_text += "[color=" + Global.dict_user_color[id] + "]"+ Global.dict_user_relegate[id] + "[/color] "
 	chat_display.bbcode_text += "[color=#808080]left the lobby.[/color]"
 	chat_display.bbcode_text += "\n"
 
 
 sync func add_user(id, regname, color):
+	print("sync func add_user")
 	Global.dict_user_relegate[id] = regname
 	Global.dict_user_color[id] = color_rep[color]
 	print("User ID: " + str(id))

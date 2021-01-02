@@ -38,7 +38,7 @@ window/stretch/aspect="keep"
 
 [gui]
 
-theme/custom_font="res://Kenney/Kenney MiniFont.tres"
+theme/custom_font="res://Fonts/Kenney Mini_16PT.tres"
 
 [input]
 

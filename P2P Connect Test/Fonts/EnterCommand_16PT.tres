@@ -3,5 +3,5 @@
 [ext_resource path="res://Fonts/EnterCommand.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 12
+extra_spacing_char = 1
 font_data = ExtResource( 1 )

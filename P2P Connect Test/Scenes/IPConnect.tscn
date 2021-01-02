@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/Images/panel1.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Images/panel2.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Images/panel3.png" type="Texture" id=4]
-[ext_resource path="res://Fonts/EnterCommand_12PT.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Fonts/EnterCommand_16PT.tres" type="DynamicFont" id=5]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 

@@ -36,8 +36,10 @@ func set_map_select(map_select_number): #when called, change map
 
 
 func _input(_event): #trigger when any key is pressed
-	if (Input.is_action_pressed("ui_accept")):
+	if (Input.is_action_just_pressed("ui_accept")):
 		if igt_turn == true:
 			igt_turn = false
 		elif igt_turn == false:
 			igt_turn = true
+	if (Input.is_action_just_pressed("fullscreen_toggle")):
+		OS.window_fullscreen = !OS.window_fullscreen

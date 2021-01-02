@@ -43,6 +43,7 @@ margin_left = 98.0
 margin_right = 498.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 400, 50 )
+text = "User"
 placeholder_text = "Type Username Here..."
 __meta__ = {
 "_edit_use_anchors_": false
@@ -72,6 +73,7 @@ margin_left = 98.0
 margin_right = 498.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 400, 50 )
+text = "25.3.252.29"
 placeholder_text = "Type TCP Address Here..."
 __meta__ = {
 "_edit_use_anchors_": false
@@ -101,6 +103,7 @@ margin_left = 98.0
 margin_right = 498.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 400, 50 )
+text = "42069"
 placeholder_text = "Type Port Number Here..."
 __meta__ = {
 "_edit_use_anchors_": false
@@ -140,8 +143,3 @@ __meta__ = {
 [node name="audioBGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 script = ExtResource( 3 )
-[connection signal="text_changed" from="CanvasLayer/containerScreen/vboxContainer/hboxUser/lineUser" to="." method="_on_username_input_text_changed"]
-[connection signal="text_changed" from="CanvasLayer/containerScreen/vboxContainer/hboxIPv4/lineIPv4" to="." method="_on_tcp_insert_text_changed"]
-[connection signal="text_changed" from="CanvasLayer/containerScreen/vboxContainer/hboxPort/linePort" to="." method="_on_port_insert_text_changed"]
-[connection signal="pressed" from="CanvasLayer/containerScreen/vboxContainer/buttonHost" to="." method="_on_buttonHost_pressed"]
-[connection signal="pressed" from="CanvasLayer/containerScreen/vboxContainer/buttonJoin" to="." method="_on_buttonJoin_pressed"]

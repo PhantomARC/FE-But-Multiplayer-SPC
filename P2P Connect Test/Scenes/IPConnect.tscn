@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/IPConnect.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Images/panel1.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Images/panel2.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Images/panel3.png" type="Texture" id=4]
+[ext_resource path="res://Kenney/KenneyMini_12PT.tres" type="DynamicFont" id=5]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -14,6 +15,10 @@
 [node name="ChatRoom" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -3.01026
+margin_top = -1.12247
+margin_right = -3.01025
+margin_bottom = -1.12244
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -46,10 +51,14 @@ __meta__ = {
 }
 
 [node name="richtextChat" type="RichTextLabel" parent="containerScreen/textureBackPanel/textureChatPanel"]
-margin_right = 220.0
-margin_bottom = 460.0
-rect_min_size = Vector2( 220, 460 )
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 215.0
+margin_bottom = 455.0
+rect_min_size = Vector2( 210, 450 )
+custom_fonts/normal_font = ExtResource( 5 )
 custom_colors/font_color_selected = Color( 0.141176, 0.141176, 0.141176, 1 )
+bbcode_enabled = true
 scroll_following = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -65,15 +74,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="lineInput" type="LineEdit" parent="containerScreen/textureBackPanel/textureInputPanel"]
-margin_right = 58.0
-margin_bottom = 24.0
-rect_min_size = Vector2( 220, 50 )
+[node name="textInput" type="TextEdit" parent="containerScreen/textureBackPanel/textureInputPanel"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 215.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 210, 40 )
 custom_styles/read_only = SubResource( 1 )
 custom_styles/focus = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
-custom_colors/font_color = Color( 0.141176, 0.141176, 0.141176, 1 )
-placeholder_text = "Send a message..."
+custom_fonts/font = ExtResource( 5 )
+custom_colors/breakpoint_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+wrap_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 652.217
+margin_top = 31.1479
+margin_right = 692.217
+margin_bottom = 71.1479
+color = Color( 0, 0.501961, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

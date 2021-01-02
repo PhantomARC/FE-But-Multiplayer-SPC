@@ -13,6 +13,7 @@ var transparency = 0.5
 
 #online interaction
 var playername = null
+var usercolor = 2
 
 #screendata
 var screensize = Vector2(960,540)

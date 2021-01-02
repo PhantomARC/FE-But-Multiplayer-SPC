@@ -12,7 +12,10 @@ var color_rep = [
 
 
 func _ready():
-	get_tree().connect("connected_to_server", self, "user_entered")
+	Global.dict_user_relegate[1] = Global.playername
+	Global.dict_user_color[1] = color_rep[0]
+	get_tree().connect("network_peer_connected", self, "_user_connected")
+	get_tree().connect("network_peer_disconnected", self, "_user_disconnected")
 	chat_input.connect("text_changed",self,"_on_textInput_text_changed")
 	chat_input.connect("focus_entered",self,"_on_textInput_focus_entered")
 	chat_input.connect("focus_exited",self,"_on_textInput_focus_exited")
@@ -39,11 +42,11 @@ func send_message():
 	var msg = chat_input.text
 	chat_input.text = ""
 	var id = get_tree().get_network_unique_id()
-	rpc("receive_message", Global.playername, msg, color_rep[Global.usercolor])
+	rpc("receive_message", id, msg)
 
 
-sync func receive_message(id, msg, idcol):
-	chat_display.bbcode_text += "[color=" + idcol + "]"+ id + ":[/color] "
+sync func receive_message(id, msg):
+	chat_display.bbcode_text += "[color=" + Global.dict_user_color[id] + "]" + Global.dict_user_relegate[id] + ":[/color] "
 	chat_display.bbcode_text += "[color=#808080]" + msg + "[/color]"
 	chat_display.bbcode_text += "\n"
 
@@ -64,11 +67,26 @@ func _on_textInput_focus_exited():
 		chat_input.set_text("Type Message Here...")
 
 
-func user_entered():
-	rpc("receive_user", Global.playername, color_rep[Global.usercolor])
-
-
-sync func receive_user(id, idcol):
-	chat_display.bbcode_text += "[color=" + idcol + "]"+ id + "[/color] "
-	chat_display.bbcode_text += "[color=#808080]joined the server.[/color]"
+func _user_connected(id):
+	print("rpc started")
+	rpc("add_user", id, Global.playername, Global.usercolor)
+	print("rpc attempted")
+	chat_display.bbcode_text += "[color=" + Global.dict_user_color[id] + "]"+ Global.dict_user_relegate[id] + "[/color] "
+	chat_display.bbcode_text += "[color=#808080]entered the lobby.[/color]"
 	chat_display.bbcode_text += "\n"
+
+
+func _user_disconnected(id):
+	chat_display.bbcode_text += "[color=" + Global.dict_user_color[id] + "]"+ Global.dict_user_relegate[id] + "[/color] "
+	chat_display.bbcode_text += "[color=#808080]left the lobby.[/color]"
+	chat_display.bbcode_text += "\n"
+
+
+sync func add_user(id, regname, color):
+	Global.dict_user_relegate[id] = regname
+	Global.dict_user_color[id] = color_rep[color]
+	print("User ID: " + str(id))
+	print("Registered by name: " + regname)
+	print("Has been logged as: " + Global.dict_user_relegate[id])
+	print("With preferred color: " + color_rep[color])
+	print("As: " + Global.dict_user_color[id])

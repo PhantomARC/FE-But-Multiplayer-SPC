@@ -2,7 +2,6 @@ extends Node
 
 
 #in-game
-var other_id = -1 #default other player IDs' to -1
 var map_select = 1 #default to Map 1 on load
 var igt_turn = true #true = blue, false = red
 
@@ -12,8 +11,11 @@ var sfxvol = -60
 var transparency = 0.5
 
 #online interaction
-var playername = null
+var other_id = -1 #default other player IDs' to -1
+var playername = null 
 var usercolor = 2
+var dict_user_relegate = {}
+var dict_user_color = {}
 
 #screendata
 var screensize = Vector2(960,540)
@@ -43,3 +45,7 @@ func _input(_event): #trigger when any key is pressed
 			igt_turn = true
 	if (Input.is_action_just_pressed("fullscreen_toggle")):
 		OS.window_fullscreen = !OS.window_fullscreen
+
+func dict_user_relegate_clear():
+	dict_user_relegate = {}
+	dict_user_color = {}

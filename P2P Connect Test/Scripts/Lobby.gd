@@ -13,19 +13,18 @@ func _ready():
 	$CanvasLayer/containerScreen/vboxContainer/buttonJoin.connect("pressed",self,"_on_buttonJoin_pressed")
 	add_child(load("res://Scenes/Background.tscn").instance())
 	$CanvasLayer/buttonBack.connect("pressed",self,"_on_buttonBack_pressed")
-	get_tree().connect("network_peer_connected", self, "player_connected")
 	Global.playername = "User"
 	tcp_ID = "25.3.252.29"
 	port_ID = int(42069)
-
-
-func player_connected(id):
-	print("Player connected to server")
-	Global.other_id = id
 	get_tree().get_root().add_child(game)
+
+func clear_screen():
 	$CanvasLayer/containerScreen.hide()
 	$CanvasLayer/buttonBack.hide()
 	$Background.hide()
+	get_tree().get_root().get_node("ChatRoom").show()
+	Global.dict_user_relegate[1] = Global.playername
+	Global.dict_user_color[1] = get_tree().get_root().get_node("ChatRoom").color_rep[Global.usercolor]
 
 
 func _on_linePort_text_changed(port_num):
@@ -41,8 +40,8 @@ func _on_lineUser_text_changed(insname):
 
 
 func _on_buttonHost_pressed():
-	Global.usercolor = 0
 	print("Hosting network")
+	Global.usercolor = 0
 	host = NetworkedMultiplayerENet.new()
 	var res = host.create_server(port_ID,2) #port_ID,Max members???
 	if res != OK:
@@ -51,7 +50,8 @@ func _on_buttonHost_pressed():
 	get_tree().set_network_peer(host)
 	$CanvasLayer/containerScreen/vboxContainer/buttonJoin.hide()
 	$CanvasLayer/containerScreen/vboxContainer/buttonHost.disabled = true
-
+	print("DEBUG_HOST: " + str(Global.usercolor))
+	clear_screen()
 
 func _on_buttonJoin_pressed():
 	print("Joining network")
@@ -61,7 +61,8 @@ func _on_buttonJoin_pressed():
 	get_tree().set_network_peer(host)
 	$CanvasLayer/containerScreen/vboxContainer/buttonHost.hide()
 	$CanvasLayer/containerScreen/vboxContainer/buttonJoin.disabled = true
-
+	print("DEBUG_JOIN: " + str(Global.usercolor))
+	clear_screen()
 
 func _on_buttonBack_pressed():
 	if host != null:

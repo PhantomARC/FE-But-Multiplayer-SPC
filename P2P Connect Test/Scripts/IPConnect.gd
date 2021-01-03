@@ -7,13 +7,13 @@ onready var chat_input = $containerScreen/textureBackPanel/textureInputPanel/tex
 var color_rep = [
 	"#c90ac9", #purple
 	"#d49f00", #gold
-	"#00baae" #teal
+	"#00baae", #teal
 	]
 
 
 func _ready():
-	Global.dict_user_relegate[1] = Global.playername
-	Global.dict_user_color[1] = color_rep[0]
+	print("DEBUG_IPCONNECT_READY: " + str(Global.usercolor))
+	get_tree().connect("connected_to_server", self, "_self_connected")
 	get_tree().connect("network_peer_connected", self, "_user_connected")
 	get_tree().connect("network_peer_disconnected", self, "_user_disconnected")
 	chat_input.connect("text_changed",self,"_on_textInput_text_changed")
@@ -71,12 +71,6 @@ func _on_textInput_focus_exited():
 
 func _user_connected(id):
 	print("func _user_connected called")
-	print("rpc started")
-	rpc("add_user", id, Global.playername, Global.usercolor)
-	print("rpc attempted")
-	chat_display.bbcode_text += "[color=" + Global.dict_user_color[id] + "]"+ Global.dict_user_relegate[id] + "[/color] "
-	chat_display.bbcode_text += "[color=#808080]entered the lobby.[/color]"
-	chat_display.bbcode_text += "\n"
 
 
 func _user_disconnected(id):
@@ -87,7 +81,7 @@ func _user_disconnected(id):
 
 
 sync func add_user(id, regname, color):
-	print("sync func add_user")
+	print("sync func add_user called")
 	Global.dict_user_relegate[id] = regname
 	Global.dict_user_color[id] = color_rep[color]
 	print("User ID: " + str(id))
@@ -95,3 +89,21 @@ sync func add_user(id, regname, color):
 	print("Has been logged as: " + Global.dict_user_relegate[id])
 	print("With preferred color: " + color_rep[color])
 	print("As: " + Global.dict_user_color[id])
+
+func _self_connected():
+	print ("func _self_connected called")
+	var id = get_tree().get_network_unique_id()
+	rpc("ask_all_users")
+	rpc("announce_join",id)
+
+sync func ask_all_users():
+	print ("sync func ask_all_users called")
+	var id = get_tree().get_network_unique_id()
+	rpc("add_user",id, Global.playername, Global.usercolor)
+
+
+sync func announce_join(sid):
+	print ("sync func announce_join(sid)")
+	chat_display.bbcode_text += "[color=" + Global.dict_user_color[sid] + "]"+ Global.dict_user_relegate[sid] + "[/color] "
+	chat_display.bbcode_text += "[color=#808080]joined the lobby.[/color]"
+	chat_display.bbcode_text += "\n"

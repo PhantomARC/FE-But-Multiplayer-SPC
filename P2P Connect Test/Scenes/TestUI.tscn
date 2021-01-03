@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/CHESSREGEX.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/BRACKETREGEX.gd" type="Script" id=2]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="REGEX CHESS" type="LineEdit" parent="."]
+margin_left = 13.8591
+margin_top = 257.024
+margin_right = 946.859
+margin_bottom = 287.024
+placeholder_text = "chess regex identifier"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="REGEX BRACKET" type="LineEdit" parent="."]
+margin_left = 15.119
+margin_top = 200.327
+margin_right = 939.119
+margin_bottom = 230.327
+placeholder_text = "nobracket regex"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="text_changed" from="REGEX CHESS" to="REGEX CHESS" method="_on_LineEdit_text_changed"]
+[connection signal="text_changed" from="REGEX BRACKET" to="REGEX BRACKET" method="_on_LineEdit_text_changed"]

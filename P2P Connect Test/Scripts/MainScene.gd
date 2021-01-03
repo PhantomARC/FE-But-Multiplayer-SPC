@@ -220,7 +220,7 @@ func global_position_to_tilemap_pos(pos):
 
 #More accurately, can_move_to_cell_type
 func can_move_to_spot(cell_pos): #returns true if the tile is walkable, must update with new tiles, does not account for step_count
-	print("get cell:", $ShadingOverlay.get_cell(cell_pos.x, cell_pos.y))
+	#print("get cell:", $ShadingOverlay.get_cell(cell_pos.x, cell_pos.y))
 	
 	return ($ShadingOverlay.get_cell(cell_pos.x, cell_pos.y) == -1 or  
 			$ShadingOverlay.get_cell(cell_pos.x, cell_pos.y) == 0  )
@@ -276,7 +276,7 @@ func check_cell(cur_pos, last_pos, goal_pos,step_counter1):
 		return false
 	if str(cur_pos) in visited:
 		return false
-	print ("step counter:", step_counter1)
+	#print ("step counter:", step_counter1)
 	
 	
 	visited[str(cur_pos)] = last_pos
@@ -295,7 +295,7 @@ func check_cell(cur_pos, last_pos, goal_pos,step_counter1):
 		return false
 	if str(cur_pos) in visited:
 		return false
-	print ("step counter", step_counter1)
+	#print ("step counter", step_counter1)
 
 
 #Pathfinding End

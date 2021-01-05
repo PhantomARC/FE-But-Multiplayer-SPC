@@ -1,7 +1,7 @@
 extends LineEdit
 
 #new recursive bracket regex
-func _on_LineEdit_text_changed(new_text):
+func _on_LineEdit_text_changed():
 	scan_bracket()
 	set_cursor_position(len(text))
 

@@ -4,7 +4,7 @@ func _ready():
 	set_max_length(5)
 
 
-func _on_REGEX_PORT_text_changed(new_text):
+func _on_REGEX_PORT_text_changed():
 	scan_illegal_chars()
 	set_cursor_position(len(text))
 	scan_port()
@@ -29,4 +29,4 @@ func scan_port():
 	regex.compile(key)
 	var result = regex.search(text)
 	if result:
-		print(str(int(result.get_string())+0))
+		print(str(int(result.get_string()) + 0))

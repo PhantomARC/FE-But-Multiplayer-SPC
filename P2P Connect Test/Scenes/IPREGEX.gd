@@ -1,7 +1,7 @@
 extends LineEdit
 
 #old bracket regex, scans once
-func _on_LineEdit_text_changed(new_text):
+func _on_LineEdit_text_changed():
 	scan_illegal_chars()
 	set_cursor_position(len(text))
 	scan_ipv4()

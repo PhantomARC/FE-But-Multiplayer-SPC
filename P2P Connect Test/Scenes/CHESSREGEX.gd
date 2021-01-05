@@ -10,7 +10,7 @@ func _on_LineEdit_text_changed(text):
 	# We can do #d4&#d4.
 	# go go go #d4
 	var regex = RegEx.new()
-	var key = "(?<tile>#[A-Za-z]{1,2}[0-9]{1,2})[- .,?!/&+]|(?<tile>#[A-Za-z]{1,2}[0-9]{1,2})$"
+	var key = "(?<tile>#[A-Za-z]{1,2}[0-9]{1,2})[- .,?!/&+()]|(?<tile>#[A-Za-z]{1,2}[0-9]{1,2})$"
 	regex.compile(key)
 	
 	for result in regex.search_all(text):

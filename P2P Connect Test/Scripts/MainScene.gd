@@ -102,7 +102,7 @@ func _process(delta):
 	
 	
 	#Pathfinding and movement
-	if Input.is_action_just_pressed("click"): 
+	if Input.is_action_just_pressed("right_click"): 
 		mouse_pos = global_position_to_tilemap_pos(get_global_mouse_position())
 		if (player_select_movement_state == true) and (player_can_move_to_cell(mouse_pos)): #When Player is selecting tile to move
 			$Player.set_position($ShadingOverlay.map_to_world(Vector2(mouse_pos.x, mouse_pos.y)) + Vector2(32, 32)) #Set player pos

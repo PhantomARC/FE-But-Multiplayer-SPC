@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Actors/Player.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Images/Aster_PC.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1.19252, 1.26253 )
+
+[node name="Player2" type="Area2D"]
+priority = 128.0
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.105882, 0.392157, 1, 1 )
+position = Vector2( 0, -5 )
+scale = Vector2( 2.2, 2.2 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+one_way_collision = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+visible = false
+enabled = true
+exclude_parent = false
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

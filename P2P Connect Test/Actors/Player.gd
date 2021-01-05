@@ -69,7 +69,8 @@ func set_id(id):
 
 
 func get_position_global():
-	return position
+	
+	return get_position()
 
 
 func get_team():

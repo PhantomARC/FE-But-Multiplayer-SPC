@@ -2,8 +2,9 @@ extends Node2D
 
 var select_map = null
 var player_load = load("res://Actors/Player.tscn")
+var player_load2 = load("res://Actors/Player2.tscn")
 var player_instance = player_load.instance()
-var player_instance2 = player_load.instance()
+var player_instance2 = player_load2.instance()
 var players_array = []
 var num_players = 2
 
@@ -64,12 +65,15 @@ func _ready():
 		#player_instance1.set_position(Vector2(-3,0))
 		#add_child(player_instance1)
 		#print(player_instance1.get_position())
-	for n in range(num_players):
-		var player_instance = player_load.instance()
-		add_child(player_instance)
+	#for n in range(num_players):
+		#var player_instance = player_load.instance()
+		#add_child(player_instance)
 	
+	add_child(player_instance)
+	add_child(player_instance2)
 	
-	$Player.add_child(camera_instance)
+	#$player.add_child(camera_instance)
+	add_child(camera_instance)
 	#$Player.remove_child(camera_instance)
 	
 	
@@ -97,15 +101,17 @@ func _process(delta):
 	
 	
 	
-	#Pathfinding
+	#Pathfinding and movement
 	if Input.is_action_just_pressed("click"): 
 		mouse_pos = global_position_to_tilemap_pos(get_global_mouse_position())
 		if (player_select_movement_state == true) and (player_can_move_to_cell(mouse_pos)): #When Player is selecting tile to move
 			$Player.set_position($ShadingOverlay.map_to_world(Vector2(mouse_pos.x, mouse_pos.y)) + Vector2(32, 32)) #Set player pos
 			player_select_movement_state = false
+			$Camera2D.set_position($ShadingOverlay.map_to_world(Vector2(mouse_pos.x, mouse_pos.y)) + Vector2(32, 32)) #Sets camera to player location
 			for cell_info in visited_data_for_display: #Deletes all 
 				$ShadingOverlay.set_cellv(Vector2(cell_info.pos.x, cell_info.pos.y), -1)
-				
+			
+		
 		else: #When player is first viewing the flood
 			
 			player_pos = global_position_to_tilemap_pos(player_instance.global_position)

@@ -7,6 +7,7 @@ var player_instance = player_load.instance()
 var player_instance2 = player_load2.instance()
 var players_array = []
 var num_players = 2
+var mapnode = null
 
 var camera_load = load("res://Scenes/Camera2D.tscn")
 var camera_instance = camera_load.instance()
@@ -40,12 +41,15 @@ func _ready():
 	if global_load.map_select == 1:
 		select_map = load("res://Maps/MapVolcano.tscn")
 		$AudioStreamPlayer.stream = load("res://Assets/Sounds/Firefight Tension.wav")
+		mapnode = "MapVolcano"
 	elif global_load.map_select == 2:
 		select_map = load("res://Maps/MapPlains.tscn")
 		$AudioStreamPlayer.stream = load("res://Assets/Sounds/Windlands.wav")
+		mapnode = "MapPlains"
 	elif global_load.map_select == 3:
 		select_map = load("res://Maps/MapCrazyHamburger.tscn")
 		$AudioStreamPlayer.stream = load("res://Assets/Sounds/Windlands.wav")
+		mapnode = "MapCrazyHamburger"
 
 	
 	$AudioStreamPlayer.playing = true

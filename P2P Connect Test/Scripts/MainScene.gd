@@ -50,7 +50,7 @@ func _ready():
 		select_map = load("res://Maps/MapCrazyHamburger.tscn")
 		$AudioStreamPlayer.stream = load("res://Assets/Sounds/Windlands.wav")
 		mapnode = "MapCrazyHamburger"
-
+	
 	
 	$AudioStreamPlayer.playing = true
 	
@@ -91,7 +91,7 @@ func _ready():
 	global_load.igt_turn = false
 	#player_instance = player_load.instance()
 	#add_child(player_instance)
-
+	add_child(load("res://Scenes/TestUI.tscn").instance())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

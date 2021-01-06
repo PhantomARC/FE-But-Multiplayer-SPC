@@ -4,10 +4,6 @@
 
 [node name="Camera2D" type="Camera2D"]
 current = true
-limit_left = -640
-limit_top = -580
-limit_right = 770
-limit_bottom = 960
 limit_smoothed = true
 smoothing_enabled = true
 editor_draw_limits = true

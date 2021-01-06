@@ -16,10 +16,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="REGEX CHESS" type="LineEdit" parent="."]
-margin_left = 14.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="REGEX CHESS" type="LineEdit" parent="CanvasLayer"]
+visible = false
+margin_left = 12.7401
 margin_top = 254.48
-margin_right = 939.0
+margin_right = 937.74
 margin_bottom = 294.48
 placeholder_text = "chess regex identifier"
 script = ExtResource( 1 )
@@ -27,10 +30,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="REGEX BRACKET" type="LineEdit" parent="."]
-margin_left = 15.0
+[node name="REGEX BRACKET" type="LineEdit" parent="CanvasLayer"]
+visible = false
+margin_left = 13.7401
 margin_top = 200.0
-margin_right = 939.0
+margin_right = 937.74
 margin_bottom = 240.0
 placeholder_text = "nobracket regex"
 script = ExtResource( 2 )
@@ -38,10 +42,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="REGEX IP" type="LineEdit" parent="."]
-margin_left = 18.0
+[node name="REGEX IP" type="LineEdit" parent="CanvasLayer"]
+visible = false
+margin_left = 16.74
 margin_top = 146.0
-margin_right = 467.0
+margin_right = 465.74
 margin_bottom = 185.0
 placeholder_text = "IP Here"
 script = ExtResource( 3 )
@@ -49,10 +54,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="REGEX PORT" type="LineEdit" parent="."]
-margin_left = 483.0
+[node name="REGEX PORT" type="LineEdit" parent="CanvasLayer"]
+visible = false
+margin_left = 481.74
 margin_top = 147.0
-margin_right = 939.0
+margin_right = 937.74
 margin_bottom = 184.0
 placeholder_text = "Port Here"
 script = ExtResource( 5 )
@@ -60,27 +66,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="REGEX CHAT" type="TextEdit" parent="."]
-margin_left = 20.3254
-margin_top = 310.472
-margin_right = 304.325
-margin_bottom = 518.472
+[node name="REGEX CHAT" type="TextEdit" parent="CanvasLayer"]
+anchor_left = -0.00131245
+anchor_right = -0.00131245
+margin_left = 731.0
+margin_top = 422.0
+margin_right = 948.0
+margin_bottom = 534.0
 wrap_enabled = true
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="."]
-margin_left = 322.0
-margin_top = 310.0
-margin_right = 938.0
-margin_bottom = 517.0
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+margin_left = 729.74
+margin_top = 10.0
+margin_right = 945.74
+margin_bottom = 410.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="REGEX SEND" type="RichTextLabel" parent="Panel"]
+[node name="REGEX SEND" type="RichTextLabel" parent="CanvasLayer/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 bbcode_enabled = true
@@ -88,9 +96,9 @@ script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="text_changed" from="REGEX CHESS" to="REGEX CHESS" method="_on_LineEdit_text_changed"]
-[connection signal="text_changed" from="REGEX BRACKET" to="REGEX BRACKET" method="_on_LineEdit_text_changed"]
-[connection signal="text_changed" from="REGEX IP" to="REGEX IP" method="_on_LineEdit_text_changed"]
-[connection signal="text_changed" from="REGEX PORT" to="REGEX PORT" method="_on_REGEX_PORT_text_changed"]
-[connection signal="text_entered" from="REGEX PORT" to="Panel/REGEX SEND" method="_on_REGEX_PORT_text_entered"]
-[connection signal="text_changed" from="REGEX CHAT" to="REGEX CHAT" method="_on_TextEdit_text_changed"]
+[connection signal="text_changed" from="CanvasLayer/REGEX CHESS" to="CanvasLayer/REGEX CHESS" method="_on_LineEdit_text_changed"]
+[connection signal="text_changed" from="CanvasLayer/REGEX BRACKET" to="CanvasLayer/REGEX BRACKET" method="_on_LineEdit_text_changed"]
+[connection signal="text_changed" from="CanvasLayer/REGEX IP" to="CanvasLayer/REGEX IP" method="_on_LineEdit_text_changed"]
+[connection signal="text_changed" from="CanvasLayer/REGEX PORT" to="CanvasLayer/REGEX PORT" method="_on_REGEX_PORT_text_changed"]
+[connection signal="text_entered" from="CanvasLayer/REGEX PORT" to="CanvasLayer/Panel/REGEX SEND" method="_on_REGEX_PORT_text_entered"]
+[connection signal="text_changed" from="CanvasLayer/REGEX CHAT" to="CanvasLayer/REGEX CHAT" method="_on_TextEdit_text_changed"]

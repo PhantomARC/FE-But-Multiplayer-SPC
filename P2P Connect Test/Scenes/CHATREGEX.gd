@@ -25,7 +25,7 @@ func _input(event):
 	if event is InputEventKey:
 		if event.pressed && event.scancode == KEY_ENTER:
 			construct_msg()
-			get_tree().get_root().get_node("Control/Panel/REGEX SEND").send_message(send_queue)
+			get_tree().get_root().get_node("MainScene/Control/CanvasLayer/Panel/REGEX SEND").send_message(send_queue)
 			set_text("")
 
 

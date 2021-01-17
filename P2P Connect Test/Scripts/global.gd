@@ -27,6 +27,7 @@ func _ready():
 		#print("File exists.")
 	else:
 		#print("File does not exist.")
+		pass
 
 
 func _process(_delta):

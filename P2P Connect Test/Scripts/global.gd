@@ -24,9 +24,9 @@ var screensize = Vector2(960,540)
 func _ready():
 	if Preferences.is_file_there():
 		volume = Preferences.load_val()
-		print("File exists.")
+		#print("File exists.")
 	else:
-		print("File does not exist.")
+		#print("File does not exist.")
 
 
 func _process(_delta):

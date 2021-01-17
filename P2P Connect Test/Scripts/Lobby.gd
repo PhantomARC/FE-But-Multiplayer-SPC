@@ -65,7 +65,7 @@ func _on_buttonHost_pressed():
 	get_tree().set_network_peer(host)
 	$CanvasLayer/containerScreen/vboxContainer/buttonJoin.hide()
 	$CanvasLayer/containerScreen/vboxContainer/buttonHost.disabled = true
-	print("DEBUG_HOST: " + str(Global.usercolor))
+	#print("DEBUG_HOST: " + str(Global.usercolor))
 	clear_screen()
 
 

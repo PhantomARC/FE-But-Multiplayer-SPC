@@ -12,7 +12,7 @@ var color_rep = [
 
 
 func _ready():
-	print("DEBUG_IPCONNECT_READY: " + str(Global.usercolor))
+	#print("DEBUG_IPCONNECT_READY: " + str(Global.usercolor))
 	get_tree().connect("connected_to_server", self, "_self_connected")
 	get_tree().connect("network_peer_connected", self, "_user_connected")
 	get_tree().connect("network_peer_disconnected", self, "_user_disconnected")
@@ -39,7 +39,7 @@ func _input(event):
 
 
 func send_message():
-	print("func send_message called")
+	#print("func send_message called")
 	var msg = chat_input.text
 	chat_input.text = ""
 	var id = get_tree().get_network_unique_id()
@@ -47,7 +47,7 @@ func send_message():
 
 
 sync func receive_message(id, msg):
-	print("func receive_message called")
+	#print("func receive_message called")
 	chat_display.bbcode_text += "[color=" + Global.dict_user_color[id] + "]" + Global.dict_user_relegate[id] + ":[/color] "
 	chat_display.bbcode_text += "[color=#808080]" + msg + "[/color]"
 	chat_display.bbcode_text += "\n"
@@ -70,40 +70,41 @@ func _on_textInput_focus_exited():
 
 
 func _user_connected(_id):
-	print("func _user_connected called")
+	#print("func _user_connected called")
+	pass
 
 
 func _user_disconnected(id):
-	print("func _user_disconnected called")
+	#print("func _user_disconnected called")
 	chat_display.bbcode_text += "[color=" + Global.dict_user_color[id] + "]"+ Global.dict_user_relegate[id] + "[/color] "
 	chat_display.bbcode_text += "[color=#808080]left the lobby.[/color]"
 	chat_display.bbcode_text += "\n"
 
 
 sync func add_user(id, regname, color):
-	print("sync func add_user called")
+	#print("sync func add_user called")
 	Global.dict_user_relegate[id] = regname
 	Global.dict_user_color[id] = color_rep[color]
-	print("User ID: " + str(id))
-	print("Registered by name: " + regname)
-	print("Has been logged as: " + Global.dict_user_relegate[id])
-	print("With preferred color: " + color_rep[color])
-	print("As: " + Global.dict_user_color[id])
+	#print("User ID: " + str(id))
+	#print("Registered by name: " + regname)
+	#print("Has been logged as: " + Global.dict_user_relegate[id])
+	#print("With preferred color: " + color_rep[color])
+	#print("As: " + Global.dict_user_color[id])
 
 func _self_connected():
-	print ("func _self_connected called")
+	#print ("func _self_connected called")
 	var id = get_tree().get_network_unique_id()
 	rpc("ask_all_users")
 	rpc("announce_join",id)
 
 sync func ask_all_users():
-	print ("sync func ask_all_users called")
+	#print ("sync func ask_all_users called")
 	var id = get_tree().get_network_unique_id()
 	rpc("add_user",id, Global.playername, Global.usercolor)
 
 
 sync func announce_join(sid):
-	print ("sync func announce_join(sid)")
+	#print ("sync func announce_join(sid)")
 	chat_display.bbcode_text += "[color=" + Global.dict_user_color[sid] + "]"+ Global.dict_user_relegate[sid] + "[/color] "
 	chat_display.bbcode_text += "[color=#808080]joined the lobby.[/color]"
 	chat_display.bbcode_text += "\n"

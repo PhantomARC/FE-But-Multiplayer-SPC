@@ -39,7 +39,7 @@ func _process(delta):
 
 
 func refer_tile(returnfunc):
-	print("Tile called: " + returnfunc)
+	#print("Tile called: " + returnfunc)
 	var tilecalc = []
 	for i in len(returnfunc)-1:
 		i = i + 1
@@ -50,7 +50,7 @@ func refer_tile(returnfunc):
 		tilecalc.insert(2,"0")
 	var reference = Vector2(alpha_numdic[tilecalc[0]] * 26 + alpha_numdic[tilecalc[1]],
 			(int(tilecalc[2]) * 10 + int(tilecalc[3])) * -1)
-	print(str(reference))
+	#print(str(reference))
 	set_position(get_tree().get_root().get_node("MainScene/"+ get_tree().get_root().get_node("MainScene").mapnode).map_to_world(reference)+Vector2(32,32))
 	
 #func set_position( Vector2(,) ) is inherited 

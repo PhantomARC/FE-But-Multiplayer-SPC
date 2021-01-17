@@ -13,4 +13,5 @@ func _on_LineEdit_text_changed(text):
 	var key = "(?<tile>#[A-Za-z]{1,2}[0-9]{1,2})[- .,?!/&+()]|(?<tile>#[A-Za-z]{1,2}[0-9]{1,2})$"
 	regex.compile(key)
 	for result in regex.search_all(text):
-		print(result.get_string("tile"))
+		#(result.get_string("tile"))
+		pass

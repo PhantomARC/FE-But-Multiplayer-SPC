@@ -134,9 +134,10 @@ func _process(delta):
 
 func _input(event):
 	if(event is InputEventKey):
-		print(player_position_pixel)
-		print(player_position_tile_map)
-		print(current_tile_type_int)
+		#(player_position_pixel)
+		#print(player_position_tile_map)
+		#print(current_tile_type_int)
+		pass
 
 
 func get_player_position_tile_map(): #Must be updated when adding new maps

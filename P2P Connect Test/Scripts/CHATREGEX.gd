@@ -37,16 +37,18 @@ func construct_msg():
 	var insert_order = []
 	var metatag = []
 	for result in regex.search_all(send_queue):
-		metatag.push_front(result.get_string("tile"))
-		insert_order.push_front(result.get_start())
+		metatag.push_back(result.get_string("tile"))
+		insert_order.push_back(result.get_start())
 		if send_queue[result.get_end()-1] in ['-',' ','.',',','?','!','/','&','+','(',')']:
-			insert_order.push_front(result.get_end()-1)
+			insert_order.push_back(result.get_end() - 1)
 		else:
-			insert_order.push_front(result.get_end())
+			insert_order.push_back(result.get_end())
+	metatag.invert()
+	insert_order.invert()
 	var ctr = 0
 	while ctr < insert_order.size():
 		send_queue = send_queue.insert(insert_order[ctr],"[/url][/color]")
 		ctr = ctr + 1
 		send_queue = send_queue.insert(insert_order[ctr],"[color=#ff0000][url=" + metatag[(ctr-1)/2] + "]")
 		ctr = ctr + 1
-	print(send_queue)
+	#print(send_queue)

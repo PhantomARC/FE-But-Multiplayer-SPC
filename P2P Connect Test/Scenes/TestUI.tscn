@@ -1,11 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Scenes/CHESSREGEX.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/BRACKETREGEX.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/IPREGEX.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/CHATREGEX.gd" type="Script" id=4]
-[ext_resource path="res://Scenes/PORTREGEX.gd" type="Script" id=5]
-[ext_resource path="res://Scenes/SENDREGEX.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/CHATREGEX.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/SENDREGEX.gd" type="Script" id=6]
+
+
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -17,54 +15,6 @@ __meta__ = {
 }
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="REGEX CHESS" type="LineEdit" parent="CanvasLayer"]
-visible = false
-margin_left = 12.7401
-margin_top = 254.48
-margin_right = 937.74
-margin_bottom = 294.48
-placeholder_text = "chess regex identifier"
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="REGEX BRACKET" type="LineEdit" parent="CanvasLayer"]
-visible = false
-margin_left = 13.7401
-margin_top = 200.0
-margin_right = 937.74
-margin_bottom = 240.0
-placeholder_text = "nobracket regex"
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="REGEX IP" type="LineEdit" parent="CanvasLayer"]
-visible = false
-margin_left = 16.74
-margin_top = 146.0
-margin_right = 465.74
-margin_bottom = 185.0
-placeholder_text = "IP Here"
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="REGEX PORT" type="LineEdit" parent="CanvasLayer"]
-visible = false
-margin_left = 481.74
-margin_top = 147.0
-margin_right = 937.74
-margin_bottom = 184.0
-placeholder_text = "Port Here"
-script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="REGEX CHAT" type="TextEdit" parent="CanvasLayer"]
 anchor_left = -0.00131245
@@ -96,9 +46,4 @@ script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="text_changed" from="CanvasLayer/REGEX CHESS" to="CanvasLayer/REGEX CHESS" method="_on_LineEdit_text_changed"]
-[connection signal="text_changed" from="CanvasLayer/REGEX BRACKET" to="CanvasLayer/REGEX BRACKET" method="_on_LineEdit_text_changed"]
-[connection signal="text_changed" from="CanvasLayer/REGEX IP" to="CanvasLayer/REGEX IP" method="_on_LineEdit_text_changed"]
-[connection signal="text_changed" from="CanvasLayer/REGEX PORT" to="CanvasLayer/REGEX PORT" method="_on_REGEX_PORT_text_changed"]
-[connection signal="text_entered" from="CanvasLayer/REGEX PORT" to="CanvasLayer/Panel/REGEX SEND" method="_on_REGEX_PORT_text_entered"]
 [connection signal="text_changed" from="CanvasLayer/REGEX CHAT" to="CanvasLayer/REGEX CHAT" method="_on_TextEdit_text_changed"]

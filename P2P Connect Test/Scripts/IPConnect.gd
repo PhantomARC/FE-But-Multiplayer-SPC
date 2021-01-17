@@ -69,7 +69,7 @@ func _on_textInput_focus_exited():
 		chat_input.set_text("Type Message Here...")
 
 
-func _user_connected(id):
+func _user_connected(_id):
 	print("func _user_connected called")
 
 

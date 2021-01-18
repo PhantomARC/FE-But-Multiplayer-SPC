@@ -18,3 +18,4 @@ func _on_AnimationPlayer_animation_finished(_anim_name): #trigger when animation
 
 func go_title_screen(): #goes to title screen
 	get_tree().change_scene("res://Scenes/TitleScreen.tscn")
+	queue_free()

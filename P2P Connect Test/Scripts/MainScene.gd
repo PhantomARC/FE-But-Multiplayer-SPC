@@ -13,11 +13,9 @@ var camera_load = load("res://Scenes/Camera2D.tscn")
 var camera_instance = camera_load.instance()
 
 
-
 var player_position_pixel = null #Vector2, use onready in future
 var player_position_tile_map = null #Vector2, use onready 
 var current_tile_type_int = null #onready
-onready var global_load = get_node("/root/Global")
 
 
 #Pathfinding
@@ -30,23 +28,25 @@ var player_select_movement_state = false
 
 func go_to_red_team_end_screen():
 	get_tree().change_scene("res://Scenes/RedTeamEndScreen.tscn")
+	queue_free()
 
 
 func go_to_blue_team_end_screen():
 	get_tree().change_scene("res://Scenes/BlueTeamEndScreen.tscn")
+	queue_free()
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if global_load.map_select == 1:
+	if Global.map_select == 1:
 		select_map = load("res://Maps/MapVolcano.tscn")
 		$AudioStreamPlayer.stream = load("res://Assets/Sounds/Firefight Tension.wav")
 		mapnode = "MapVolcano"
-	elif global_load.map_select == 2:
+	elif Global.map_select == 2:
 		select_map = load("res://Maps/MapPlains.tscn")
 		$AudioStreamPlayer.stream = load("res://Assets/Sounds/Windlands.wav")
 		mapnode = "MapPlains"
-	elif global_load.map_select == 3:
+	elif Global.map_select == 3:
 		select_map = load("res://Maps/MapCrazyHamburger.tscn")
 		$AudioStreamPlayer.stream = load("res://Assets/Sounds/Windlands.wav")
 		mapnode = "MapCrazyHamburger"
@@ -59,7 +59,7 @@ func _ready():
 	add_child(load("res://Maps/ShadingOverlay.tscn").instance())
 	
 	
-	global_load.igt_turn = true
+	Global.igt_turn = true
 	#player_instance = player_load.instance()
 	
 	
@@ -88,7 +88,7 @@ func _ready():
 	#player_instance2.set_id(2)
 	#player_instance2.set_position()
 	
-	global_load.igt_turn = false
+	Global.igt_turn = false
 	#player_instance = player_load.instance()
 	#add_child(player_instance)
 	add_child(load("res://Scenes/TestUI.tscn").instance())
@@ -141,16 +141,16 @@ func _input(event):
 
 
 func get_player_position_tile_map(): #Must be updated when adding new maps
-	if global_load.map_select == 1:
+	if Global.map_select == 1:
 		return $MapVolcano.world_to_map(player_position_pixel)
-	if global_load.map_select == 2:
+	if Global.map_select == 2:
 		return $MapPlains.world_to_map(player_position_pixel)
 
 
 func get_current_tile_type(): #Must be updated when adding new maps
-	if global_load.map_select == 1:
+	if Global.map_select == 1:
 		return $MapVolcano.get_cellv(player_position_tile_map)
-	if global_load.map_select == 2:
+	if Global.map_select == 2:
 		return $MapPlains.get_cellv(player_position_tile_map)
 
 

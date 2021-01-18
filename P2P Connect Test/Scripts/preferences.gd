@@ -8,10 +8,7 @@ var file = File.new()
 
 
 func is_file_there() -> bool:
-	var b : bool
-	if file.file_exists(path):
-		b = true
-	return b
+	return file.file_exists(path)
 
 
 func save_val(val : int) -> void:

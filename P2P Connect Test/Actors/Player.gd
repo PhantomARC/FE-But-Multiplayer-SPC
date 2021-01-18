@@ -10,7 +10,7 @@ export var speed = 10
 
 onready var team = global_load.igt_turn
 
-var id = null 
+var id : int 
 
 var step_count = 0
 var tile_size = 64
@@ -69,7 +69,6 @@ func set_id(id):
 
 
 func get_position_global():
-	
 	return get_position()
 
 

@@ -26,7 +26,11 @@ func _process(_delta):
 
 func _on_buttonPlay_pressed():
 	get_tree().change_scene("res://Scenes/MapSelectScene.tscn")
+	$Background.queue_free()
+	queue_free()
 
 
 func _on_buttonLobby_pressed():
 	get_tree().change_scene("res://Scenes/Lobby.tscn")
+	$Background.queue_free()
+	queue_free()

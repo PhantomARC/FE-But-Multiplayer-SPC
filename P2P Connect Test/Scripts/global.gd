@@ -40,12 +40,10 @@ func set_map_select(map_select_number): #when called, change map
 
 func _input(_event): #trigger when any key is pressed
 	if (Input.is_action_just_pressed("ui_accept")):
-		if igt_turn == true:
-			igt_turn = false
-		elif igt_turn == false:
-			igt_turn = true
+		igt_turn = !igt_turn
 	if (Input.is_action_just_pressed("fullscreen_toggle")):
 		OS.window_fullscreen = !OS.window_fullscreen
+
 
 func dict_user_relegate_clear():
 	dict_user_relegate = {}

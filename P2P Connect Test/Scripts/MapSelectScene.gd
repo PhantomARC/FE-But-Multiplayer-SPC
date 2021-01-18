@@ -42,10 +42,14 @@ func _on_buttonMap3_mouse_entered():
 
 func _on_buttonConfirm_pressed():
 	get_tree().change_scene("res://Scenes/MainScene.tscn")
+	$Background.queue_free()
+	queue_free()
 
 
 func _on_buttonBack_pressed():
 	get_tree().change_scene("res://Scenes/TitleScreen.tscn")
+	$Background.queue_free()
+	queue_free()
 
 
 func _on_buttonConfirm_mouse_entered():

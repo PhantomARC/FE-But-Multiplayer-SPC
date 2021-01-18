@@ -31,6 +31,6 @@ flip_v = true
 scale = Vector2( 10, 10 )
 frames = ExtResource( 6 )
 animation = "Diamond"
-frame = 6
+frame = 8
 playing = true
 flip_v = true

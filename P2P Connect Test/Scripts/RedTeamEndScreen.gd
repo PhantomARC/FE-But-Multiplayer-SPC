@@ -8,3 +8,5 @@ func _ready():
 
 func _on_buttonProceed_pressed():
 	get_tree().change_scene("res://Scenes/TitleScreen.tscn")
+	$Background.queue_free()
+	queue_free()

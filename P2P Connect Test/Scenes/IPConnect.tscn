@@ -13,7 +13,6 @@
 [sub_resource type="StyleBoxEmpty" id=3]
 
 [node name="ChatRoom" type="Control"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -3.01026
@@ -25,22 +24,27 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="containerScreen" type="CenterContainer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="containerScreen" type="CenterContainer" parent="CanvasLayer"]
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -240.0
+margin_left = -243.01
+margin_top = -1.12247
+margin_right = -3.01025
+margin_bottom = -1.1225
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="textureBackPanel" type="TextureRect" parent="containerScreen"]
+[node name="textureBackPanel" type="TextureRect" parent="CanvasLayer/containerScreen"]
 margin_right = 240.0
 margin_bottom = 540.0
 rect_min_size = Vector2( 240, 540 )
 texture = ExtResource( 2 )
 
-[node name="textureChatPanel" type="TextureRect" parent="containerScreen/textureBackPanel"]
+[node name="textureChatPanel" type="TextureRect" parent="CanvasLayer/containerScreen/textureBackPanel"]
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 230.0
@@ -51,7 +55,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="richtextChat" type="RichTextLabel" parent="containerScreen/textureBackPanel/textureChatPanel"]
+[node name="richtextChat" type="RichTextLabel" parent="CanvasLayer/containerScreen/textureBackPanel/textureChatPanel"]
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 215.0
@@ -65,7 +69,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="textureInputPanel" type="TextureRect" parent="containerScreen/textureBackPanel"]
+[node name="textureInputPanel" type="TextureRect" parent="CanvasLayer/containerScreen/textureBackPanel"]
 margin_left = 10.0
 margin_top = 480.0
 margin_right = 230.0
@@ -75,7 +79,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="textInput" type="TextEdit" parent="containerScreen/textureBackPanel/textureInputPanel"]
+[node name="textInput" type="TextEdit" parent="CanvasLayer/containerScreen/textureBackPanel/textureInputPanel"]
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 215.0
@@ -92,11 +96,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = 652.217
-margin_top = 31.1479
-margin_right = 692.217
-margin_bottom = 71.1479
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+margin_left = 649.207
+margin_top = 30.0254
+margin_right = 689.207
+margin_bottom = 70.0254
 color = Color( 0, 0.501961, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false

@@ -1,26 +1,27 @@
 extends Control
 
-onready var chat_input_label = $containerScreen/textureBackPanel/textureInputPanel/textInput
-onready var chat_display = $containerScreen/textureBackPanel/textureChatPanel/richtextChat
-onready var chat_input = $containerScreen/textureBackPanel/textureInputPanel/textInput
 
-var color_rep = [
-	"#c90ac9", #purple
-	"#d49f00", #gold
-	"#00baae", #teal
-	]
+var regex_key = {
+	"bracketChar" : "\\[|\\]|\\r\\n|\\r|\\n",
+	"chessNotation" : "(?<tile>#[A-Za-z]{1,2}[0-9]{1,2})[- .,?!/&+()]|(?<tile>#[A-Za-z]{1,2}[0-9]{1,2})$",
+	}
+
+onready var chat_input_label = $CanvasLayer/containerScreen/textureBackPanel/textureInputPanel/textInput
+onready var chat_display = $CanvasLayer/containerScreen/textureBackPanel/textureChatPanel/richtextChat
+onready var chat_input = $CanvasLayer/containerScreen/textureBackPanel/textureInputPanel/textInput
 
 
 func _ready():
-	#print("DEBUG_IPCONNECT_READY: " + str(Global.usercolor))
 	get_tree().connect("connected_to_server", self, "_self_connected")
 	get_tree().connect("network_peer_connected", self, "_user_connected")
 	get_tree().connect("network_peer_disconnected", self, "_user_disconnected")
 	chat_input.connect("text_changed",self,"_on_textInput_text_changed")
 	chat_input.connect("focus_entered",self,"_on_textInput_focus_entered")
 	chat_input.connect("focus_exited",self,"_on_textInput_focus_exited")
+	
 	chat_input.set_text("Type Message Here...")
 	chat_input.set("custom_colors/font_color", Color(0.88,0.88,0.88,1))
+
 
 func _input(event):
 	if event is InputEventKey:
@@ -39,22 +40,22 @@ func _input(event):
 
 
 func send_message():
-	#print("func send_message called")
-	var msg = chat_input.text
-	chat_input.text = ""
+	var message = get_constructed_msg(chat_input)
+	chat_input.set_text("")
 	var id = get_tree().get_network_unique_id()
-	rpc("receive_message", id, msg)
+	rpc("receive_message", id, message)
 
 
-sync func receive_message(id, msg):
-	#print("func receive_message called")
+sync func receive_message(id, message):
 	chat_display.bbcode_text += "[color=" + Global.dict_user_color[id] + "]" + Global.dict_user_relegate[id] + ":[/color] "
-	chat_display.bbcode_text += "[color=#808080]" + msg + "[/color]"
+	chat_display.bbcode_text += "[color=#808080]" + message + "[/color]"
 	chat_display.bbcode_text += "\n"
 
 
 func _on_textInput_text_changed():
-	pass
+	scan_illegal_chars(chat_input)
+	chat_input.cursor_set_line(0,true)
+	chat_input.cursor_set_column(len(chat_input.get_line(0)),true)
 
 
 func _on_textInput_focus_entered():
@@ -70,41 +71,67 @@ func _on_textInput_focus_exited():
 
 
 func _user_connected(_id):
-	#print("func _user_connected called")
 	pass
 
 
 func _user_disconnected(id):
-	#print("func _user_disconnected called")
 	chat_display.bbcode_text += "[color=" + Global.dict_user_color[id] + "]"+ Global.dict_user_relegate[id] + "[/color] "
 	chat_display.bbcode_text += "[color=#808080]left the lobby.[/color]"
 	chat_display.bbcode_text += "\n"
 
 
 sync func add_user(id, regname, color):
-	#print("sync func add_user called")
 	Global.dict_user_relegate[id] = regname
-	Global.dict_user_color[id] = color_rep[color]
-	#print("User ID: " + str(id))
-	#print("Registered by name: " + regname)
-	#print("Has been logged as: " + Global.dict_user_relegate[id])
-	#print("With preferred color: " + color_rep[color])
-	#print("As: " + Global.dict_user_color[id])
+	Global.dict_user_color[id] = Aesthetics.color_code[color]
+
 
 func _self_connected():
-	#print ("func _self_connected called")
-	var id = get_tree().get_network_unique_id()
 	rpc("ask_all_users")
-	rpc("announce_join",id)
+	rpc("announce_join",get_tree().get_network_unique_id())
+
 
 sync func ask_all_users():
-	#print ("sync func ask_all_users called")
 	var id = get_tree().get_network_unique_id()
 	rpc("add_user",id, Global.playername, Global.usercolor)
 
 
 sync func announce_join(sid):
-	#print ("sync func announce_join(sid)")
 	chat_display.bbcode_text += "[color=" + Global.dict_user_color[sid] + "]"+ Global.dict_user_relegate[sid] + "[/color] "
 	chat_display.bbcode_text += "[color=#808080]joined the lobby.[/color]"
 	chat_display.bbcode_text += "\n"
+
+
+func scan_illegal_chars(nodePath) -> void:
+	var regex = RegEx.new()
+	var reg_cleanup = []
+	var message = nodePath.text
+	regex.compile(regex_key["bracketChar"])
+	for result in regex.search_all(nodePath.text):
+		reg_cleanup.push_back(result.get_start())
+	reg_cleanup.invert()
+	for i in range(0, reg_cleanup.size()):
+		message.erase(reg_cleanup[i],1)
+	nodePath.set_text(message)
+
+
+func get_constructed_msg(nodePath) -> String:
+	var regex = RegEx.new()
+	regex.compile(regex_key["chessNotation"])
+	var send_queue = nodePath.text
+	var insert_order = []
+	var metatag = []
+	for result in regex.search_all(send_queue):
+		metatag.push_back(result.get_string("tile"))
+		insert_order.push_back(result.get_start())
+		if send_queue[result.get_end()-1] in ['-',' ','.',',','?','!','/','&','+','(',')']:
+			insert_order.push_back(result.get_end() - 1)
+		else:
+			insert_order.push_back(result.get_end())
+	metatag.invert()
+	insert_order.invert()
+	var i :int = 0
+	while i < insert_order.size():
+		send_queue = send_queue.insert(insert_order[i],"[/url][/color]")
+		send_queue = send_queue.insert(insert_order[i + 1],"[color=#ff0000][url=" + metatag[(i) / 2] + "]")
+		i += 2
+	return(send_queue)

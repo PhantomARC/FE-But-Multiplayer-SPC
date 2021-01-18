@@ -9,6 +9,11 @@ var sq_frame = 0
 var dm_frame = 8
 var hue = 0
 
+var color_code = [
+	"#c90ac9", #purple
+	"#d49f00", #gold
+	"#00baae", #teal
+	]
 
 func _process(delta):
 	hue_timer = fmod(hue_timer + delta * speed, 360)

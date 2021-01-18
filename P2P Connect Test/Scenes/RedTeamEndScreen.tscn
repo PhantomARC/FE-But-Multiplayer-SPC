@@ -3,7 +3,6 @@
 [ext_resource path="res://Assets/Images/ok_btn.bmp" type="Texture" id=2]
 [ext_resource path="res://Scripts/RedTeamEndScreen.gd" type="Script" id=3]
 
-
 [node name="RedTeamEndScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0

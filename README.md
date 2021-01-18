@@ -5,25 +5,19 @@
  - A variety of classic RPG roles
  - A selection of maps and objectives
  - Really bad graphics
- - 
+ - Amiibo Support
 
 Tasklist
 	> Elaborate on Player Pseudostates
 	> Improve Network Interface
 		> Add map selection into Network Interface
 	> Create Multiple In-game Options
-	> Player Automapping
 	> Create Player Classes
 	> Add Boot Splash Icon/Remove Boot Splash
-	> Adjust Camera View Limits
-	> Reattach Camera to applicable player
-		> Add Camera Mousing
-		> Give Camera relocation properties
-	> Create Player Model
+	> Adjust Camera View Limits	
 	> Create Model Animations
 	> Remake Maps/Create Map Generation Methods
 	> Create Battle scene
-	> Modulate tiles for player movement
 	> Generate Player FE Movement style
 	> Generate Multiple PLayers
 		> Network Multiple Players
@@ -40,7 +34,6 @@ Tasklist
 	> Create file storage for maps
 	> Create Save Game Persistent Objects
 	> Create Sound Effects (1/X)
-	> Create Background Music (1/X)
 	> Create Fog of War Effect
 
 
@@ -72,3 +65,11 @@ Completed Tasks
 		>Return Gerard
 	> Generate Player Pseudostates (RT / BT)
 	> Make Icon
+	> Player Automapping
+	> Modulate tiles for player movement
+	> Create Player Model
+	> Reattach Camera to applicable player
+		> Add Camera Mousing
+		> Give Camera relocation properties
+	> Create Background Music (3/X)
+	

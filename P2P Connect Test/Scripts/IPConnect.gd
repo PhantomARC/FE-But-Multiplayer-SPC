@@ -3,12 +3,16 @@ extends Control
 
 var regex_key = {
 	"bracketChar" : "\\[|\\]|\\r\\n|\\r|\\n",
-	"chessNotation" : "(?<tile>#[A-Za-z]{1,2}[0-9]{1,2})[- .,?!/&+()]|(?<tile>#[A-Za-z]{1,2}[0-9]{1,2})$",
+	"chessNotation" : "(?<tile>#[A-Za-z]{1,2}[0-9]{1,2})[- .,?!/&+()]|" \
+	+ "(?<tile>#[A-Za-z]{1,2}[0-9]{1,2})$",
 	}
 
-onready var chat_input_label = $CanvasLayer/containerScreen/textureBackPanel/textureInputPanel/textInput
-onready var chat_display = $CanvasLayer/containerScreen/textureBackPanel/textureChatPanel/richtextChat
-onready var chat_input = $CanvasLayer/containerScreen/textureBackPanel/textureInputPanel/textInput
+onready var chat_input_label = $CanvasLayer/containerScreen/ \
+		textureBackPanel/textureInputPanel/textInput
+onready var chat_display = $CanvasLayer/containerScreen/ \
+		textureBackPanel/textureChatPanel/richtextChat
+onready var chat_input = $CanvasLayer/containerScreen/ \
+		textureBackPanel/textureInputPanel/textInput
 
 
 func _ready():
@@ -24,8 +28,8 @@ func _ready():
 
 
 func _input(event):
-	if event is InputEventKey:
-		if event.pressed && event.scancode == KEY_ENTER:
+	if event is InputEventKey && event.pressed:
+		if event.scancode == KEY_ENTER:
 			if chat_input.has_focus():
 				if chat_input.text != "":
 					send_message()
@@ -34,7 +38,7 @@ func _input(event):
 			else:
 				chat_input.grab_focus()
 			get_tree().set_input_as_handled()
-		if event.pressed and event.scancode == KEY_ESCAPE:
+		if event.scancode == KEY_ESCAPE:
 			if chat_input.has_focus():
 				chat_input.release_focus()
 
@@ -47,9 +51,9 @@ func send_message():
 
 
 sync func receive_message(id, message):
-	chat_display.bbcode_text += "[color=" + Global.dict_user_color[id] + "]" + Global.dict_user_relegate[id] + ":[/color] "
-	chat_display.bbcode_text += "[color=#808080]" + message + "[/color]"
-	chat_display.bbcode_text += "\n"
+	chat_display.bbcode_text +="[color=" + Global.dict_user_color[id] + "]" \
+			+ Global.dict_user_relegate[id] + ": [/color][color=#808080]" \
+			+ message + "[/color]\n"
 
 
 func _on_textInput_text_changed():
@@ -75,9 +79,9 @@ func _user_connected(_id):
 
 
 func _user_disconnected(id):
-	chat_display.bbcode_text += "[color=" + Global.dict_user_color[id] + "]"+ Global.dict_user_relegate[id] + "[/color] "
-	chat_display.bbcode_text += "[color=#808080]left the lobby.[/color]"
-	chat_display.bbcode_text += "\n"
+	chat_display.bbcode_text += "[color=" + Global.dict_user_color[id] + "]" \
+			+ Global.dict_user_relegate[id] \
+			+ "[/color][color=#808080]left the lobby.[/color]\n"
 
 
 sync func add_user(id, regname, color):
@@ -96,9 +100,9 @@ sync func ask_all_users():
 
 
 sync func announce_join(sid):
-	chat_display.bbcode_text += "[color=" + Global.dict_user_color[sid] + "]"+ Global.dict_user_relegate[sid] + "[/color] "
-	chat_display.bbcode_text += "[color=#808080]joined the lobby.[/color]"
-	chat_display.bbcode_text += "\n"
+	chat_display.bbcode_text += "[color=" + Global.dict_user_color[sid] + "]" \
+			+ Global.dict_user_relegate[sid] \
+			+ "[/color][color=#808080]joined the lobby.[/color]\n"
 
 
 func scan_illegal_chars(nodePath) -> void:
@@ -123,7 +127,8 @@ func get_constructed_msg(nodePath) -> String:
 	for result in regex.search_all(send_queue):
 		metatag.push_back(result.get_string("tile"))
 		insert_order.push_back(result.get_start())
-		if send_queue[result.get_end()-1] in ['-',' ','.',',','?','!','/','&','+','(',')']:
+		if send_queue[result.get_end()-1] \
+				in ['-',' ','.',',','?','!','/','&','+','(',')']:
 			insert_order.push_back(result.get_end() - 1)
 		else:
 			insert_order.push_back(result.get_end())
@@ -132,6 +137,7 @@ func get_constructed_msg(nodePath) -> String:
 	var i :int = 0
 	while i < insert_order.size():
 		send_queue = send_queue.insert(insert_order[i],"[/url][/color]")
-		send_queue = send_queue.insert(insert_order[i + 1],"[color=#ff0000][url=" + metatag[(i) / 2] + "]")
+		send_queue = send_queue.insert(insert_order[i + 1],
+				"[color=#ff0000][url=" + metatag[(i) / 2] + "]")
 		i += 2
 	return(send_queue)

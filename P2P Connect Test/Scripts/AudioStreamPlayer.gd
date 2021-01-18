@@ -12,3 +12,4 @@ func _physics_process(_delta):
 		Global.volume = Global.volume + 3
 	if Input.is_action_just_pressed("vol_down"):
 		Global.volume = Global.volume - 3
+#optimize as key input

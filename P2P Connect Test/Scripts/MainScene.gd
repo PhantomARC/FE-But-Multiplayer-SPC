@@ -50,8 +50,6 @@ func _ready():
 		select_map = load("res://Maps/MapCrazyHamburger.tscn")
 		$AudioStreamPlayer.stream = load("res://Assets/Sounds/Windlands.wav")
 		mapnode = "MapCrazyHamburger"
-	
-	
 	$AudioStreamPlayer.playing = true
 	
 	

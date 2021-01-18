@@ -18,31 +18,27 @@ var dict_user_relegate = {}
 var dict_user_color = {}
 
 #screendata
-var screensize = Vector2(960,540)
+var screensize = OS.window_size
 
 
 func _ready():
 	if Preferences.is_file_there():
 		volume = Preferences.load_val()
-		#print("File exists.")
 	else:
-		#print("File does not exist.")
-		pass
-
-
-func _process(_delta):
-	Preferences.save_val(volume)
-
+		volume = 0
 
 func set_map_select(map_select_number): #when called, change map
 	map_select = map_select_number
 
 
 func _input(_event): #trigger when any key is pressed
-	if (Input.is_action_just_pressed("ui_accept")):
+	if Input.is_action_just_pressed("ui_accept"):
 		igt_turn = !igt_turn
-	if (Input.is_action_just_pressed("fullscreen_toggle")):
+	if Input.is_action_just_pressed("fullscreen_toggle"):
 		OS.window_fullscreen = !OS.window_fullscreen
+	if Input.is_action_just_pressed("vol_up") || \
+			Input.is_action_just_pressed("vol_down"):
+		Preferences.save_val(volume)
 
 
 func dict_user_relegate_clear():

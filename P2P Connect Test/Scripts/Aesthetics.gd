@@ -18,3 +18,4 @@ var color_code = [
 func _process(delta):
 	hue_timer = fmod(hue_timer + delta * speed, 360)
 	hue = hue_timer / 360
+# find optimized deltatype

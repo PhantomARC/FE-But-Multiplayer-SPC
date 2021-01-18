@@ -7,22 +7,29 @@ var regex_key = {
 	"IPv4Char" : "[^0-9.]",
 	"portChar" : "[^0-9]",
 	"userChar" : "\\[|\\]",
-	"IPv4Scan" : "\\b(?:(?:25[0-5]|2[0-4]\\d|[01]?\\d\\d?)\\.){3}(?:25[0-5]|2[0-4]\\d|[01]?\\d\\d?)\\b",
-	"portScan" : "^([0-9]{1,4}|[0-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-6])$",
+	"IPv4Scan" : "\\b(?:(?:25[0-5]|2[0-4]\\d|[01]?\\d\\d?)\\.){3}(?:25[0-5]|" \
+	+ "2[0-4]\\d|[01]?\\d\\d?)\\b",
+	"portScan" : "^([0-9]{1,4}|[0-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|" \
+	+ "655[0-2][0-9]|6553[0-6])$",
 }
 
 
-onready var ref_user = $CanvasLayer/containerScreen/vboxContainer/hboxUser/lineUser
-onready var ref_ipv4 = $CanvasLayer/containerScreen/vboxContainer/hboxIPv4/lineIPv4
-onready var ref_port = $CanvasLayer/containerScreen/vboxContainer/hboxPort/linePort
+onready var ref_user = $CanvasLayer/containerScreen/ \
+		vboxContainer/hboxUser/lineUser
+onready var ref_ipv4 = $CanvasLayer/containerScreen/ \
+		vboxContainer/hboxIPv4/lineIPv4
+onready var ref_port = $CanvasLayer/containerScreen/ \
+		vboxContainer/hboxPort/linePort
 
 
 func _ready():
 	ref_user.connect("text_changed",self,"_on_lineUser_text_changed")
 	ref_ipv4.connect("text_changed",self,"_on_lineIPv4_text_changed")
 	ref_port.connect("text_changed",self,"_on_linePort_text_changed")
-	$CanvasLayer/containerScreen/vboxContainer/buttonHost.connect("pressed",self,"_on_buttonHost_pressed")
-	$CanvasLayer/containerScreen/vboxContainer/buttonJoin.connect("pressed",self,"_on_buttonJoin_pressed")
+	$CanvasLayer/containerScreen/vboxContainer/buttonHost.connect("pressed",
+			self,"_on_buttonHost_pressed")
+	$CanvasLayer/containerScreen/vboxContainer/buttonJoin.connect("pressed",
+			self,"_on_buttonJoin_pressed")
 	$CanvasLayer/buttonBack.connect("pressed",self,"_on_buttonBack_pressed")
 	
 	add_child(load("res://Scenes/Background.tscn").instance())
@@ -35,7 +42,6 @@ func _ready():
 
 func clear_screen() -> void:
 	$CanvasLayer/containerScreen.queue_free()
-#	$CanvasLayer/buttonBack.hide()
 	add_child(load("res://Scenes/IPConnect.tscn").instance())
 	Global.dict_user_relegate[1] = Global.playername
 	Global.dict_user_color[1] = Aesthetics.color_code[Global.usercolor]

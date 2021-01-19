@@ -4,6 +4,7 @@ extends Node2D
 #https://godotengine.org/qa/5393/how-to-create-color-transition-sprite-around-the-color-wheel
 
 func _ready():
+	pause_mode = Node.PAUSE_MODE_PROCESS
 	setup_screen(Global.screensize)
 	$animationSquare.frame = Aesthetics.sq_frame
 	$animationDiamond.frame = Aesthetics.dm_frame

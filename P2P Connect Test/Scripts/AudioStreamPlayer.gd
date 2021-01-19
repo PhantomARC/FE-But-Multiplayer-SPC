@@ -2,6 +2,7 @@ extends AudioStreamPlayer
 
 
 func _ready():
+	pause_mode = Node.PAUSE_MODE_PROCESS
 	volume_db = Global.volume
 	playing = true
 

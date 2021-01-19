@@ -7,14 +7,18 @@ var rotate_timer = 0
 var modtimer_array = [120,6,6,6,6,6]
 var modwheel_array = [6,19,24,23,12,6]
 
+signal call_settings
 
 func _ready():
+	add_child(load("res://Scenes/PauseMenu.tscn").instance())
 	add_child(load("res://Scenes/Background.tscn").instance())
 	$CanvasLayer/containerScreen/vboxContainer/buttonPlay.connect("pressed",
-			self,"_on_buttonPlay_pressed")
+			self, "_on_buttonPlay_pressed")
 	$CanvasLayer/containerScreen/vboxContainer/buttonLobby.connect("pressed",
-			self,"_on_buttonLobby_pressed")
-
+			self, "_on_buttonLobby_pressed")
+	$CanvasLayer/buttonSettings.connect("pressed",
+			self, "_on_buttonSettings_pressed")
+	self.connect("call_settings", $PauseMenu, "_on_Resume")
 
 func _process(_delta):
 	#Settings Button VFX
@@ -37,3 +41,6 @@ func _on_buttonLobby_pressed():
 	get_tree().change_scene("res://Scenes/Lobby.tscn")
 	$Background.queue_free()
 	queue_free()
+
+func _on_buttonSettings_pressed():
+	 emit_signal("call_settings")

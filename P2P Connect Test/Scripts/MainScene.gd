@@ -53,6 +53,7 @@ func _ready():
 	$AudioStreamPlayer.playing = true
 	
 	
+	add_child(load("res://Scenes/PauseMenu.tscn").instance())
 	add_child(select_map.instance())
 	add_child(load("res://Maps/ShadingOverlay.tscn").instance())
 	

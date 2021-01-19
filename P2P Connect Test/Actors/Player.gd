@@ -20,7 +20,9 @@ var inputs = {"ui_right": Vector2.RIGHT,
 			"ui_down": Vector2.DOWN}
 
 func _ready(): #positions player at center of tile
-	position = position.snapped(Vector2.ONE * tile_size) #Snap rounds the position to the nearest tile increment, and adding a half-tile amount makes sure the player is centered on the tile.
+	position = position.snapped(Vector2.ONE * tile_size) 
+	#Snap rounds the position to the nearest tile increment, and 
+	#adding a half-tile amount makes sure the player is centered on the tile.
 	position += Vector2.ONE * tile_size/2
 	var fakeplayer = Global.other_id
 	Global.other_id = Global.other_id + 1
@@ -44,7 +46,9 @@ func move(dir): #detect collision
 
 
 func move_tween(dir):
-	tween.interpolate_property(self, "position", position, position + inputs[dir] * tile_size, 1.0/speed, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	tween.interpolate_property(self, "position", position, position \
+			+ inputs[dir] * tile_size, 1.0/speed, Tween.TRANS_SINE, 
+			Tween.EASE_IN_OUT)
 	tween.start()
 
 

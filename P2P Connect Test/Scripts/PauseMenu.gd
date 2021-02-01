@@ -19,7 +19,8 @@ func _ready():
 	sfx.connect("mouse_exited",self,"_on_SFX_defocus")
 	
 	
-	bgm.value = db2linear(Global.volume)
+	bgm.value = db2linear(Global.dict_options["bgm"])
+	sfx.value = db2linear(Global.dict_options["sfx"])
 
 func _on_Resume():
 	hide_all()
@@ -30,12 +31,14 @@ func _on_Quit():
 
 
 func _on_BGM_changed(val):
-	Global.volume = linear2db(val)
+	Global.dict_options["bgm"] = linear2db(val)
+	Preferences.save_val(Global.dict_options)
+	get_tree().call_group("bgm_vol", "change_vol")
 
-
-func _on_sfx_changed():
-	pass
-
+func _on_SFX_changed(val):
+	Global.dict_options["sfx"] = linear2db(val)
+	Preferences.save_val(Global.dict_options)
+	get_tree().call_group("sfx_vol", "change_vol")
 
 func _on_BGM_defocus():
 	bgm.release_focus()

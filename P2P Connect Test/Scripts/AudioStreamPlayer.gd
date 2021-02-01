@@ -2,15 +2,11 @@ extends AudioStreamPlayer
 
 
 func _ready():
+	
 	pause_mode = Node.PAUSE_MODE_PROCESS
-	volume_db = Global.volume
+	change_vol()
 	playing = true
+	add_to_group("bgm_vol")
 
-
-func _physics_process(_delta):
-	volume_db = Global.volume
-	if Input.is_action_just_pressed("vol_up"):
-		Global.volume = Global.volume + 3
-	if Input.is_action_just_pressed("vol_down"):
-		Global.volume = Global.volume - 3
-#optimize as key input
+func change_vol():
+	volume_db = Global.dict_options["bgm"]

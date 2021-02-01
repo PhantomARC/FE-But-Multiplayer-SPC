@@ -1,6 +1,11 @@
 extends AudioStreamPlayer
 
 
-func _physics_process(_delta):
-	volume_db = Global.sfxvol
-#call through signal optimize
+func _ready():
+	
+	pause_mode = Node.PAUSE_MODE_PROCESS
+	change_vol()
+	add_to_group("sfx_vol")
+
+func change_vol():
+	volume_db = Global.dict_options["sfx"]

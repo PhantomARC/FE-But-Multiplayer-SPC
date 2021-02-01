@@ -17,7 +17,7 @@ _global_script_class_icons={
 
 config/name="Massive Single Player"
 run/main_scene="res://Scenes/SplashScreen.tscn"
-boot_splash/image="res://Assets/Images/icon.png"
+boot_splash/image="res://Assets/Images/Splash.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false
 config/icon="res://Assets/Images/icon.png"
@@ -146,5 +146,5 @@ left_click={
 [rendering]
 
 quality/2d/use_pixel_snap=true
-environment/default_clear_color=Color( 0.25098, 0.247059, 0.247059, 1 )
+environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"

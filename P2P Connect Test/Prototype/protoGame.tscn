@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Prototype/protoGame.gd" type="Script" id=1]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="p1pos" type="Position2D" parent="."]
+position = Vector2( 467.135, 167.773 )
+
+[node name="p2pos" type="Position2D" parent="."]
+position = Vector2( 185.5, 171.5 )

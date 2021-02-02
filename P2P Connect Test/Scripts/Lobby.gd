@@ -31,9 +31,11 @@ func _ready():
 	$CanvasLayer/containerScreen/vboxContainer/buttonJoin.connect("pressed",
 			self,"_on_buttonJoin_pressed")
 	$CanvasLayer/buttonBack.connect("pressed",self,"_on_buttonBack_pressed")
+	get_tree().connect("network_peer_connected", self, "_user_connected")
 	
 	add_child(load("res://Scenes/Background.tscn").instance())
 	ref_port.set_max_length(5)
+	ref_user.set_max_length(20)
 	
 	Global.playername = "User"
 	ipv4_ID = "25.3.252.29"
@@ -125,3 +127,9 @@ func regex_grab(boxType,nodePath,fallbackVal):
 		return(result.get_string())
 	else:
 		return(fallbackVal)
+
+
+func _user_connected(id):
+	Global.other_id = id
+	var game = preload("res://Prototype/protoGame.tscn").instance()
+	get_tree().get_root().add_child(game)

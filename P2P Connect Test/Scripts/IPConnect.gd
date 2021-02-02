@@ -17,7 +17,6 @@ onready var chat_input = $CanvasLayer/containerScreen/ \
 
 func _ready():
 	get_tree().connect("connected_to_server", self, "_self_connected")
-	get_tree().connect("network_peer_connected", self, "_user_connected")
 	get_tree().connect("network_peer_disconnected", self, "_user_disconnected")
 	chat_input.connect("text_changed",self,"_on_textInput_text_changed")
 	chat_input.connect("focus_entered",self,"_on_textInput_focus_entered")
@@ -74,14 +73,10 @@ func _on_textInput_focus_exited():
 		chat_input.set_text("Type Message Here...")
 
 
-func _user_connected(_id):
-	pass
-
-
 func _user_disconnected(id):
 	chat_display.bbcode_text += "[color=" + Global.dict_user_color[id] + "]" \
 			+ Global.dict_user_relegate[id] \
-			+ "[/color][color=#808080]left the lobby.[/color]\n"
+			+ "[/color][color=#808080] left the lobby.[/color]\n"
 
 
 sync func add_user(id, regname, color):
@@ -102,7 +97,7 @@ sync func ask_all_users():
 sync func announce_join(sid):
 	chat_display.bbcode_text += "[color=" + Global.dict_user_color[sid] + "]" \
 			+ Global.dict_user_relegate[sid] \
-			+ "[/color][color=#808080]joined the lobby.[/color]\n"
+			+ "[/color][color=#808080] joined the lobby.[/color]\n"
 
 
 func scan_illegal_chars(nodePath) -> void:

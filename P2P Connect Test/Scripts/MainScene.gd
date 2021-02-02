@@ -2,9 +2,7 @@ extends Node2D
 
 var select_map = null
 var player_load = load("res://Actors/Player.tscn")
-var player_load2 = load("res://Actors/Player2.tscn")
 var player_instance = player_load.instance()
-var player_instance2 = player_load2.instance()
 var players_array = []
 var num_players = 2
 var mapnode = null
@@ -73,7 +71,6 @@ func _ready():
 		#add_child(player_instance)
 	
 	add_child(player_instance)
-	add_child(player_instance2)
 	
 	#$player.add_child(camera_instance)
 	add_child(camera_instance)

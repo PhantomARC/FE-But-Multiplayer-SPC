@@ -18,6 +18,7 @@ onready var chat_input = $CanvasLayer/containerScreen/ \
 func _ready():
 	get_tree().connect("connected_to_server", self, "_self_connected")
 	get_tree().connect("network_peer_disconnected", self, "_user_disconnected")
+	get_tree().connect("network_peer_connected", self, "_user_connected")
 	chat_input.connect("text_changed",self,"_on_textInput_text_changed")
 	chat_input.connect("focus_entered",self,"_on_textInput_focus_entered")
 	chat_input.connect("focus_exited",self,"_on_textInput_focus_exited")
@@ -136,3 +137,9 @@ func get_constructed_msg(nodePath) -> String:
 				"[color=#ff0000][url=" + metatag[(i) / 2] + "]")
 		i += 2
 	return(send_queue)
+
+
+func _user_connected(id):
+	Global.other_id = id
+	var game = preload("res://Prototype/protoGame.tscn").instance()
+	get_tree().get_root().add_child(game)

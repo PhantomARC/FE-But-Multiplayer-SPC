@@ -13,7 +13,10 @@ func _ready():
 	p2.set_network_master(Global.other_id)
 	p2.position = Vector2(100,100)
 	add_child(p2)
+	
+	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
-#	pass
+	

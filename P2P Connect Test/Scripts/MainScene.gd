@@ -1,9 +1,18 @@
 extends Node2D
 
+
+var turn_end = null
+
+
+
 var select_map = null
 var player_load = load("res://Actors/Player.tscn")
 var player_instance = player_load.instance()
-var players_array = []
+
+var player_load2 = load("res://Actors/Player.tscn")
+var player_instance2 = player_load2.instance()
+
+
 var num_players = 2
 var mapnode = null
 
@@ -69,12 +78,25 @@ func _ready():
 	#for n in range(num_players):
 		#var player_instance = player_load.instance()
 		#add_child(player_instance)
-	
+	player_instance.name = "Player" #(str(get_tree().get_network_unique_id()))
+	player_instance.set_network_master(get_tree().get_network_unique_id())
+	player_instance.is_on_blue_team = true
 	add_child(player_instance)
 	
-	#$player.add_child(camera_instance)
+	
+	player_instance2.name = (str(Global.other_id))
+	player_instance2.set_network_master(Global.other_id)
+	player_instance.is_on_red_team = true
+	player_instance2.modulate = Color(1.0, 0.0, 0.0, 1.0)
+	add_child(player_instance2)
+	player_instance2.set_position($ShadingOverlay.map_to_world(Vector2(1,1)) + Vector2(32, 32))
+	
+	
+	Global.team_turn = true
+	
+	
 	add_child(camera_instance)
-	#$Player.remove_child(camera_instance)
+	
 	
 	
 	#add_child(player_instance)
@@ -91,8 +113,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if $Player.get_step_count() == 20: #and is_on_red_team()
-		go_to_red_team_end_screen()
+	#if $Player.get_step_count() == 20: #and is_on_red_team()
+		#go_to_red_team_end_screen()
 	#if $Player.get_step_count() == 10: #and is_on_blue_team()
 		#go_to_blue_team_end_screen()
 	player_position_pixel = $Player.get_position()  #May need to put setter in another func
@@ -102,30 +124,50 @@ func _process(delta):
 	
 	
 	#Pathfinding and movement
-	if Input.is_action_just_pressed("right_click"): 
-		mouse_pos = global_position_to_tilemap_pos(get_global_mouse_position())
-		if (player_select_movement_state == true) and (player_can_move_to_cell(mouse_pos)): #When Player is selecting tile to move
-			$Player.set_position($ShadingOverlay.map_to_world(Vector2(mouse_pos.x, mouse_pos.y)) + Vector2(32, 32)) #Set player pos
-			player_select_movement_state = false
-			$Camera2D.set_position($ShadingOverlay.map_to_world(Vector2(mouse_pos.x, mouse_pos.y)) + Vector2(32, 32)) #Sets camera to player location
-			for cell_info in visited_data_for_display: #Deletes all 
-				$ShadingOverlay.set_cellv(Vector2(cell_info.pos.x, cell_info.pos.y), -1)
+	if Global.team_turn: 
+		if Input.is_action_just_pressed("right_click"): 
+			mouse_pos = global_position_to_tilemap_pos(get_global_mouse_position())
+			if (player_select_movement_state == true) and (player_can_move_to_cell(mouse_pos)): #When Player is selecting tile to move
+				player_instance.set_position($ShadingOverlay.map_to_world(Vector2(mouse_pos.x, mouse_pos.y)) + Vector2(32, 32)) #Set player pos
+				player_select_movement_state = false
+				$Camera2D.set_position($ShadingOverlay.map_to_world(Vector2(mouse_pos.x, mouse_pos.y)) + Vector2(32, 32)) #Sets camera to player location
+				for cell_info in visited_data_for_display: #Deletes all 
+					$ShadingOverlay.set_cellv(Vector2(cell_info.pos.x, cell_info.pos.y), -1)
+				turn_end = true
 			
-		
-		else: #When player is first viewing the flood
-			
-			player_pos = global_position_to_tilemap_pos(player_instance.global_position)
-			#mouse_pos = global_position_to_tilemap_pos(get_global_mouse_position())
-			path = []
-			path = yield(get_path_bfs(player_pos, mouse_pos, step_counter), "completed")
-			player_select_movement_state = true
-			update()
-		#path = get_path_bfs(player_pos, mouse_pos)
-		
-		#update()
-	if Input.is_action_just_pressed("exit"):
-		get_tree().quit()
+			else: #When player is first viewing the flood
+				
+				player_pos = global_position_to_tilemap_pos(player_instance.global_position)
+				#mouse_pos = global_position_to_tilemap_pos(get_global_mouse_position())
+				path = []
+				path = yield(get_path_bfs(player_pos, mouse_pos, step_counter), "completed")
+				player_select_movement_state = true
+				update()
 	#PathfindingEnd
+	
+	if !Global.team_turn: 
+		if Input.is_action_just_pressed("right_click"): 
+			mouse_pos = global_position_to_tilemap_pos(get_global_mouse_position())
+			if (player_select_movement_state == true) and (player_can_move_to_cell(mouse_pos)): #When Player is selecting tile to move
+				player_instance2.set_position($ShadingOverlay.map_to_world(Vector2(mouse_pos.x, mouse_pos.y)) + Vector2(32, 32)) #Set player pos
+				player_select_movement_state = false
+				$Camera2D.set_position($ShadingOverlay.map_to_world(Vector2(mouse_pos.x, mouse_pos.y)) + Vector2(32, 32)) #Sets camera to player location
+				for cell_info in visited_data_for_display: #Deletes all 
+					$ShadingOverlay.set_cellv(Vector2(cell_info.pos.x, cell_info.pos.y), -1)
+				turn_end = true
+			
+			else: #When player is first viewing the flood
+				
+				player_pos = global_position_to_tilemap_pos(player_instance2.global_position)
+				#mouse_pos = global_position_to_tilemap_pos(get_global_mouse_position())
+				path = []
+				path = yield(get_path_bfs(player_pos, mouse_pos, step_counter), "completed")
+				player_select_movement_state = true
+				update()
+	
+	if turn_end: #Switches Global.team_turn to the opposite team once the turn ends, sets turn_end to false
+		turn_end = false
+		Global.team_turn = !Global.team_turn
 
 
 func _input(event):

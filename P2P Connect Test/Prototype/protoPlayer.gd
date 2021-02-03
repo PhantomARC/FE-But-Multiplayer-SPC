@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 
 var speed = 5
-var loc =Vector2.ZERO
+var loc = Vector2.ZERO
 
 
 func _ready():

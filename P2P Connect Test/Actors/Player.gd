@@ -8,7 +8,7 @@ onready var global_load = get_node("/root/Global")
 
 export var speed = 10
 
-onready var team = global_load.igt_turn
+onready var team = global_load.igt_turn #true = blue, false = red
 
 var id : int 
 
@@ -19,6 +19,10 @@ var inputs = {"ui_right": Vector2.RIGHT,
 			"ui_up": Vector2.UP,
 			"ui_down": Vector2.DOWN}
 
+var is_on_red_team = null
+var is_on_blue_team = null
+
+
 func _ready(): #positions player at center of tile
 	position = position.snapped(Vector2.ONE * tile_size) 
 	#Snap rounds the position to the nearest tile increment, and 
@@ -26,6 +30,7 @@ func _ready(): #positions player at center of tile
 	position += Vector2.ONE * tile_size/2
 	var fakeplayer = Global.other_id
 	Global.other_id = Global.other_id + 1
+	
 
 
 func _unhandled_input(event): #movement

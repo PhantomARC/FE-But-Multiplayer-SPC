@@ -4,6 +4,7 @@ extends Node
 #in-game
 var map_select = 1 #default to Map 1 on load
 var igt_turn = true #true = blue, false = red
+var team_turn = null #true = blue team's turn, false = red team's turn
 
 #aesthetics (to be moved to files)
 var transparency = 0.5

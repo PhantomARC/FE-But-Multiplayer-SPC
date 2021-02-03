@@ -58,3 +58,5 @@ func get_constructed_msg() -> String:
 				"[color=#ff0000][url=" + metatag[i/2] + "]")
 		i += 2
 	return(send_queue)
+
+

@@ -4,7 +4,6 @@ extends Node2D
 var turn_end = null
 
 
-
 var select_map = null
 var player_load = load("res://Actors/Player.tscn")
 var player_instance = player_load.instance()
@@ -166,8 +165,14 @@ func _process(delta):
 				update()
 	
 	if turn_end: #Switches Global.team_turn to the opposite team once the turn ends, sets turn_end to false
+		var current_team = null
 		turn_end = false
 		Global.team_turn = !Global.team_turn
+		if Global.team_turn: 
+			current_team = "BLUE"
+		else: 
+			current_team = "RED"
+		$Control/CanvasLayer/Panel/REGEX_SEND.send_message(current_team + " team's turn, and also fuk u roy")
 
 
 func _input(event):

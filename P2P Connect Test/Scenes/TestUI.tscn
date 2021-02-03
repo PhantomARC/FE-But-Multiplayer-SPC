@@ -1,20 +1,30 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
+[ext_resource path="res://Scenes/TestUI.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/CHATREGEX.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/SENDREGEX.gd" type="Script" id=6]
-
-
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -1.25995
 margin_right = -1.25995
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="end_turn_button" type="Button" parent="CanvasLayer"]
+margin_left = 571.74
+margin_top = 13.0
+margin_right = 712.74
+margin_bottom = 49.0
+text = "end turn nigga"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="REGEX CHAT" type="TextEdit" parent="CanvasLayer"]
 anchor_left = -0.00131245
@@ -38,7 +48,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="REGEX SEND" type="RichTextLabel" parent="CanvasLayer/Panel"]
+[node name="REGEX_SEND" type="RichTextLabel" parent="CanvasLayer/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 bbcode_enabled = true
@@ -46,4 +56,5 @@ script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="button_up" from="CanvasLayer/end_turn_button" to="." method="_on_Button_button_up"]
 [connection signal="text_changed" from="CanvasLayer/REGEX CHAT" to="CanvasLayer/REGEX CHAT" method="_on_TextEdit_text_changed"]

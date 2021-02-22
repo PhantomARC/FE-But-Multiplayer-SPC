@@ -7,19 +7,13 @@ var regex_key = {
 	"IPv4Char" : "[^0-9.]",
 	"portChar" : "[^0-9]",
 	"userChar" : "\\[|\\]",
-	"IPv4Scan" : "\\b(?:(?:25[0-5]|2[0-4]\\d|[01]?\\d\\d?)\\.){3}(?:25[0-5]|" \
-	+ "2[0-4]\\d|[01]?\\d\\d?)\\b",
-	"portScan" : "^([0-9]{1,4}|[0-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|" \
-	+ "655[0-2][0-9]|6553[0-6])$",
+	"IPv4Scan" : "\\b(?:(?:25[0-5]|2[0-4]\\d|[01]?\\d\\d?)\\.){3}(?:25[0-5]|2[0-4]\\d|[01]?\\d\\d?)\\b",
+	"portScan" : "^([0-9]{1,4}|[0-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-6])$",
 }
 
-
-onready var ref_user = $CanvasLayer/containerScreen/ \
-		vboxContainer/hboxUser/lineUser
-onready var ref_ipv4 = $CanvasLayer/containerScreen/ \
-		vboxContainer/hboxIPv4/lineIPv4
-onready var ref_port = $CanvasLayer/containerScreen/ \
-		vboxContainer/hboxPort/linePort
+onready var ref_user = $CanvasLayer/containerScreen/vboxContainer/hboxUser/lineUser
+onready var ref_ipv4 = $CanvasLayer/containerScreen/vboxContainer/hboxIPv4/lineIPv4
+onready var ref_port = $CanvasLayer/containerScreen/vboxContainer/hboxPort/linePort
 
 
 func _ready():
@@ -33,8 +27,7 @@ func _ready():
 	$CanvasLayer/buttonBack.connect("pressed",self,"_on_buttonBack_pressed")
 	
 	add_child(load("res://Scenes/Background.tscn").instance())
-	ref_port.set_max_length(5)
-	ref_user.set_max_length(20)
+	$Background.add_to_group("multiplayer")
 	
 	Global.playername = "User"
 	ipv4_ID = "25.3.252.29"
@@ -45,11 +38,14 @@ func clear_screen() -> void:
 	$CanvasLayer/containerScreen.queue_free()
 	add_child(load("res://Scenes/PauseMenu.tscn").instance())
 	add_child(load("res://Scenes/IPConnect.tscn").instance())
+	$Chatroom.add_to_group("multiplayer")
+	
 	Global.dict_user_relegate[1] = Global.playername
 	Global.dict_user_color[1] = Aesthetics.color_code[Global.usercolor]
 
 
 func _on_linePort_text_changed(_text):
+	ref_port.set_max_length(5)
 	regex_filter("portChar",ref_port)
 	port_ID = regex_grab("portScan",ref_port,42069) as int
 
@@ -60,6 +56,7 @@ func _on_lineIPv4_text_changed(_text):
 
 
 func _on_lineUser_text_changed(input_name):
+	ref_user.set_max_length(20)
 	regex_filter("userChar",ref_user)
 	Global.playername = input_name
 
@@ -97,10 +94,7 @@ func _on_buttonBack_pressed():
 		get_tree().set_network_peer(null)
 	Global.dict_user_relegate_clear()
 	get_tree().change_scene("res://Scenes/TitleScreen.tscn")
-	if get_node_or_null("Background"):
-		$Background.queue_free()
-	if get_node_or_null("ChatRoom"):
-		$ChatRoom.queue_free()
+	get_tree().call_group("multiplayer","queue_free")
 	queue_free()
 
 
@@ -122,8 +116,4 @@ func regex_grab(boxType,nodePath,fallbackVal):
 	var regex = RegEx.new()
 	regex.compile(regex_key[boxType])
 	var result = regex.search(nodePath.text)
-	if result:
-		return(result.get_string())
-	else:
-		return(fallbackVal)
-
+	return(result.get_string() if result else fallbackVal)

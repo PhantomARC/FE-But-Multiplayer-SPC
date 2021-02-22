@@ -1,24 +1,18 @@
 extends Area2D
 
 onready var ray = $RayCast2D
-
 onready var tween = $Tween
-
-onready var global_load = get_node("/root/Global")
-
 export var speed = 10
-
-onready var team = global_load.igt_turn #true = blue, false = red
-
+var team = Global.team_turn #true = blue, false = red
 var id : int 
-
 var step_count = 0
 var tile_size = 64
-var inputs = {"ui_right": Vector2.RIGHT,
-			"ui_left": Vector2.LEFT,
-			"ui_up": Vector2.UP,
-			"ui_down": Vector2.DOWN}
-
+var inputs = {
+	"ui_right": Vector2.RIGHT,
+	"ui_left": Vector2.LEFT,
+	"ui_up": Vector2.UP,
+	"ui_down": Vector2.DOWN,
+}
 var is_on_red_team = null
 var is_on_blue_team = null
 
@@ -28,7 +22,6 @@ func _ready(): #positions player at center of tile
 	#Snap rounds the position to the nearest tile increment, and 
 	#adding a half-tile amount makes sure the player is centered on the tile.
 	position += Vector2.ONE * tile_size/2
-	var fakeplayer = Global.other_id
 	Global.other_id = Global.other_id + 1
 	
 
@@ -37,7 +30,7 @@ func _unhandled_input(event): #movement
 	if tween.is_active():
 		return
 	for dir in inputs.keys():
-		if event.is_action_pressed(dir) and global_load.igt_turn == team:
+		if event.is_action_pressed(dir) and Global.team_turn == team:
 			move(dir)
 			step_count+=1
 
@@ -61,20 +54,12 @@ func get_step_count():
 	return step_count
 
 
-func _process(delta):
-	pass
-	#if global_load.igt_turn == team:
-		#$Camera2D.current = true
-	#else:
-		#$Camera2D.current = false
-
-
 func get_id():
 	return id
 
 
-func set_id(id):
-	self.id = id
+func set_id(sid):
+	self.id = sid
 
 
 func get_position_global():

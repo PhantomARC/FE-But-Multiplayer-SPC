@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/GameView.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/GameScene.gd" type="Script" id=2]
+
+[node name="GameScene" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Canvas"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.203922, 0.203922, 0.203922, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSBox" type="HSplitContainer" parent="Canvas"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="VSBox_L" type="VSplitContainer" parent="Canvas/HSBox"]
+margin_right = 480.0
+margin_bottom = 540.0
+
+[node name="ViewBox" type="ViewportContainer" parent="Canvas/HSBox/VSBox_L"]
+margin_right = 480.0
+margin_bottom = 420.0
+rect_min_size = Vector2( 480, 270 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="Viewport" type="Viewport" parent="Canvas/HSBox/VSBox_L/ViewBox"]
+size = Vector2( 480, 420 )
+size_override_stretch = true
+handle_input_locally = false
+render_target_update_mode = 3
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="Canvas/HSBox/VSBox_L"]
+margin_top = 432.0
+margin_right = 480.0
+margin_bottom = 540.0
+rect_min_size = Vector2( 128, 108 )
+color = Color( 0.705882, 0.705882, 0.705882, 1 )
+
+[node name="VSBox_R" type="VSplitContainer" parent="Canvas/HSBox"]
+margin_left = 492.0
+margin_right = 960.0
+margin_bottom = 540.0
+
+[node name="ColorRect" type="ColorRect" parent="Canvas/HSBox/VSBox_R"]
+margin_right = 468.0
+margin_bottom = 270.0
+rect_min_size = Vector2( 192, 270 )
+color = Color( 0.929412, 0.929412, 0.929412, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="Canvas/HSBox/VSBox_R"]
+margin_top = 282.0
+margin_right = 468.0
+margin_bottom = 405.0
+rect_min_size = Vector2( 192, 108 )
+color = Color( 0.482353, 0.45098, 0.45098, 1 )

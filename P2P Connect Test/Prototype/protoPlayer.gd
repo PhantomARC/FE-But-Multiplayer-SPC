@@ -5,10 +5,6 @@ var speed = 5
 var loc = Vector2.ZERO
 
 
-func _ready():
-	pass # Replace with function body.
-
-
 func _process(_delta):
 	loc = Vector2()
 	if Input.is_action_pressed("ui_left"):

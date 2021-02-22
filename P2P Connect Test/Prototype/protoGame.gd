@@ -2,6 +2,8 @@ extends Node2D
 
 
 func _ready():
+	add_to_group("multiplayer")
+	
 	var p1 = preload("res://Prototype/protoPlayer.tscn").instance()
 	p1.name = (str(get_tree().get_network_unique_id()))
 	p1.set_network_master(get_tree().get_network_unique_id())

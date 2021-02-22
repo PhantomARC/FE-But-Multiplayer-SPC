@@ -1,70 +1,36 @@
 extends Node2D
 
+onready var btn = [
+	$CanvasLayer/gridContainer/buttonMap1,
+	$CanvasLayer/gridContainer/buttonMap2,
+	$CanvasLayer/gridContainer/buttonMap3,
+]
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	add_child(load("res://Scenes/Background.tscn").instance())
-	$CanvasLayer/gridContainer/buttonMap1.connect("pressed",
-			self,"_on_buttonMap1_pressed")
-	$CanvasLayer/gridContainer/buttonMap1.connect("mouse_entered",
-			self,"_on_buttonMap1_mouse_entered")
-	$CanvasLayer/gridContainer/buttonMap2.connect("pressed",
-			self,"_on_buttonMap2_pressed")
-	$CanvasLayer/gridContainer/buttonMap2.connect("mouse_entered",
-			self,"_on_buttonMap2_mouse_entered")
-	$CanvasLayer/gridContainer/buttonMap3.connect("pressed",
-			self,"_on_buttonMap3_pressed")
-	$CanvasLayer/gridContainer/buttonMap3.connect("mouse_entered",
-			self,"_on_buttonMap3_mouse_entered")
+	for loc in btn: #for each child node in the buttons array
+		loc.connect("pressed", self,"_on_buttonMap_pressed", [btn.find(loc,0)])
+		loc.connect("mouse_entered", self,"_on_buttonAny_mouse_entered")
 	$CanvasLayer/buttonConfirm.connect("pressed",
-			self,"_on_buttonConfirm_pressed")
+			self,"_on_buttonScene_pressed", ["res://Scenes/GameScene.tscn"])
 	$CanvasLayer/buttonConfirm.connect("mouse_entered",
-			self,"_on_buttonConfirm_mouse_entered")
+			self,"_on_buttonAny_mouse_entered")
 	$CanvasLayer/buttonBack.connect("pressed",
-			self,"_on_buttonBack_pressed")
+			self,"_on_buttonScene_pressed", ["res://Scenes/TitleScreen.tscn"])
 	$CanvasLayer/buttonBack.connect("mouse_entered",
-			self,"_on_buttonBack_mouse_entered")
+			self,"_on_buttonAny_mouse_entered")
 
 
-func _on_buttonMap1_pressed():
-	Global.map_select = 1
+func _on_buttonMap_pressed(num):
+	Global.map_num = num
 
 
-func _on_buttonMap2_pressed():
-	Global.map_select = 2
-
-
-func _on_buttonMap3_pressed():
-	Global.map_select = 3
-
-
-func _on_buttonMap1_mouse_entered():
+func _on_buttonAny_mouse_entered():
 	$audioSFX.play()
 
 
-func _on_buttonMap2_mouse_entered():
-	$audioSFX.play()
-
-
-func _on_buttonMap3_mouse_entered():
-	$audioSFX.play()
-
-
-func _on_buttonConfirm_pressed():
-	get_tree().change_scene("res://Scenes/MainScene.tscn")
-	$Background.queue_free()
+func _on_buttonScene_pressed(scene_path):
+	get_tree().change_scene(scene_path)
 	queue_free()
 
-
-func _on_buttonBack_pressed():
-	get_tree().change_scene("res://Scenes/TitleScreen.tscn")
-	$Background.queue_free()
-	queue_free()
-
-
-func _on_buttonConfirm_mouse_entered():
-	$audioSFX.play()
-
-
-func _on_buttonBack_mouse_entered():
-	$audioSFX.play()

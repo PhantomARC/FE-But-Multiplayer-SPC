@@ -2,7 +2,7 @@ extends Node2D
 
 
 func _ready():
-	$audioBGM.volume_db = Global.dict_options["bgm"]
+	$audioBGM.volume_db = Preferences.dict_options["bgm"]
 	$animationSplash.connect("animation_finished",
 			self,"_on_AnimationPlayer_animation_finished")
 	$animationSplash.play("DoSplashAnimation")

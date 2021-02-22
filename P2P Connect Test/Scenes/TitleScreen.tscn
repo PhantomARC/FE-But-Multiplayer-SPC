@@ -2,10 +2,11 @@
 
 [ext_resource path="res://Assets/Images/play_btn.bmp" type="Texture" id=2]
 [ext_resource path="res://Assets/Sounds/Monochroma - Myriad-E.wav" type="AudioStream" id=4]
-[ext_resource path="res://Scripts/AudioStreamPlayer.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/audioBGM.gd" type="Script" id=5]
 [ext_resource path="res://Assets/Images/Cog.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Images/Cog Down.png" type="Texture" id=7]
 [ext_resource path="res://Scripts/TitleScreen.gd" type="Script" id=9]
+
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource( 9 )

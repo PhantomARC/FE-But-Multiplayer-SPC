@@ -2,45 +2,59 @@ extends Node
 
 
 #in-game
-var map_select = 1 #default to Map 1 on load
-var igt_turn = true #true = blue, false = red
+var map_num = 1 #default to Map 1 on load
 var team_turn = null #true = blue team's turn, false = red team's turn
 
-#aesthetics (to be moved to files)
-var transparency = 0.5
-var dict_options = {}
-
 #online interaction
-var other_id = -1 #default other player IDs' to -1
-var playername = null 
-var usercolor = 2
-var dict_user_relegate = {}
-var dict_user_color = {}
+var other_id = -1 #multiplayer network base
+var playername : String = "" #username as String
+var usercolor : int = 2 #user color as integer
+var dict_user_relegate = {} #player identities as integers
+var dict_user_color = {} #player colors as integers
 
-#screendata
-var screensize = OS.window_size
+#map database
+var dict_maps = {#map map elements
+	0 : "MapVolcano",
+	1 : "MapPlains",
+	2 : "MapCrazyHamburger",
+}
+var dict_map_music = {#map musical elements
+	0 : "res://Assets/Sounds/Firefight Tension.wav",
+	1 : "res://Assets/Sounds/Windlands.wav",
+	2 : "res://Assets/Sounds/Windlands.wav",
+}
 
 
-func _ready():
-	if Preferences.is_file_there():
-		dict_options = Preferences.load_val()
-	else:
-		dict_options = {
-			"bgm" : linear2db(1),
-			"sfx" : linear2db(1),
-			}
-
-func set_map_select(map_select_number): #when called, change map
-	map_select = map_select_number
+func set_map_num(call_num): #when called, change map
+	map_num = call_num
 
 
 func _input(_event): #trigger when any key is pressed
-	if Input.is_action_just_pressed("ui_accept"):
-		igt_turn = !igt_turn
-	if Input.is_action_just_pressed("fullscreen_toggle"):
+	if Input.is_action_just_pressed("fullscreen_toggle"): #trigger fullscreen
 		OS.window_fullscreen = !OS.window_fullscreen
 
 
-func dict_user_relegate_clear():
+func dict_user_relegate_clear(): #trigger when leaving a lobby, clears dicts
 	dict_user_relegate = {}
 	dict_user_color = {}
+
+
+
+
+
+""" Notes
+* group "multiplayer" is applied to all elements by lobby.gd
+* group "bgm_vol" and "sfx_vol" handle their respecitve sound element volumes
+* to make a group do something, use: `get_tree().call_group("a", "function")`
+	this includes inherent functions like `queue_free()`
+* to add to a group (even if nonexistent), use: `add_to_group("a")`
+	this can be tied to children, e.g.: `$Child.add_to_group("a")`
+* MapSelectScene.gd <> btn array must be updated whenever a new map is added.
+
+"""
+
+""" To Do List
+* Tackle MainScene.gd D:<
+* Implement dictionary sending multiplayer
+* Implement adding more players than just 2!
+"""

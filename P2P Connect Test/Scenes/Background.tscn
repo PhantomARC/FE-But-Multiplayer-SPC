@@ -10,27 +10,51 @@ __meta__ = {
 "_editor_description_": "Background Autocorrects to fit screen. DO NOT CHANGE POSITIONS."
 }
 
-[node name="bgHue" type="Sprite" parent="."]
-texture = ExtResource( 7 )
+[node name="Canvas" type="CanvasLayer" parent="."]
+layer = 0
 
-[node name="bgWhite" type="Sprite" parent="."]
+[node name="CBox" type="CenterContainer" parent="Canvas"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -480.0
+margin_top = -270.0
+margin_right = 480.0
+margin_bottom = 270.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+use_top_left = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="bgHue" type="Sprite" parent="Canvas/CBox"]
+texture = ExtResource( 7 )
+centered = false
+
+[node name="bgWhite" type="Sprite" parent="Canvas/CBox"]
 modulate = Color( 1, 1, 1, 0.352941 )
 texture = ExtResource( 7 )
+centered = false
 
-[node name="animationSquare" type="AnimatedSprite" parent="."]
+[node name="animationSquare" type="AnimatedSprite" parent="Canvas/CBox"]
 self_modulate = Color( 1, 1, 1, 0.501961 )
 scale = Vector2( 10, 10 )
 frames = ExtResource( 6 )
 animation = "Square"
-frame = 7
+frame = 15
 playing = true
+centered = false
 flip_h = true
 flip_v = true
 
-[node name="animationDiamond" type="AnimatedSprite" parent="."]
+[node name="animationDiamond" type="AnimatedSprite" parent="Canvas/CBox"]
 scale = Vector2( 10, 10 )
 frames = ExtResource( 6 )
 animation = "Diamond"
-frame = 8
+frame = 4
 playing = true
+centered = false
 flip_v = true

@@ -29,7 +29,7 @@ func scan_illegal_chars():
 func _input(event):
 	#optimize order by earliest possible false
 	if event is InputEventKey && event.pressed && event.scancode == KEY_ENTER: 
-		get_tree().get_root().get_node("MainScene/Control/CanvasLayer/Panel/REGEX SEND").send_message(get_constructed_msg())
+		get_tree().get_root().get_node("GameScene/Canvas/HSBox/VSBox_L/ViewBox/Viewport/MainScene/Control/CanvasLayer/Panel/REGEX SEND").send_message(get_constructed_msg())
 		set_text("")
 
 

@@ -4,7 +4,6 @@
 [ext_resource path="res://Assets/Sounds/Lobby Theme.wav" type="AudioStream" id=2]
 [ext_resource path="res://Scripts/audioBGM.gd" type="Script" id=3]
 
-
 [node name="Lobby" type="Node2D"]
 script = ExtResource( 1 )
 

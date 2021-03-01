@@ -12,6 +12,7 @@ func _ready():
 	for loc in btn: #for each child node in the buttons array
 		loc.connect("pressed", self,"_on_buttonMap_pressed", [btn.find(loc,0)])
 		loc.connect("mouse_entered", self,"_on_buttonAny_mouse_entered")
+# warning-ignore-all:return_value_discarded
 	$CanvasLayer/buttonConfirm.connect("pressed",
 			self,"_on_buttonScene_pressed", ["res://Scenes/GameScene.tscn"])
 	$CanvasLayer/buttonConfirm.connect("mouse_entered",

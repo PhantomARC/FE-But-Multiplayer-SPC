@@ -38,7 +38,7 @@ func clear_screen() -> void:
 	$CanvasLayer/containerScreen.queue_free()
 	add_child(load("res://Scenes/PauseMenu.tscn").instance())
 	add_child(load("res://Scenes/IPConnect.tscn").instance())
-	$Chatroom.add_to_group("multiplayer")
+	$ChatRoom.add_to_group("multiplayer")
 	
 	Global.dict_user_relegate[1] = Global.playername
 	Global.dict_user_color[1] = Aesthetics.color_code[Global.usercolor]

@@ -27,12 +27,10 @@ func _ready():
 	add_child(load("res://Maps/ShadingOverlay.tscn").instance())
 	
 	player_instance.name = "Player" 
-	#player_instance.set_network_master(get_tree().get_network_unique_id())
 	player_instance.is_on_blue_team = true
 	add_child(player_instance)
 	
 	player_instance2.name = (str(Global.other_id))
-	player_instance2.set_network_master(Global.other_id)
 	player_instance.is_on_red_team = true
 	player_instance2.modulate = Color(1.0, 0.0, 0.0, 1.0)
 	add_child(player_instance2)
@@ -52,7 +50,7 @@ func _process(_delta):
 			if (player_select_movement_state == true) and (player_can_move_to_cell(mouse_pos)): #When Player is selecting tile to move
 				player_instance.set_position($ShadingOverlay.map_to_world(Vector2(mouse_pos.x, mouse_pos.y)) + Vector2(32, 32)) #Set player pos
 				player_select_movement_state = false
-				#$Camera2D.set_position($ShadingOverlay.map_to_world(Vector2(mouse_pos.x, mouse_pos.y)) + Vector2(32, 32)) #Sets camera to player location
+				$Camera2D.set_position($ShadingOverlay.map_to_world(Vector2(mouse_pos.x, mouse_pos.y)) + Vector2(32, 32)) #Sets camera to player location
 				for cell_info in visited_data_for_display: #Deletes all 
 					$ShadingOverlay.set_cellv(Vector2(cell_info.pos.x, cell_info.pos.y), -1)
 				turn_end = true
@@ -69,7 +67,7 @@ func _process(_delta):
 			if (player_select_movement_state == true) and (player_can_move_to_cell(mouse_pos)): #When Player is selecting tile to move
 				player_instance2.set_position($ShadingOverlay.map_to_world(Vector2(mouse_pos.x, mouse_pos.y)) + Vector2(32, 32)) #Set player pos
 				player_select_movement_state = false
-				#$Camera2D.set_position($ShadingOverlay.map_to_world(Vector2(mouse_pos.x, mouse_pos.y)) + Vector2(32, 32)) #Sets camera to player location
+				$Camera2D.set_position($ShadingOverlay.map_to_world(Vector2(mouse_pos.x, mouse_pos.y)) + Vector2(32, 32)) #Sets camera to player location
 				for cell_info in visited_data_for_display: #Deletes all 
 					$ShadingOverlay.set_cellv(Vector2(cell_info.pos.x, cell_info.pos.y), -1)
 				turn_end = true

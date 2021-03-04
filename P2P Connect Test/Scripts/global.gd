@@ -24,6 +24,10 @@ var dict_map_music = {#map musical elements
 	2 : "res://Assets/Sounds/Windlands.wav",
 }
 
+#standard data
+var maxInt : int = 9223372036854775807
+
+
 
 func set_map_num(call_num): #when called, change map
 	map_num = call_num

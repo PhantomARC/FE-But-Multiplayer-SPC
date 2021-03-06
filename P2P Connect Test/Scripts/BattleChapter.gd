@@ -5,11 +5,11 @@ extends Node
 var tAnima
 var sStats
 var tStats
-const hpCap : int = 100;
-const mpCap : int = 200;
-const eCap : int = 50;
-const tCap : int = 150;
-const tDRed : float = 0.50;
+const HPCAP : int = 100;
+const MPCAP : int = 200;
+const EGCAP : int = 50;
+const TGCAP : int = 150;
+const TG_RED : float = 0.50;
 
 
 func battle(source, target):
@@ -35,5 +35,5 @@ func get_stats(unit, type) -> int:
 
 
 func tough_mpx(amt) -> float:
-	var toughCtr = (amt if (amt < tCap) else tCap)
-	return (toughCtr * tDRed / tCap)
+	var toughCtr = (amt if (amt < TGCAP) else TGCAP)
+	return (toughCtr * TG_RED / TGCAP)

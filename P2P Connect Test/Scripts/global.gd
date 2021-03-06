@@ -6,6 +6,7 @@ var map_num = 1 #default to Map 1 on load
 var team_turn = null #true = blue team's turn, false = red team's turn
 
 #online interaction
+var other_id_dict = {}
 var other_id = -1 #multiplayer network base
 var playername : String = "" #username as String
 var usercolor : int = 2 #user color as integer

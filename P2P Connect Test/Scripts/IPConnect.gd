@@ -1,5 +1,55 @@
 extends Control
 
+var player_info = { }
+
+
+
+#remote func register_player(info):
+#	# Get the id of the RPC sender.
+#	var id = get_tree().get_rpc_sender_id()
+#	# Store the info
+#	player_info[id] = info
+
+
+func _user_connected(id):
+	Global.other_id = id
+	Global.other_id_dict[id] = id
+	#rpc_id(id, "register_player", my_info)
+	if Global.other_id_dict.size() == 2: #Need to load the game when all players are connected
+		var game = preload("res://Prototype/protoGame.tscn").instance()
+		get_tree().get_root().add_child(game)
+	
+	#pre_configure_game()
+
+
+remote func pre_configure_game():
+	var selfPeerID = get_tree().get_network_unique_id()
+	#Load World
+	var world = load("res://Prototype/protoGame.tscn").instance()
+	get_node("/root").add_child(world)
+	
+	#Load my player
+	var my_player = preload("res://Prototype/protoPlayer.tscn").instance()
+	my_player.set_name(str(selfPeerID))
+	my_player.set_network_master(selfPeerID) # Will be explained later
+	my_player.position = Vector2(20,20)
+	get_node("/root/Node2D").add_child(my_player)
+	
+	for p in player_info:
+		var player = preload("res://Prototype/protoPlayer.tscn").instance()
+		player.set_name(str(p))
+		player.set_network_master(p) # Will be explained later
+		player.position = Vector2(100,100)
+		get_node("/root/Node2D").add_child(player)
+		
+		rpc_id(1, "done_preconfiguring")
+
+	# Tell server (remember, server is always ID=1) that this peer is done pre-configuring.
+	# The server can call get_tree().get_rpc_sender_id() to find out who said they were done.
+
+
+
+
 
 var regex_key = {
 	"bracketChar" : "\\[|\\]|\\r\\n|\\r|\\n",
@@ -74,8 +124,8 @@ func _user_disconnected(id):
 
 
 sync func add_user(id, regname, color):
-	Global.dict_user_relegate[id] = regname
-	Global.dict_user_color[id] = Aesthetics.color_code[color]
+	Global.dict_user_relegate[id] = regname  #May have accidently changed variable here, sorry roy uwu
+	Global.dict_user_relegate[id] = Aesthetics.color_code[color]
 
 
 func _self_connected():
@@ -129,10 +179,7 @@ func get_constructed_msg(nodePath) -> String:
 	return(send_queue)
 
 
-func _user_connected(id):
-	Global.other_id = id
-	var game = preload("res://Prototype/protoGame.tscn").instance()
-	get_tree().get_root().add_child(game)
+
 
 
 func parse_message(color, id_name, message):

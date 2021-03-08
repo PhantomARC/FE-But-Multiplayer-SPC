@@ -20,17 +20,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -430.0
-margin_top = -246.0
-margin_right = 430.0
-margin_bottom = 246.0
+margin_left = -445.0
+margin_top = -252.0
+margin_right = 445.0
+margin_bottom = 252.0
 custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBOX" type="HBoxContainer" parent="VCore"]
-margin_right = 860.0
+margin_right = 890.0
 margin_bottom = 384.0
 custom_constants/separation = 8
 __meta__ = {
@@ -447,9 +447,44 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="SETPanel" type="Panel" parent="VCore/HBOX/VBOX3"]
+margin_top = 294.0
+margin_right = 250.0
+margin_bottom = 384.0
+rect_min_size = Vector2( 250, 90 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="setBox" type="LineEdit" parent="VCore/HBOX/VBOX3/SETPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -118.5
+margin_top = -19.491
+margin_right = 118.5
+margin_bottom = 35.509
+placeholder_text = "Int (0-X)"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VCore/HBOX/VBOX3/SETPanel/setBox"]
+margin_top = -23.0
+margin_right = 235.0
+margin_bottom = -3.0
+text = "Set Attack Damage"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
 [node name="HCore" type="HBoxContainer" parent="VCore"]
 margin_top = 404.0
-margin_right = 860.0
+margin_right = 890.0
 margin_bottom = 504.0
 custom_constants/separation = 10
 
@@ -471,9 +506,9 @@ __meta__ = {
 
 [node name="Button" type="Button" parent="VCore/HCore"]
 margin_left = 710.0
-margin_right = 860.0
+margin_right = 890.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 150, 100 )
+rect_min_size = Vector2( 180, 100 )
 text = "\"ooh, MATH.\""
 __meta__ = {
 "_edit_lock_": true,

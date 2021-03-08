@@ -11,6 +11,7 @@ onready var ETG = $VCore/HBOX/VBOX2/ETGPanel/tgBox
 onready var DEX = $VCore/HBOX/VBOX3/DEXPanel/dexBox
 onready var DFS = $VCore/HBOX/VBOX3/DFSPanel/dfsBox
 onready var RES = $VCore/HBOX/VBOX3/RESPanel/resBox
+onready var SET = $VCore/HBOX/VBOX3/SETPanel/setBox
 onready var TypeText = $VCore/HBOX/VBOX2/TYPEPanel/typeButton
 onready var StyleText = $VCore/HBOX/VBOX2/STYLEPanel/styleButton
 onready var ClassText = $VCore/HBOX/VBOX2/ECLASSPanel/classButton
@@ -55,10 +56,11 @@ func _on_Button_pressed():
 		int(DFS.get_text()),
 		int(RES.get_text()),
 		int(DEX.get_text()),
+		int(SET.get_text()),
 	]
-	print(BDict.battle(s[0], s[1], (s[0] if typeCtr else s[1]), s[2],
-	s[3], styles[styleCtr], s[4], (s[5] if typeCtr else s[6]), 
-		("DFS" if typeCtr else "RES"), s[7], classes[classCtr]))
+	print(BDict.battle(s[0], s[1], ((s[0] if typeCtr else s[1]) if (styleCtr == 2) else s[8]),
+	s[2], s[3], styles[styleCtr], s[4], (s[5] if typeCtr else s[6]), 
+	("DFS" if typeCtr else "RES"), s[7], classes[classCtr]))
 
 
 func _on_typeButton_pressed():

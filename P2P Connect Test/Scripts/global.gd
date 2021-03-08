@@ -44,7 +44,8 @@ func dict_user_relegate_clear(): #trigger when leaving a lobby, clears dicts
 	dict_user_color = {}
 
 
-
+func register(data):
+	get_tree().call_group("log", "relay", data)
 
 
 """ Notes

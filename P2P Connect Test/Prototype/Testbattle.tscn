@@ -5,18 +5,481 @@
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -1.33484
+margin_top = -1.33484
+margin_right = -1.33484
+margin_bottom = -1.33484
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="VCore" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -430.0
+margin_top = -246.0
+margin_right = 430.0
+margin_bottom = 246.0
+custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
-margin_left = 378.403
-margin_top = 211.906
-margin_right = 659.403
-margin_bottom = 343.906
-text = "\"ooh, MATH.\""
+[node name="HBOX" type="HBoxContainer" parent="VCore"]
+margin_right = 860.0
+margin_bottom = 384.0
+custom_constants/separation = 8
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+
+[node name="VBOX" type="VBoxContainer" parent="VCore/HBOX"]
+margin_right = 250.0
+margin_bottom = 384.0
+custom_constants/separation = 8
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="STRPanel" type="Panel" parent="VCore/HBOX/VBOX"]
+margin_right = 250.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 250, 90 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="strBox" type="LineEdit" parent="VCore/HBOX/VBOX/STRPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -118.5
+margin_top = -19.491
+margin_right = 118.5
+margin_bottom = 35.509
+placeholder_text = "Int (0-80)"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VCore/HBOX/VBOX/STRPanel/strBox"]
+margin_top = -23.0
+margin_right = 235.0
+margin_bottom = -3.0
+text = "Attacker Strength"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="INTPanel" type="Panel" parent="VCore/HBOX/VBOX"]
+margin_top = 98.0
+margin_right = 250.0
+margin_bottom = 188.0
+rect_min_size = Vector2( 250, 90 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="intBox" type="LineEdit" parent="VCore/HBOX/VBOX/INTPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -118.5
+margin_top = -19.491
+margin_right = 118.5
+margin_bottom = 35.509
+placeholder_text = "Int (0-80)"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VCore/HBOX/VBOX/INTPanel/intBox"]
+margin_top = -23.0
+margin_right = 235.0
+margin_bottom = -3.0
+text = "Attacker Intellect"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="BNSPanel" type="Panel" parent="VCore/HBOX/VBOX"]
+margin_top = 196.0
+margin_right = 250.0
+margin_bottom = 286.0
+rect_min_size = Vector2( 250, 90 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="bnsBox" type="LineEdit" parent="VCore/HBOX/VBOX/BNSPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -118.5
+margin_top = -19.491
+margin_right = 118.5
+margin_bottom = 35.509
+placeholder_text = "Int (0-X)"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VCore/HBOX/VBOX/BNSPanel/bnsBox"]
+margin_top = -23.0
+margin_right = 235.0
+margin_bottom = -3.0
+text = "Attacker Bonus Damage"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="CRITPanel" type="Panel" parent="VCore/HBOX/VBOX"]
+margin_top = 294.0
+margin_right = 250.0
+margin_bottom = 384.0
+rect_min_size = Vector2( 250, 90 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="critBox" type="LineEdit" parent="VCore/HBOX/VBOX/CRITPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -118.5
+margin_top = -19.491
+margin_right = 118.5
+margin_bottom = 35.509
+placeholder_text = "Float (0.00-1.00)"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VCore/HBOX/VBOX/CRITPanel/critBox"]
+margin_top = -23.0
+margin_right = 235.0
+margin_bottom = -3.0
+text = "Attacker Critical Chance"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="VBOX2" type="VBoxContainer" parent="VCore/HBOX"]
+margin_left = 258.0
+margin_right = 508.0
+margin_bottom = 384.0
+custom_constants/separation = 8
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TYPEPanel" type="Panel" parent="VCore/HBOX/VBOX2"]
+margin_right = 250.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 250, 90 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="typeButton" type="Button" parent="VCore/HBOX/VBOX2/TYPEPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -118.5
+margin_top = -19.491
+margin_right = 118.5
+margin_bottom = 35.509
+text = "STR"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="VCore/HBOX/VBOX2/TYPEPanel/typeButton"]
+margin_top = -23.0
+margin_right = 235.0
+margin_bottom = -3.0
+text = "Attack Type (STR/INT)"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="STYLEPanel" type="Panel" parent="VCore/HBOX/VBOX2"]
+margin_top = 98.0
+margin_right = 250.0
+margin_bottom = 188.0
+rect_min_size = Vector2( 250, 90 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="styleButton" type="Button" parent="VCore/HBOX/VBOX2/STYLEPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -118.5
+margin_top = -19.491
+margin_right = 118.5
+margin_bottom = 35.509
+text = "normal"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="VCore/HBOX/VBOX2/STYLEPanel/styleButton"]
+margin_top = -23.0
+margin_right = 235.0
+margin_bottom = -3.0
+text = "Attack Style (normal, etc.)"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ECLASSPanel" type="Panel" parent="VCore/HBOX/VBOX2"]
+margin_top = 196.0
+margin_right = 250.0
+margin_bottom = 286.0
+rect_min_size = Vector2( 250, 90 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="classButton" type="Button" parent="VCore/HBOX/VBOX2/ECLASSPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -118.5
+margin_top = -19.491
+margin_right = 118.5
+margin_bottom = 35.509
+text = "Human"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="VCore/HBOX/VBOX2/ECLASSPanel/classButton"]
+margin_top = -23.0
+margin_right = 235.0
+margin_bottom = -3.0
+text = "Defender Core Class
+"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ETGPanel" type="Panel" parent="VCore/HBOX/VBOX2"]
+margin_top = 294.0
+margin_right = 250.0
+margin_bottom = 384.0
+rect_min_size = Vector2( 250, 90 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="tgBox" type="LineEdit" parent="VCore/HBOX/VBOX2/ETGPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -118.5
+margin_top = -19.491
+margin_right = 118.5
+margin_bottom = 35.509
+placeholder_text = "Int (0-180)"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VCore/HBOX/VBOX2/ETGPanel/tgBox"]
+margin_top = -23.0
+margin_right = 235.0
+margin_bottom = -3.0
+text = "Defender Toughness"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="VBOX3" type="VBoxContainer" parent="VCore/HBOX"]
+margin_left = 516.0
+margin_right = 766.0
+margin_bottom = 384.0
+custom_constants/separation = 8
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="DFSPanel" type="Panel" parent="VCore/HBOX/VBOX3"]
+margin_right = 250.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 250, 90 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="dfsBox" type="LineEdit" parent="VCore/HBOX/VBOX3/DFSPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -118.5
+margin_top = -19.491
+margin_right = 118.5
+margin_bottom = 35.509
+placeholder_text = "Int (0-80)"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VCore/HBOX/VBOX3/DFSPanel/dfsBox"]
+margin_top = -23.0
+margin_right = 235.0
+margin_bottom = -3.0
+text = "Defender Defense"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="RESPanel" type="Panel" parent="VCore/HBOX/VBOX3"]
+margin_top = 98.0
+margin_right = 250.0
+margin_bottom = 188.0
+rect_min_size = Vector2( 250, 90 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="resBox" type="LineEdit" parent="VCore/HBOX/VBOX3/RESPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -118.5
+margin_top = -19.491
+margin_right = 118.5
+margin_bottom = 35.509
+placeholder_text = "Int (0-80)"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VCore/HBOX/VBOX3/RESPanel/resBox"]
+margin_top = -23.0
+margin_right = 235.0
+margin_bottom = -3.0
+text = "Defender Resilience"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="DEXPanel" type="Panel" parent="VCore/HBOX/VBOX3"]
+margin_top = 196.0
+margin_right = 250.0
+margin_bottom = 286.0
+rect_min_size = Vector2( 250, 90 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="dexBox" type="LineEdit" parent="VCore/HBOX/VBOX3/DEXPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -118.5
+margin_top = -19.491
+margin_right = 118.5
+margin_bottom = 35.509
+placeholder_text = "Int (0-100)"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VCore/HBOX/VBOX3/DEXPanel/dexBox"]
+margin_top = -23.0
+margin_right = 235.0
+margin_bottom = -3.0
+text = "Defender Dexterity"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="HCore" type="HBoxContainer" parent="VCore"]
+margin_top = 404.0
+margin_right = 860.0
+margin_bottom = 504.0
+custom_constants/separation = 10
+
+[node name="Log" type="Panel" parent="VCore/HCore"]
+margin_right = 700.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 700, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Chat" type="RichTextLabel" parent="VCore/HCore/Log"]
+rect_min_size = Vector2( 700, 100 )
+scroll_following = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="VCore/HCore"]
+margin_left = 710.0
+margin_right = 860.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 150, 100 )
+text = "\"ooh, MATH.\""
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="VCore/HBOX/VBOX2/TYPEPanel/typeButton" to="." method="_on_typeButton_pressed"]
+[connection signal="pressed" from="VCore/HBOX/VBOX2/STYLEPanel/styleButton" to="." method="_on_styleButton_pressed"]
+[connection signal="pressed" from="VCore/HBOX/VBOX2/ECLASSPanel/classButton" to="." method="_on_classButton_pressed"]
+[connection signal="pressed" from="VCore/HCore/Button" to="." method="_on_Button_pressed"]

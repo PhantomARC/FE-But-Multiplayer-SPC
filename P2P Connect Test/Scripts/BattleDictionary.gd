@@ -77,7 +77,7 @@ func calc_overloadBonus(stat:int, energy:int) -> int:
 #DEX and CRIT Functions
 	#Dodge chance from DEX
 func calc_dodgeChance(dexterity:int) -> float: #return dodge chance
-	return (0.00 + cap_stat(dexterity, "DEX") * DEX_DODGE_MAX / CAP["DEX"])
+	return ((0.00 + cap_stat(dexterity, "DEX")) * DEX_DODGE_MAX / CAP["DEX"])
 
 	#Critical Hit Application
 func calc_critCheck(critChance:float) -> bool: #return critical hit status
@@ -93,9 +93,8 @@ func calc_dodgeCheck(chance:float) -> bool: #return dodge/block status
 
 #Damage Functions
 	#Easier Implementation for Pure, Pre-mitigated Damage, CALL
-func calc_dmgNorm(a_str:int, a_int:int, a_type:int, a_bonus) -> int:
-	calc_dmgPure(calc_dmgRange(a_int, "int"), calc_dmgRange(a_str, "str"), a_type, a_bonus)
-	return 1
+func calc_dmgNorm(a_str:int, a_int:int, a_power:int, a_bonus) -> int:
+	return calc_dmgPure(calc_dmgRange(a_int, "INT"), calc_dmgRange(a_str, "STR"), a_power, a_bonus)
 
 	#Pure, Pre-mitigated Damage, DO NOT CALL
 func calc_dmgPure(dmg_floor:float, dmg_ceiling:float, stat:int, bonus:int) -> int: 
@@ -106,11 +105,46 @@ func calc_dmgPure(dmg_floor:float, dmg_ceiling:float, stat:int, bonus:int) -> in
 	return int(dRNG.randf_range(dmg_floor, dmg_ceiling) * (stat + bonus))
 
 	#Flat Damage
-func calc_dmgFlat(dmg:int) -> int:
+func calc_dmgFlat(a_power:int,bonus:int) -> int:
 # warning-ignore:integer_division
-	return int(dmg / 4)
+	return int((a_power + bonus) / 4)
 
-
+	#Calculate Damage Floor/Ceiling
 func calc_dmgRange(stat:int, type:String) -> float: #return damage floor/ceiling
 	return (FLOOR[type] + (cap_stat(stat, type) * (CEILING[type] - FLOOR[type]) / CAP[type]))
 
+	#Calculate Reduced Damage
+func calc_dmgReduced(dmgPure:int, e_stat:int, type:String) -> float: #Damage after Resistance
+	return (dmgPure * calc_statRed(e_stat, type))
+
+	#Calculate the entire battle LOL
+func battle(a_str:int, a_int:int, a_power:int, a_bonus:int, a_crit:float, a_method:String,
+	e_tg:int, e_resist:int, e_resist_type:String,  e_dex:int, e_classType:String) -> int:
+	var e_TGRED = calc_statRed(e_tg, "TG")  #calc enemy toughness multiplier
+	var dexxed: float = calc_dodgeCheck(calc_dodgeChance(e_dex)) #calc if blocked
+	var critted = calc_critCheck(a_crit)
+	var pureDMG = calc_dmgNorm(a_str, a_int, a_power, a_bonus) #calc pure dmg
+	var redDMG = calc_dmgReduced(pureDMG, e_resist, e_resist_type) #calc reduced dmg
+	var result = 0
+	Global.register("A Crit!" if critted else "Not a Crit!")
+	if (a_method == "normal"):  #check attack style
+		if (e_classType == "Human" || e_classType == "Spirit"): #check class type
+			Global.register("Dodged!" if dexxed else "Hit!")
+			result = 0 if dexxed else ((pureDMG if critted else redDMG) * e_TGRED)
+		elif (e_classType == "Mecha" || e_classType == "Beast"): #check class type
+			Global.register("Blocked!" if dexxed else "Hit!")
+			result = (((pureDMG if critted else redDMG) * e_TGRED) * (RED["DEX"] if dexxed else 1))
+		else:
+			Global.register("...the heck are you?")
+			result = -9001
+	elif (a_method == "flat"):
+		Global.register("Flat Hit!")
+		result = calc_dmgFlat(a_power, a_bonus) * e_TGRED
+	elif (a_method == "set"):
+		Global.register("Set Hit!")
+		result = a_power
+	else:
+		Global.register("Bad arguments...")
+		result = -1
+	Global.register("Damage dealt: " + str(int(result)) + "!\n")
+	return int(result)

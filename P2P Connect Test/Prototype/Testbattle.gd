@@ -50,15 +50,15 @@ func _on_Button_pressed():
 		int(STR.get_text()),
 		int(INT.get_text()),
 		int(BNS.get_text()),
-		int(CRIT.get_text()),
+		float(CRIT.get_text()),
 		int(ETG.get_text()),
 		int(DFS.get_text()),
 		int(RES.get_text()),
 		int(DEX.get_text()),
 	]
-	print(BDict.battle(s[0], s[1], int(s[0] if typeCtr else s[1]), int(s[2]),
-	int(s[3]), styles[styleCtr], int(s[4]), int(s[5] if typeCtr else s[6]), 
-		("DFS" if typeCtr else "RES"), int(s[7]), classes[classCtr]))
+	print(BDict.battle(s[0], s[1], (s[0] if typeCtr else s[1]), s[2],
+	s[3], styles[styleCtr], s[4], (s[5] if typeCtr else s[6]), 
+		("DFS" if typeCtr else "RES"), s[7], classes[classCtr]))
 
 
 func _on_typeButton_pressed():

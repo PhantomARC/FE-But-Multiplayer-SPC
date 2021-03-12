@@ -58,9 +58,9 @@ func _on_Button_pressed():
 		int(DEX.get_text()),
 		int(SET.get_text()),
 	]
-	print(BDict.battle(s[0], s[1], ((s[0] if typeCtr else s[1]) if (styleCtr == 2) else s[8]),
+	var _dmg = BDict.battle(s[0], s[1], ((s[0] if typeCtr else s[1]) if (styleCtr != 2) else s[8]),
 	s[2], s[3], styles[styleCtr], s[4], (s[5] if typeCtr else s[6]), 
-	("DFS" if typeCtr else "RES"), s[7], classes[classCtr]))
+	("DFS" if typeCtr else "RES"), s[7], classes[classCtr])
 
 
 func _on_typeButton_pressed():

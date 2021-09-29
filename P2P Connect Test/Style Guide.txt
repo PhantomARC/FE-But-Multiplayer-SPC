@@ -1,0 +1,67 @@
+ARC's Style Guide for Godot Collaborative Projects
+
+1). Constants should be completely capitalized.
+	- SPEED, JUMP_HEIGHT, GRAVITY
+
+2). Variables should be completely lowercased.
+	- counter, level_number, attack_damage
+
+3). Variables, constants, etc. with multiple words should be underscored.
+	- JUMP_HEIGHT, level_number, ice_cream
+
+4). Variables, Constants, etc. should be given Types unless they are used for multi-type (e.g. can hold both int & float; A.K.A. duck-typing) purposes.
+	- var counter : int = 0
+	- const SPEED : float = 4.50
+
+5). Float intensity should be 3 decimal places.
+	- 4.500, 1.618, 3.142
+
+6). Functions should be given return Types unless they are used for duck-typing purposes.
+	- func battle() -> int:
+	- func get_button_pressed() -> bool:
+	- func set_type(int : data_var) -> void:
+
+7). Function variables should be given Types unless they are used for duck-typing purposes.
+	- func set_type(int : data_var) -> void:
+	- func convert_string_to_array(String : input) -> Array:
+	- func multiply(float : a, float : b, float : c) -> float:
+
+8). Function names should be completely lowercased.
+	- func set_type() -> void:
+	- func do_that_too() -> int:
+	- func get_big_chungus(int : ugandan_knuckles) -> Array:
+
+9). Split non-essential functions into subscripts, then loaded into the mainscript to avoid clutter.
+	- pathfinding should go into Pathfinding.gd
+	- tilemapping should go into Tilemapping.gd
+
+10) Scene names should have all words capitalized and should not contain underscores.
+	- IceCream.tscn
+	- BigChungus.tscn
+	- ReallyLongTextbox.tscn
+
+11) Parent names should match scene names exactly.
+	- IceCream (Node2D object)
+	- Player (Area2D object)
+	
+12) Sprite names should have all words capitalized and should not contain underscores.
+	- ButtonAttack
+	- VBoxContainerBagMenu
+	- HBoxContainerBattleOptions
+
+13) Non-parent sprite names should consist of an Object Type, then Descriptive Name.
+	- ButtonAttack
+	- SpritePlayerIcon
+	- Camera2DScreenViewer
+
+14) Sprite names should never be shortened.
+	- VBoxContainerBagMenu
+	- AnimationPlayerAttackEffects
+
+15) Comment all code lines if the function is complex.
+	- Referenced functions do not need commenting, but utilization and assigning might.
+	- Pseudocode as needed.
+
+16) Delete deprecated code.
+	- Old code can be retrieved and restored via GitHub. As such, there is no need to keep deprecated scripts.
+

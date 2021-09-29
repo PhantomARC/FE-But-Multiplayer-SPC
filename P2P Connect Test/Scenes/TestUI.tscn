@@ -62,5 +62,6 @@ script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="button_up" from="CanvasLayer/end_turn_button" to="." method="_on_Button_button_up"]
 [connection signal="text_changed" from="CanvasLayer/REGEX CHAT" to="CanvasLayer/REGEX CHAT" method="_on_TextEdit_text_changed"]

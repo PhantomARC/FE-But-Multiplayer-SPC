@@ -22,7 +22,7 @@ func battle(source, target):
 		return (sStats * tough_mpx(150))
 
 
-func get_anima(unit):
+func get_anima(unit) -> Array:
 	return (["health",100])
 
 

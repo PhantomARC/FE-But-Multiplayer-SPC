@@ -2,24 +2,24 @@ extends Node
 
 
 #in-game
-var map_num = 1 #default to Map 1 on load
-var team_turn = null #true = blue team's turn, false = red team's turn
+var map_num : int = 1 #default to Map 1 on load
+var team_turn : bool = false #true = blue team's turn, false = red team's turn
 
 #online interaction
-var other_id_dict = {}
-var other_id = -1 #multiplayer network base
+var other_id_dict : Dictionary = {}
+var other_id : int = -1 #multiplayer network base
 var playername : String = "" #username as String
 var usercolor : int = 2 #user color as integer
-var dict_user_relegate = {} #player identities as integers
-var dict_user_color = {} #player colors as integers
+var dict_user_relegate : Dictionary = {} #player identities as integers
+var dict_user_color : Dictionary = {} #player colors as integers
 
 #map database
-var dict_maps = {#map map elements
+var dict_maps : Dictionary = {#map graphs
 	0 : "MapVolcano",
 	1 : "MapPlains",
 	2 : "MapCrazyHamburger",
 }
-var dict_map_music = {#map musical elements
+var dict_map_music : Dictionary = {#map soundtracks
 	0 : "res://Assets/Sounds/Firefight Tension.wav",
 	1 : "res://Assets/Sounds/Windlands.wav",
 	2 : "res://Assets/Sounds/Windlands.wav",
@@ -27,10 +27,11 @@ var dict_map_music = {#map musical elements
 
 #standard data
 var maxInt : int = 9223372036854775807
+const tileSize : int = 64
 
 
 
-func set_map_num(call_num): #when called, change map
+func set_map_num(call_num) -> void: #when called, change map
 	map_num = call_num
 
 
@@ -39,12 +40,12 @@ func _input(_event): #trigger when any key is pressed
 		OS.window_fullscreen = !OS.window_fullscreen
 
 
-func dict_user_relegate_clear(): #trigger when leaving a lobby, clears dicts
+func dict_user_relegate_clear() -> void: #trigger when leaving a lobby, clears dicts
 	dict_user_relegate = {}
 	dict_user_color = {}
 
 
-func register(data):
+func register(data) -> void:
 	get_tree().call_group("log", "relay", data)
 
 

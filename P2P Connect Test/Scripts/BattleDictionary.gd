@@ -1,6 +1,6 @@
 extends Node
 
-const CAP = { #Stat Caps, SHOULD BE INTEGERS
+const CAP : Dictionary = { #Stat Caps, SHOULD BE INTEGERS
 	"HP" : 120, #Health Stat Maximum
 	"MP" : 240, #Mana Stat Maximum
 	"TG" : 180, #Toughness Stat Maximum
@@ -11,17 +11,17 @@ const CAP = { #Stat Caps, SHOULD BE INTEGERS
 	"RES" : 80, #Resilience Stat Maximum
 	"DEX" : 100, #Dexterity Stat Maximum
 }
-const RED = { #Reduction Decimals as Percentages, SHOULD BE FLOATS
+const RED : Dictionary = { #Reduction Decimals as Percentages, SHOULD BE FLOATS
 	"TG" : 0.50, #Toughness Damage Reduction Percentage
 	"DFS" : 0.80,
 	"RES" : 0.80,
 	"DEX" : 0.60,
 }
-const FLOOR = { #Damage Threshold Floors
+const FLOOR : Dictionary = { #Damage Threshold Floors
 	"STR" : 1.00, #Strength Upper Damage Floor
 	"INT" : 0.75, #Intellect Lower Damage Floor
 }
-const CEILING = { #Damage Threshold Ceilings
+const CEILING : Dictionary = { #Damage Threshold Ceilings
 	"STR" : 1.25, #Strength Upper Damage Ceiling
 	"INT" : 1.00, #Intellect Lower Damage Ceiling
 }
@@ -119,7 +119,7 @@ func calc_dmgReduced(dmgPure:int, e_stat:int, type:String) -> float: #Damage aft
 
 	#Calculate the entire battle LOL
 func battle(a_str:int, a_int:int, a_power:int, a_bonus:int, a_crit:float, a_method:String,
-	e_tg:int, e_resist:int, e_resist_type:String,  e_dex:int, e_classType:String) -> int:
+		e_tg:int, e_resist:int, e_resist_type:String,  e_dex:int, e_classType:String) -> int:
 	var e_TGRED = calc_statRed(e_tg, "TG")  #calc enemy toughness multiplier
 	var dexxed: float = calc_dodgeCheck(calc_dodgeChance(e_dex)) #calc if blocked
 	var critted = calc_critCheck(a_crit)

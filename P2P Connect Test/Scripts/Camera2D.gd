@@ -32,7 +32,7 @@ func _input(_event): #alter map with middle click
 func refer_tile(returnfunc): #fix tile notation if chars < 4
 	var tilecalc = []
 	for i in range(1,len(returnfunc)):
-		tilecalc.push_back(returnfunc[i])
+		tilecalc.push_back(returnfunc[i].to_lower())
 	if not ord(tilecalc[1]) in range(ASCII,122):
 		tilecalc.push_front('a')
 	if not tilecalc.size() == 4:

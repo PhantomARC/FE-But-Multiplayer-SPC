@@ -1,7 +1,5 @@
 extends Node2D
 
-#Hue color derived from CowThing: 
-#https://godotengine.org/qa/5393/how-to-create-color-transition-sprite-around-the-color-wheel
 
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS

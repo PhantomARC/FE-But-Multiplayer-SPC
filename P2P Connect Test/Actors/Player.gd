@@ -7,7 +7,7 @@ var step_count : int = 0
 var tile_size : int = 64
 var is_on_red_team : bool = false #!deprecate
 var is_on_blue_team : bool = false #!deprecate
-
+var step_count_limit = 3
 
 func _ready(): #place player at tile center
 	Global.other_id = Global.other_id + 1

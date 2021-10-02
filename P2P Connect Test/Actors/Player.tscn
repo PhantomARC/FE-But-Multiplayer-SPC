@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Actors/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Images/Aster_PC.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Pathfinding.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1.19252, 1.26253 )
@@ -27,3 +28,5 @@ exclude_parent = false
 [node name="Tween" type="Tween" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Pathfinding" parent="." instance=ExtResource( 3 )]

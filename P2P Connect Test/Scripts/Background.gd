@@ -1,14 +1,25 @@
 extends Node2D
 
 
+onready var references : Dictionary = {
+	"hue" : $Canvas/CenterContainer/SpriteHue,
+	"square" : $Canvas/CenterContainer/AnimatedSpriteSquare,
+	"diamond" : $Canvas/CenterContainer/AnimatedSpriteDiamond,
+}
+
+
 func _ready():
+	#Declare pause mode to continue regardless.
 	pause_mode = Node.PAUSE_MODE_PROCESS
-	$Canvas/CBox/animationSquare.frame = Aesthetics.sq_frame
-	$Canvas/CBox/animationDiamond.frame = Aesthetics.dm_frame
+	#Set initial frame to last recorded frame.
+	references["square"].frame = Aesthetics.sq_frame
+	references["diamond"].frame = Aesthetics.dm_frame
 
 
 func _process(_delta):
-	$Canvas/CBox/bgHue.set_modulate(Color.from_hsv(Aesthetics.hue,1,1,1))
-	Aesthetics.sq_frame = $Canvas/CBox/animationSquare.frame
-	Aesthetics.dm_frame = $Canvas/CBox/animationDiamond.frame
+	#Cycle through hues.
+	references["hue"].set_modulate(Color.from_hsv(Aesthetics.hue,1,1,1))
+	#Record current frame.
+	Aesthetics.sq_frame = references["square"].frame
+	Aesthetics.dm_frame = references["diamond"].frame
 

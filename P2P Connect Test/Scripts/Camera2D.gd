@@ -5,7 +5,7 @@ var zoom_calc = 1
 var current_zoom = get_zoom()
 const ZOOM_SPEED = 5
 const ASCII = 97
-const path = "GameScene/Canvas/HSBox/VSBox_L/ViewBox/Viewport/MainScene/"
+const PATH = "GameScene/Canvas/HSplitContainerMain/VSplitContainerLeft/ViewportContainer/Viewport/MainScene/"
 
 func _process(delta):
 	#calculate zoom
@@ -24,12 +24,12 @@ func _process(delta):
 func _input(_event): #alter map with middle click
 	if Input.is_action_just_released("scroll_click"):
 		var mouse_pos = get_global_mouse_position()
-		var index_loc = get_tree().get_root().get_node(path + Global.dict_maps[Global.map_num])
+		var index_loc = get_tree().get_root().get_node(PATH + Global.dict_maps[Global.map_num])
 		var index_map = index_loc.world_to_map(mouse_pos)
 		set_position(index_loc.map_to_world(index_map) + Vector2(32,32))
 
 
-func refer_tile(returnfunc): #fix tile notation if chars < 4
+func refer_tile(returnfunc) -> void: #fix tile notation if chars < 4
 	var tilecalc = []
 	for i in range(1,len(returnfunc)):
 		tilecalc.push_back(returnfunc[i].to_lower())
@@ -40,6 +40,6 @@ func refer_tile(returnfunc): #fix tile notation if chars < 4
 	var reference = Vector2(
 		(ord(tilecalc[0]) - ASCII) * 26 + (ord(tilecalc[1]) - ASCII),
 		(int(tilecalc[2]) * 10 + int(tilecalc[3])) * -1)
-	set_position(get_tree().get_root().get_node(path \
+	set_position(get_tree().get_root().get_node(PATH \
 		+ Global.dict_maps[Global.map_num]).map_to_world(reference) + Vector2(32,32))
 

@@ -24,8 +24,7 @@ func _process(_delta):
 	#Settings Button VFX
 	rotate_timer = rotate_timer + 1
 	if rotate_timer == modtimer_array[modwheelctr]:
-		$CanvasLayer/buttonSettings.rect_rotation = $CanvasLayer/buttonSettings \
-				.rect_rotation + modwheel_array[modwheelctr]
+		$CanvasLayer/buttonSettings.rect_rotation = $CanvasLayer/buttonSettings.rect_rotation + modwheel_array[modwheelctr]
 		rotate_timer = 0
 		modwheelctr = (modwheelctr + 1) % 6
 	#Settings Button VFX End

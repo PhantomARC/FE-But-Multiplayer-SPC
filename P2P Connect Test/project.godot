@@ -25,14 +25,20 @@ config/windows_native_icon="res://Assets/Logo.ico"
 
 [autoload]
 
-Global="*res://Scripts/global.gd"
-Aesthetics="*res://Scripts/aesthetics.gd"
-Preferences="*res://Scripts/preferences.gd"
+Global="*res://Scripts/Global.gd"
+Preferences="*res://Scripts/Preferences.gd"
+Aesthetics="*res://Scripts/Aesthetics.gd"
+
+[debug]
+
+settings/fps/force_fps=144
+settings/stdout/print_fps=true
 
 [display]
 
 window/size/width=960
 window/size/height=540
+window/vsync/use_vsync=false
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
@@ -132,6 +138,10 @@ scroll_click={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":3,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+
+[physics]
+
+common/physics_fps=144
 
 [rendering]
 

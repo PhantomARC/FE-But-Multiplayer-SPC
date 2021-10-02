@@ -6,7 +6,7 @@
 resource_name = "DoSplashAnimation"
 length = 2.0
 tracks/0/type = "bezier"
-tracks/0/path = NodePath("spriteSplash:position:x")
+tracks/0/path = NodePath("SpriteSplash:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -16,7 +16,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 )
 }
 tracks/1/type = "bezier"
-tracks/1/path = NodePath("spriteSplash:position:y")
+tracks/1/path = NodePath("SpriteSplash:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -26,7 +26,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1, 1.5 )
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("spriteSplash:modulate")
+tracks/2/path = NodePath("SpriteSplash:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -38,7 +38,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.129412 ) ]
 }
 tracks/3/type = "audio"
-tracks/3/path = NodePath("audioBGM")
+tracks/3/path = NodePath("AudioPlayerBGM")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false

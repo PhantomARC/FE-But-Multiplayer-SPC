@@ -1,11 +1,11 @@
 extends TextEdit
 
 #updated and working anti-copypaste
-var regex_key = {
-	"bracketChar" : "\\[|\\]|\\r\\n|\\r|\\n",
-	"chessNotation" : "(?<tile>#[A-Za-z]{1,2}[0-9]{1,2})" \
-	+ "[- .,?!/&+()]|(?<tile>#[A-Za-z]{1,2}[0-9]{1,2})$",
+var regex_key : Dictionary = {
+	"BracketChar" : "\\[|\\]|\\r\\n|\\r|\\n",
+	"ChessNotation" : "(?<tile>#[A-Za-z]{1,2}[0-9]{1,2})[- .,?!/&+()]|(?<tile>#[A-Za-z]{1,2}[0-9]{1,2})$",
 	}
+
 
 func _on_TextEdit_text_changed():
 	scan_illegal_chars()
@@ -13,9 +13,9 @@ func _on_TextEdit_text_changed():
 	cursor_set_column(len(get_line(0)),true)
 
 
-func scan_illegal_chars():
+func scan_illegal_chars() -> void:
 	var regex = RegEx.new()
-	regex.compile(regex_key["bracketChar"])
+	regex.compile(regex_key["BracketChar"])
 	var reg_cleanup = []
 	for result in regex.search_all(text):
 		reg_cleanup.push_back(result.get_start())
@@ -29,21 +29,20 @@ func scan_illegal_chars():
 func _input(event):
 	#optimize order by earliest possible false
 	if event is InputEventKey && event.pressed && event.scancode == KEY_ENTER: 
-		get_tree().get_root().get_node("GameScene/Canvas/HSBox/VSBox_L/ViewBox/Viewport/MainScene/Control/CanvasLayer/Panel/REGEX SEND").send_message(get_constructed_msg())
+		get_tree().get_root().get_node("GameScene/Canvas/HSplitContainerMain/VSplitContainerLeft/ViewportContainer/Viewport/MainScene/Control/CanvasLayer/Panel/REGEX SEND").send_message(get_constructed_msg())
 		set_text("")
 
 
 func get_constructed_msg() -> String:
 	var regex = RegEx.new()
-	regex.compile(regex_key["chessNotation"])
+	regex.compile(regex_key["ChessNotation"])
 	var send_queue = text
 	var insert_order = []
 	var metatag = []
 	for result in regex.search_all(send_queue):
 		metatag.push_back(result.get_string("tile"))
 		insert_order.push_back(result.get_start())
-		if send_queue[result.get_end()-1] in \
-				['!','.',' ',',','?','/',')','-','+','&','(']:
+		if send_queue[result.get_end()-1] in ['!','.',' ',',','?','/',')','-','+','&','(']:
 			insert_order.push_back(result.get_end() - 1)
 		else:
 			insert_order.push_back(result.get_end())
@@ -52,8 +51,7 @@ func get_constructed_msg() -> String:
 	var i :int = 0
 	while i < insert_order.size():
 		send_queue = send_queue.insert(insert_order[i],"[/url][/color]")
-		send_queue = send_queue.insert(insert_order[i+1],
-				"[color=#ff0000][url=" + metatag[i/2] + "]")
+		send_queue = send_queue.insert(insert_order[i+1], "[color=#ff0000][url=" + metatag[i/2] + "]")
 		i += 2
 	return(send_queue)
 

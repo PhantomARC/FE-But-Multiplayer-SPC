@@ -13,7 +13,7 @@ __meta__ = {
 [node name="Canvas" type="CanvasLayer" parent="."]
 layer = 0
 
-[node name="CBox" type="CenterContainer" parent="Canvas"]
+[node name="CenterContainer" type="CenterContainer" parent="Canvas"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -30,30 +30,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="bgHue" type="Sprite" parent="Canvas/CBox"]
+[node name="SpriteHue" type="Sprite" parent="Canvas/CenterContainer"]
 texture = ExtResource( 7 )
 centered = false
 
-[node name="bgWhite" type="Sprite" parent="Canvas/CBox"]
+[node name="SpriteWhite" type="Sprite" parent="Canvas/CenterContainer"]
 modulate = Color( 1, 1, 1, 0.352941 )
 texture = ExtResource( 7 )
 centered = false
 
-[node name="animationSquare" type="AnimatedSprite" parent="Canvas/CBox"]
+[node name="AnimatedSpriteSquare" type="AnimatedSprite" parent="Canvas/CenterContainer"]
 self_modulate = Color( 1, 1, 1, 0.501961 )
 scale = Vector2( 10, 10 )
 frames = ExtResource( 6 )
 animation = "Square"
-frame = 6
+frame = 13
 playing = true
 centered = false
 flip_h = true
 flip_v = true
 
-[node name="animationDiamond" type="AnimatedSprite" parent="Canvas/CBox"]
+[node name="AnimatedSpriteDiamond" type="AnimatedSprite" parent="Canvas/CenterContainer"]
 scale = Vector2( 10, 10 )
 frames = ExtResource( 6 )
 animation = "Diamond"
+frame = 5
 playing = true
 centered = false
 flip_v = true

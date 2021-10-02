@@ -26,8 +26,8 @@ var dict_map_music : Dictionary = {#map soundtracks
 }
 
 #standard data
-var maxInt : int = 9223372036854775807
-const tileSize : int = 64
+var max_int : int = 9223372036854775807
+const TILE_SIZE : int = 64
 
 
 

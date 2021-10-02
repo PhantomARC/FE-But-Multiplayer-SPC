@@ -8,12 +8,12 @@
 [node name="SplashScreen" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="spriteSplash" parent="." instance=ExtResource( 1 )]
+[node name="SpriteSplash" parent="." instance=ExtResource( 1 )]
 position = Vector2( -75.0856, 34.6535 )
 scale = Vector2( 0.324451, 0.285101 )
 
-[node name="animationSplash" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayerSplash" type="AnimationPlayer" parent="."]
 anims/DoSplashAnimation = ExtResource( 3 )
 
-[node name="audioBGM" type="AudioStreamPlayer" parent="."]
+[node name="AudioPlayerBGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
